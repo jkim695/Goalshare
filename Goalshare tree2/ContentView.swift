@@ -13,7 +13,7 @@ struct MainFeed: View {
             Color(.systemYellow)
                 .ignoresSafeArea()
             
-            VStack{
+            VStack(spacing: 0){
                 HStack {
                     Spacer()
                     Text("GoalShare.")
@@ -34,14 +34,17 @@ struct MainFeed: View {
                             .font(.system(size: 32.0))
                     }
                 }
+                .frame(height: 45.0)
+                // Color maybe dark yellow
+                .overlay(Rectangle().frame(width: nil, height: 0.5, alignment: .bottom).foregroundColor(Color.black), alignment: .bottom)
                 ScrollView {
                     VStack(spacing: 50) {
                         ForEach(1..<10) {
                             Text("Grandslam winner \($0)")
                             Image("overlook-autumn")
                                 .resizable()
-                                .padding(.all, 29.0)
-                                .cornerRadius(9)
+                                .cornerRadius(15.0)
+                                .padding([.leading, .bottom, .trailing], 29.0)
                                 .aspectRatio(contentMode: .fit)
                         }
                     }
