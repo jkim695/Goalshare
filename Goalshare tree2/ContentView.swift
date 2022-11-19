@@ -43,9 +43,12 @@ struct MainFeed: View {
                             Text("Grandslam winner \($0)")
                             Image("overlook-autumn")
                                 .resizable()
-                                .cornerRadius(15.0)
-                                .padding([.leading, .bottom, .trailing], 29.0)
                                 .aspectRatio(contentMode: .fit)
+                                .clipShape(Circle())
+                                .overlay {
+                                    Circle().stroke(.gray, lineWidth: 4)
+                                }
+                                .shadow(radius: 7)
                         }
                     }
                 }
