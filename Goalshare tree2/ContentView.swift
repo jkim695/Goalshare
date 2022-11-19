@@ -7,26 +7,45 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct MainFeed: View {
     var body: some View {
         ZStack {
             Color(.systemYellow)
                 .ignoresSafeArea()
-            VStack {
+            
+            VStack{
                 HStack {
-                    Text("GOALSHARE")
+                    Spacer()
+                    Text("GoalShare.")
                         .font(.title)
                         .fontWeight(.bold)
-                    Image(systemName: "tree")
-                        .imageScale(.large)
-                        .foregroundColor(.black)
+                        .multilineTextAlignment(.center)
+                        .padding(.leading, 60.0)
+                    //                    Image(systemName: "tree")
+                    //                        .imageScale(.large)
+                    //                        .foregroundColor(.black)
+                    Spacer()
+                    Button {
+                        print("monkey")
+                    } label: {
+                        Image(systemName: "person.circle")
+                            .foregroundColor(Color.black)
+                            .padding(.trailing, 11.0)
+                            .font(.system(size: 32.0))
+                    }
                 }
-                Image("fedW")
-                    .resizable()
-                    .cornerRadius(15)
-                    .aspectRatio(contentMode: .fit)
-                    .padding(.all)
-                Spacer()
+                ScrollView {
+                    VStack(spacing: 50) {
+                        ForEach(1..<10) {
+                            Text("Grandslam winner \($0)")
+                            Image("overlook-autumn")
+                                .resizable()
+                                .padding(.all, 29.0)
+                                .cornerRadius(9)
+                                .aspectRatio(contentMode: .fit)
+                        }
+                    }
+                }
             }
         }
     }
@@ -34,6 +53,6 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        MainFeed()
     }
 }
