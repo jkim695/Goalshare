@@ -22,6 +22,10 @@ struct ContentView: View {
                         .foregroundColor(.black)
                 }
                 Image("fedW")
+                    .resizable()
+                    .cornerRadius(15)
+                    .aspectRatio(contentMode: .fit)
+                    .padding(.all)
                 Spacer()
             }
         }
