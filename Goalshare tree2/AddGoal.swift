@@ -7,12 +7,14 @@
 
 import SwiftUI
 
-struct ChatGPT: View {
+struct AddGoal: View {
     @State private var goalTitle = ""
     @State private var goalDescription = ""
     @State private var goalCompletionDate = Date()
     @State private var goals = [Goal]()
     @State private var showingAlert = false
+    @Namespace var namespace
+    @State var show = true
 
     var body: some View {
         NavigationView {
@@ -47,7 +49,7 @@ struct ChatGPT: View {
                     }
                 }
             }
-            .navigationBarTitle("Goals")
+            .navigationBarTitle("Add Goal")
         }
     }
 }
@@ -74,8 +76,8 @@ struct GoalDetailView: View {
     }
 }
 
-struct ChatGPT_Previews: PreviewProvider {
+struct AddGoal_Previews: PreviewProvider {
     static var previews: some View {
-        ChatGPT()
+        AddGoal()asdfdfdf
     }
 }
