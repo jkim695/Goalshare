@@ -78,6 +78,6 @@ struct GoalDetailView: View {
 
 struct AddGoal_Previews: PreviewProvider {
     static var previews: some View {
-        AddGoal()asdfdfdf
+        AddGoal()
     }
 }
