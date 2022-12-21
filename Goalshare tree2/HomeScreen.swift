@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeScreen: View {
     @Namespace var namespace
     @State var show = true
+    @State var hi = 10
     var body: some View {
         ZStack {
             if (show) {
