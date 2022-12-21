@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ChatGPT: View {
+struct AddGoal: View {
     @State private var goalTitle = ""
     @State private var goalDescription = ""
     @State private var goalCompletionDate = Date()
@@ -76,6 +76,6 @@ struct GoalDetailView: View {
 
 struct ChatGPT_Previews: PreviewProvider {
     static var previews: some View {
-        ChatGPT()
+        AddGoal()
     }
 }

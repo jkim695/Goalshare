@@ -9,12 +9,24 @@ import SwiftUI
 
 struct Profile: View {
     var body: some View {
-        VStack{
-            Image("tree")
-                .resizable()
+        NavigationStack {
+            ZStack {
+                Image("tree")
+                    .resizable()
                 .aspectRatio(contentMode: .fill)
-            Text("FILLER")
-                .font(.largeTitle)
+                Spacer()
+                NavigationLink(destination: AddGoal(), label: {
+                    Text("Add Goal")
+                        .foregroundColor(Color.black)
+                        .font(.system(size: 22.0))
+                        .frame(width: 100)
+                        .background(.white)
+                        .cornerRadius(15)
+                    }
+                )
+                .offset(x: 50, y: 390)
+            }
+            .ignoresSafeArea()
         }
         .ignoresSafeArea()
     }
