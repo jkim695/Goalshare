@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Foundation
 
 struct AddGoal: View {
     @State private var goalTitle = ""
@@ -18,14 +19,14 @@ struct AddGoal: View {
 
     var body: some View {
         NavigationView {
-            VStack {
+            ZStack {
                 Form {
                     Section(header: Text("What is your Goal?")) {
                         TextField("Goal Title", text: $goalTitle)
                         TextField("Goal Description", text: $goalDescription)
                         DatePicker("Goal Completion Date", selection: $goalCompletionDate, in: Date()..., displayedComponents: .date)
                     }
-
+                    
                     Section {
                         Button(action: {
                             self.goals.append(Goal(title: self.goalTitle, description: self.goalDescription, completionDate: self.goalCompletionDate))
@@ -37,7 +38,7 @@ struct AddGoal: View {
                             Alert(title: Text("Success!"), message: Text("You have created a new goal!"), dismissButton: .default(Text("OK")))
                         }
                     }
-
+                    
                     Section(header: Text("My Goals")) {
                         List {
                             ForEach(goals) { goal in
@@ -48,11 +49,49 @@ struct AddGoal: View {
                         }
                     }
                 }
+                VStack() {
+                    if (show) {
+                        HStack() {
+                            Spacer()
+                            Text("?")
+                                .padding(20)
+                                .bold()
+                        }
+                        .offset(y: -20)
+                        Spacer()
+                    }
+                    else {
+                        VStack (alignment: .trailing, spacing: 12){
+                            ZStack() {
+                                Image("fedW")
+                                    .resizable()
+                                    .frame(width: 300, height: 300)
+                                    .cornerRadius(20)
+                                
+                                VStack {
+                                    Text("Criteria for a good goal:")
+                                        .padding()
+                                    Text("1) Is the goal SPECIFIC?")
+                                    Text("2) Is the goal MEASURABLE?")
+                                    Text("3) Is the goal ATTAINABLE?")
+                                    Text("4) Is the goal RELEVANT?")
+                                    Text("5) Is the goal TIMELY?")
+                                }
+                            }
+                        }
+                    }
+                }
+                .onTapGesture {
+                    withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
+                        show.toggle()
+                    }
+                }
+            
+                }
             }
             .navigationBarTitle("Add Goal")
         }
     }
-}
 
 struct Goal: Identifiable {
     var id = UUID()
