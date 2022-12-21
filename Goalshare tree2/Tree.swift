@@ -22,7 +22,6 @@ struct Tree: View {
     var body: some View {
         ZStack {
             VStack {
-                Text("TREE")
                 ScrollView {
                     Image("overlook-autumn")
                     .resizable()

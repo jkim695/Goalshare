@@ -63,11 +63,14 @@ struct GoalDetailView: View {
     var goal: Goal
 
     var body: some View {
-        VStack {
-            Text(goal.title)
-            Text("Description: \(goal.description)")
-            Text("Completion Date: \(goal.completionDate)")
-        }.navigationBarTitle("Goal Details")
+        ZStack {
+            Tree()
+//            Text(goal.title)
+//            Text("Description: \(goal.description)")
+//            Text("Completion Date: \(goal.completionDate)")
+            Spacer()
+        }.navigationBarTitle(goal.title, displayMode: .inline)
+            
     }
 }
 
