@@ -24,12 +24,12 @@ struct NewPostView: View {
                         .frame(width: 300, height: 300)
                 }
                 
-                Button("Choose a Photo") {
+                Button("Take a Photo") {
                     self.sourceType = .camera
                     self.isImagePickerDisplay.toggle()
                 }.padding()
                 
-                Button("Take a Photo") {
+                Button("Choose a Photo") {
                     self.sourceType = .photoLibrary
                     self.isImagePickerDisplay.toggle()
                 }.padding()
