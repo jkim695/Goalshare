@@ -21,7 +21,7 @@ struct MatchedGeometryTest: View {
         ZStack {
             if (show) {
                 VStack(alignment: .leading, spacing: 12) {
-                    Text("SwiftUIsdcdsvdv")
+                    Text("SwiftUIsdcdsvdv2")
                         .font(.largeTitle.weight(.bold))
                         .matchedGeometryEffect(id: "title", in: namespace)
                         .frame(maxWidth: .infinity, alignment: .leading)
