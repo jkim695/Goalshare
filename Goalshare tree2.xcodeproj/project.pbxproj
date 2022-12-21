@@ -12,6 +12,7 @@
 		8C2A2487292DAA32008E2345 /* InformationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2A2486292DAA32008E2345 /* InformationPage.swift */; };
 		8C2A2489292DB03B008E2345 /* PapaClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2A2488292DB03B008E2345 /* PapaClass.swift */; };
 		8C2A248B292DB5FE008E2345 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2A248A292DB5FE008E2345 /* Profile.swift */; };
+		8C3EC7B42952E152005DC346 /* BubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3EC7B32952E152005DC346 /* BubbleView.swift */; };
 		8C43DB3F293032FA005B6E24 /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43DB3E293032FA005B6E24 /* Tree.swift */; };
 		8CF0CD3E292C8CF00006339D /* MatchedGeometryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF0CD3D292C8CF00006339D /* MatchedGeometryTest.swift */; };
 		8CFEC8A12929771400D81934 /* Goalshare_tree2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFEC8A02929771400D81934 /* Goalshare_tree2App.swift */; };
@@ -26,6 +27,7 @@
 		8C2A2486292DAA32008E2345 /* InformationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPage.swift; sourceTree = "<group>"; };
 		8C2A2488292DB03B008E2345 /* PapaClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PapaClass.swift; sourceTree = "<group>"; };
 		8C2A248A292DB5FE008E2345 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		8C3EC7B32952E152005DC346 /* BubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleView.swift; sourceTree = "<group>"; };
 		8C43DB3E293032FA005B6E24 /* Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
 		8CF0CD3D292C8CF00006339D /* MatchedGeometryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchedGeometryTest.swift; sourceTree = "<group>"; };
 		8CFEC89D2929771400D81934 /* Goalshare tree2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Goalshare tree2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,6 +75,7 @@
 				8C2A2486292DAA32008E2345 /* InformationPage.swift */,
 				0E8F67D02952DB2A0014669F /* AddGoal.swift */,
 				8C2A248A292DB5FE008E2345 /* Profile.swift */,
+				8C3EC7B32952E152005DC346 /* BubbleView.swift */,
 				8C43DB3E293032FA005B6E24 /* Tree.swift */,
 				8CFEC8A42929771500D81934 /* Assets.xcassets */,
 				8CFEC8A62929771500D81934 /* Preview Content */,
@@ -158,6 +161,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C3EC7B42952E152005DC346 /* BubbleView.swift in Sources */,
 				8C2A2489292DB03B008E2345 /* PapaClass.swift in Sources */,
 				8CFEC8A32929771400D81934 /* MainFeed.swift in Sources */,
 				8C43DB3F293032FA005B6E24 /* Tree.swift in Sources */,
