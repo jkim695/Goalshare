@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SwiftUIView: View {
+struct Tree: View {
     let milestones: [String] = [
         "overlook-autumn",
         "fedW",
@@ -94,6 +94,6 @@ struct SwiftUIView: View {
 
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        SwiftUIView()
+        Tree()
     }
 }
