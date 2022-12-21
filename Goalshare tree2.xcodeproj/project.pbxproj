@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E8F67D12952DB2A0014669F /* AddGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8F67D02952DB2A0014669F /* AddGoal.swift */; };
 		8C2A2485292D82EE008E2345 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2A2484292D82EE008E2345 /* HomeScreen.swift */; };
 		8C2A2487292DAA32008E2345 /* InformationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2A2486292DAA32008E2345 /* InformationPage.swift */; };
 		8C2A2489292DB03B008E2345 /* PapaClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2A2488292DB03B008E2345 /* PapaClass.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E8F67D02952DB2A0014669F /* AddGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGoal.swift; sourceTree = "<group>"; };
 		8C2A2484292D82EE008E2345 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		8C2A2486292DAA32008E2345 /* InformationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPage.swift; sourceTree = "<group>"; };
 		8C2A2488292DB03B008E2345 /* PapaClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PapaClass.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				8C2A2484292D82EE008E2345 /* HomeScreen.swift */,
 				8CF0CD3D292C8CF00006339D /* MatchedGeometryTest.swift */,
 				8C2A2486292DAA32008E2345 /* InformationPage.swift */,
+				0E8F67D02952DB2A0014669F /* AddGoal.swift */,
 				8C2A248A292DB5FE008E2345 /* Profile.swift */,
 				8C43DB3E293032FA005B6E24 /* Tree.swift */,
 				8CFEC8A42929771500D81934 /* Assets.xcassets */,
@@ -159,6 +162,7 @@
 				8CFEC8A32929771400D81934 /* MainFeed.swift in Sources */,
 				8C43DB3F293032FA005B6E24 /* Tree.swift in Sources */,
 				8C2A2485292D82EE008E2345 /* HomeScreen.swift in Sources */,
+				0E8F67D12952DB2A0014669F /* AddGoal.swift in Sources */,
 				8C2A248B292DB5FE008E2345 /* Profile.swift in Sources */,
 				8CF0CD3E292C8CF00006339D /* MatchedGeometryTest.swift in Sources */,
 				8CFEC8A12929771400D81934 /* Goalshare_tree2App.swift in Sources */,
