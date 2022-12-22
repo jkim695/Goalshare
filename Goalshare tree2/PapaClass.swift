@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PapaClass: View {
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 HStack(alignment: .center) {
                     Text("GoalShare.")

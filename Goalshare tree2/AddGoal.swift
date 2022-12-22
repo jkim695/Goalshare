@@ -53,11 +53,13 @@ struct AddGoal: View {
                     if (show) {
                         HStack() {
                             Spacer()
-                            Text("?")
+                            Image(systemName: "questionmark.circle")
+                                .resizable()
+                                .frame(width: 30, height: 30)
                                 .padding(20)
                                 .bold()
                         }
-                        .offset(y: -20)
+                        .offset(y: -25)
                         Spacer()
                     }
                     else {
@@ -77,6 +79,7 @@ struct AddGoal: View {
                                     Text("4) Is the goal RELEVANT?")
                                     Text("5) Is the goal TIMELY?")
                                 }
+                                .foregroundColor(.white)
                             }
                         }
                     }
