@@ -19,41 +19,26 @@ struct Tree: View {
     @State var lineNum = 2.0
     @State var images = 1
     @State var made = false
+    @State var temp = false
     var body: some View {
         ZStack {
             ScrollViewReader { scrollView in
+                Button {
+                    let newElement = milestones.randomElement()
+                    self.milestones.insert(newElement!, at: 0)
+                    withAnimation {
+                        scrollView.scrollTo(milestones[0])
+                    }
+                } label: {
+                    Image(systemName: "plus")
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                        .padding()
+                }
+                .offset(x: 160)
                 ScrollView (.vertical) {
                     VStack (spacing: 30){
-                        ForEach((milestones), id: \.self) { milestone in
-                            Path { path in
-                                path.move(to: CGPoint(x: 195, y: 380))
-                                path.addLine(to: CGPoint(x: 195, y:300))
-                            }
-                            .stroke(Color.black, lineWidth: 15)
-                            if (2 == 2) {
-                                Image(milestone)
-                                    .resizable()
-                                    .frame(width: 150, height: 150)
-                                    .clipShape(Circle())
-                                    .offset(y:116)
-                                    .animation(
-                                        .interpolatingSpring(stiffness: 10, damping: 1)
-                                    )
-                            }
-                            else {
-                                Image(milestone)
-                                    .resizable()
-                                    .frame(width: 150, height: 150)
-                                    .clipShape(Circle())
-                                    .offset(y:116)
-                            }
-                        }
-                        Path { path in
-                            path.move(to: CGPoint(x: 195, y: -75))
-                            path.addLine(to: CGPoint(x:195, y: -154))
-                        }
-                        .stroke(Color.black, lineWidth: 15)
-                        Image("overlook-autumn")
+                        Image(milestones[0])
                             .resizable()
                             .frame(width: 150, height: 150)
                             .clipShape(Circle())
@@ -67,26 +52,42 @@ struct Tree: View {
                                         .repeatForever(autoreverses: false),
                                         value: num))
                             .padding(.bottom, 80)
-                            .offset(y:119)
+                            .offset(y:102)
                             .onAppear {
                                 num = 2.0
                             }
+                            .animation(.easeIn)
+                        Path { path in
+                            path.move(to: CGPoint(x: 195, y: -10))
+                            path.addLine(to: CGPoint(x: 195, y:300))
+                        }
+                        .stroke(Color.black, lineWidth: 15)
+                        ForEach((milestones), id: \.self) {
+                            milestone in
+                            if (milestone != milestones[0]) {
+                                Path { path in
+                                    path.move(to: CGPoint(x: 195, y: 180))
+                                    path.addLine(to: CGPoint(x: 195, y:330))
+                                }
+                                .stroke(Color.black, lineWidth: 15)
+                                Image(milestone)
+                                    .resizable()
+                                    .frame(width: 150, height: 150)
+                                    .clipShape(Circle())
+                            }
+                        }
+                        Image("overlook-autumn")
+                            .resizable()
+                            .frame(width: 150, height: 150)
+                            .clipShape(Circle())
+                            .offset(y:30)
+                            .padding(.bottom, 30)
                     }
                     .onAppear {
-                        scrollView.scrollTo(milestones[0])
+                        temp.toggle()
                     }
                 }
             }
-            Button {
-                self.milestones.insert("fedW", at: 0)
-                print(milestones[0])
-            } label: {
-                Image(systemName: "plus")
-                    .resizable()
-                    .frame(width: 30, height: 30)
-                    .padding()
-            }
-            .offset(x: 160, y :380)
         }
         .background(Color.yellow)
     }
