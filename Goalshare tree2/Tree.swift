@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Tree: View {
     @State var milestones: [Milestone] = [
-        Milestone(id: 1, name: "hi", date: "hi", imageName: "fedW")
+        Milestone(sig: true, id: 1, name: "hi", date: "hi", imageName: "fedW", caption: "hi")
     ]
     @State var num = 1.0
     @State var animationAmount = 0.0
@@ -23,7 +23,7 @@ struct Tree: View {
                 ScrollViewReader { scrollView in
                     Button {
                         var newElement = milestones.randomElement()
-                        var newThing = Milestone(id: track, name: "hi", date: "hi", imageName: newElement!.imageName)
+                        var newThing = Milestone(sig: false, id: track, name: "hi", date: "hi", imageName: newElement!.imageName, caption: "hi")
                         self.milestones.insert(newThing, at: 0)
                         let first = self.milestones.first
                         let smth = milestones[0]
@@ -80,21 +80,28 @@ struct Tree: View {
                                     .stroke(Color.black, lineWidth: 15)
                                 
                                 NavigationLink {
-                                    MatchedGeometryTest()
+                                    PostView(milestone: milestone)
                                 } label: {
-                                    milestone.image
-                                        .resizable()
-                                        .frame(width: 150, height: 150)
-                                        .clipShape(Circle())
+                                    if (milestone.sig == false) {
+                                        milestone.image
+                                            .resizable()
+                                            .frame(width: 150, height: 150)
+                                            .clipShape(Circle())
+                                    }
+                                    else if (milestone.sig == true) {
+                                        milestone.image
+                                            .resizable()
+                                            .frame(width: 150, height: 150)
+                                            .clipShape(Circle())
+                                            .overlay
+                                            {
+                                                Circle()
+                                                    .stroke(.cyan, lineWidth: 5)
+                                            }
+                                    }
                                 }
                                 
                             }
-                            Image("overlook-autumn")
-                                .resizable()
-                                .frame(width: 150, height: 150)
-                                .clipShape(Circle())
-                                .offset(y:30)
-                                .padding(.bottom, 30)
                         }
                     }
                 }

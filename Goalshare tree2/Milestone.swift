@@ -11,6 +11,7 @@ import SwiftUI
 import CoreLocation
 
 struct Milestone: Identifiable, Hashable {
+    var sig: Bool
     var id: Int
     var name: String
     var date: String
@@ -19,5 +20,6 @@ struct Milestone: Identifiable, Hashable {
     var image: Image {
         Image(imageName)
     }
+    var caption: String
 }
 
