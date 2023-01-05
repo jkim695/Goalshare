@@ -6,20 +6,18 @@
 //
 
 import SwiftUI
+import Foundation
+import SwiftUI
+import CoreLocation
 
-struct Milestone: View {
-    let image: Image
-
-    var body: some View {
-        image
-            .resizable()
-            .frame(width: 150, height: 150)
-            .clipShape(Circle())
+struct Milestone: Identifiable, Hashable {
+    var id: Int
+    var name: String
+    var date: String
+    
+    var imageName: String
+    var image: Image {
+        Image(imageName)
     }
 }
 
-struct Milestone_Preview: PreviewProvider {
-    static var previews: some View {
-        Milestone(image: Image("fedW"))
-    }
-}

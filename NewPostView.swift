@@ -7,10 +7,12 @@ struct NewPostView: View {
     @State private var isImagePickerDisplay = false
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
-                
                 if selectedImage != nil {
+                    NavigationLink(destination: Tree()) {
+                        Text("hi")
+                    }
                     Image(uiImage: selectedImage!)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
