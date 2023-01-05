@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Tree: View {
+    var goal: Goal
     @State var milestones: [Milestone] = [
         Milestone(sig: true, id: 1, name: "hi", date: "hi", imageName: "fedW", caption: "hi")
     ]
@@ -21,23 +22,24 @@ struct Tree: View {
         NavigationStack {
             ZStack {
                 ScrollViewReader { scrollView in
-                    Button {
-                        var newElement = milestones.randomElement()
-                        var newThing = Milestone(sig: false, id: track, name: "hi", date: "hi", imageName: newElement!.imageName, caption: "hi")
-                        self.milestones.insert(newThing, at: 0)
-                        let first = self.milestones.first
-                        let smth = milestones[0]
-                        print(milestones[track - 2].hashValue)
-                        withAnimation {
-                            scrollView.scrollTo(milestones[0])
-                        }
-                        track += 1
-                    } label: {
-                        Image(systemName: "plus")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                            .padding()
-                    }
+                    NavigationLink(destination: NewPostView(), label: {Image(systemName: "plus")})
+//                    Button {
+////                        var newElement = milestones.randomElement()
+////                        var newThing = Milestone(sig: false, id: track, name: "hi", date: "hi", imageName: newElement!.imageName, caption: "hi")
+////                        self.milestones.insert(newThing, at: 0)
+////                        let first = self.milestones.first
+////                        let smth = milestones[0]
+////                        print(milestones[track - 2].hashValue)
+////                        withAnimation {
+////                            scrollView.scrollTo(milestones[0])
+////                        }
+////                        track += 1
+//                    } label: {
+//                        Image(systemName: "plus")
+//                            .resizable()
+//                            .frame(width: 30, height: 30)
+//                            .padding()
+                    //}
                     .offset(x: 160)
 //                    NavigationLink {
 //                        NewPostView()
@@ -113,6 +115,7 @@ struct Tree: View {
 
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
-        Tree()
+        var temp: [Milestone] = []
+        Tree(goal: Goal(name: "hi", date: "Aug 234", id: 1, milestones: temp))
     }
 }

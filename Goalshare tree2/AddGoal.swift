@@ -12,7 +12,7 @@ struct AddGoal: View {
     @State private var goalTitle = ""
     @State private var goalDescription = ""
     @State private var goalCompletionDate = Date()
-    @State private var goals = [Goal]()
+    @State private var goals = [Goal2]()
     @State private var showingAlert = false
     @Namespace var namespace
     @State var show = true
@@ -29,7 +29,7 @@ struct AddGoal: View {
                     
                     Section {
                         Button(action: {
-                            self.goals.append(Goal(title: self.goalTitle, description: self.goalDescription, completionDate: self.goalCompletionDate))
+                            self.goals.append(Goal2(title: self.goalTitle, description: self.goalDescription, completionDate: self.goalCompletionDate))
                             self.showingAlert = true
                         }) {
                             Text("Create Goal")
@@ -96,7 +96,7 @@ struct AddGoal: View {
         }
     }
 
-struct Goal: Identifiable {
+struct Goal2: Identifiable {
     var id = UUID()
     var title: String
     var description: String
@@ -104,11 +104,12 @@ struct Goal: Identifiable {
 }
 
 struct GoalDetailView: View {
-    var goal: Goal
+    var goal: Goal2
 
     var body: some View {
         ZStack {
-            Tree()
+            var milestones: [Milestone] = []
+            Tree(goal: Goal(name: "hi", date: "Aug", id: 1, milestones: milestones))
 //            Text(goal.title)
 //            Text("Description: \(goal.description)")
 //            Text("Completion Date: \(goal.completionDate)")

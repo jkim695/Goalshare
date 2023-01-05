@@ -12,6 +12,7 @@
 		0E8F67D52953BF5B0014669F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8F67D42953BF5B0014669F /* Coordinator.swift */; };
 		0E8F67D72953C03F0014669F /* NewPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8F67D62953C03F0014669F /* NewPostView.swift */; };
 		0E8F67D92966A80C0014669F /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8F67D82966A80C0014669F /* PostView.swift */; };
+		0E8F67DB2966B2350014669F /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8F67DA2966B2350014669F /* Goal.swift */; };
 		8C2A2485292D82EE008E2345 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2A2484292D82EE008E2345 /* HomeScreen.swift */; };
 		8C2A2487292DAA32008E2345 /* InformationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2A2486292DAA32008E2345 /* InformationPage.swift */; };
 		8C2A2489292DB03B008E2345 /* PapaClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2A2488292DB03B008E2345 /* PapaClass.swift */; };
@@ -33,6 +34,7 @@
 		0E8F67D42953BF5B0014669F /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		0E8F67D62953C03F0014669F /* NewPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostView.swift; sourceTree = "<group>"; };
 		0E8F67D82966A80C0014669F /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
+		0E8F67DA2966B2350014669F /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		8C2A2484292D82EE008E2345 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		8C2A2486292DAA32008E2345 /* InformationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPage.swift; sourceTree = "<group>"; };
 		8C2A2488292DB03B008E2345 /* PapaClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PapaClass.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 		8CFEC89F2929771400D81934 /* Goalshare tree2 */ = {
 			isa = PBXGroup;
 			children = (
+				0E8F67DA2966B2350014669F /* Goal.swift */,
 				0E8F67D22953BEB90014669F /* Camera.swift */,
 				8CFEC8A02929771400D81934 /* Goalshare_tree2App.swift */,
 				8C2A2488292DB03B008E2345 /* PapaClass.swift */,
@@ -189,6 +192,7 @@
 				8C2A2485292D82EE008E2345 /* HomeScreen.swift in Sources */,
 				0E8F67D12952DB2A0014669F /* AddGoal.swift in Sources */,
 				8C2A248B292DB5FE008E2345 /* Profile.swift in Sources */,
+				0E8F67DB2966B2350014669F /* Goal.swift in Sources */,
 				0E8F67D92966A80C0014669F /* PostView.swift in Sources */,
 				0E8F67D52953BF5B0014669F /* Coordinator.swift in Sources */,
 				8CF0CD3E292C8CF00006339D /* MatchedGeometryTest.swift in Sources */,

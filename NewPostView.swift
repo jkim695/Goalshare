@@ -5,12 +5,14 @@ struct NewPostView: View {
     @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
     @State private var selectedImage: UIImage?
     @State private var isImagePickerDisplay = false
+    @State private var significant = true
     
     var body: some View {
         NavigationStack {
             VStack {
                 if selectedImage != nil {
-                    NavigationLink(destination: Tree()) {
+                    var milestones: [Milestone] = []
+                    NavigationLink(destination: Tree(goal: Goal(name: "name", date: "date", id: 1, milestones: milestones))) {
                         Text("hi")
                     }
                     Image(uiImage: selectedImage!)
@@ -35,6 +37,9 @@ struct NewPostView: View {
                     self.sourceType = .photoLibrary
                     self.isImagePickerDisplay.toggle()
                 }.padding()
+                
+                Toggle("Milestone?", isOn: $significant)
+
             }
             .navigationBarTitle("Post to your GoalTree!")
             .sheet(isPresented: self.$isImagePickerDisplay) {
