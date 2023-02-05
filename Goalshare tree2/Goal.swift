@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 import CoreLocation
 
-struct Goal: Identifiable, Hashable {
+struct Goal: Identifiable {
     var name: String
     var date: String
     var id: Int

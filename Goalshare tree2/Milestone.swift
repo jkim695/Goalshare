@@ -10,16 +10,12 @@ import Foundation
 import SwiftUI
 import CoreLocation
 
-struct Milestone: Identifiable, Hashable {
+struct Milestone: Identifiable {
     var sig: Bool
     var id: Int
     var name: String
+    var image: Image
     var date: String
-    
-    var imageName: String
-    var image: Image {
-        Image(imageName)
-    }
     var caption: String
 }
 

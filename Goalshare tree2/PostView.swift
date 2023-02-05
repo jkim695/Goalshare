@@ -22,6 +22,6 @@ struct PostView: View {
 
 struct PostView_Previews: PreviewProvider {
     static var previews: some View {
-        PostView(milestone: Milestone(sig: true, id: 1, name: "FED", date: "Aug 10", imageName: "fedW", caption: "Won my first tennis tournament!"))
+        PostView(milestone: Milestone(sig: true, id: 1, name: "FED", image: Image("fedW"), date: "Aug 10", caption: "Won my first tennis tournament!"))
     }
 }
