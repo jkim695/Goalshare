@@ -40,6 +40,7 @@ struct Tree: View {
                                     VStack (spacing: 30) {
                                         ForEach((milestones)) {
                                             milestone in
+//                                            if (milestone != milestones[milestones.])
                                             Path { path in
                                                 path.move(to: CGPoint(x: 195, y: 180))
                                                 path.addLine(to: CGPoint(x: 195, y:330))
