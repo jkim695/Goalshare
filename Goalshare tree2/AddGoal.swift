@@ -109,7 +109,7 @@ struct GoalDetailView: View {
     var body: some View {
         ZStack {
             var milestones: [Milestone] = []
-            Tree(goal: Goal(name: "hi", date: "Aug", id: 1, milestones: milestones))
+            Tree(goal: Goal(name: "hi", date: "Aug", id: 1, image: Image("fedW"), milestones: milestones))
 //            Text(goal.title)
 //            Text("Description: \(goal.description)")
 //            Text("Completion Date: \(goal.completionDate)")

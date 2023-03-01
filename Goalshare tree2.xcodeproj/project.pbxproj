@@ -13,11 +13,11 @@
 		0E8F67D72953C03F0014669F /* NewPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8F67D62953C03F0014669F /* NewPostView.swift */; };
 		0E8F67D92966A80C0014669F /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8F67D82966A80C0014669F /* PostView.swift */; };
 		0E8F67DB2966B2350014669F /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8F67DA2966B2350014669F /* Goal.swift */; };
+		0EEB0B4329A71ED2009FF37C /* ProfileBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEB0B4229A71ED2009FF37C /* ProfileBubbleView.swift */; };
 		8C2A2485292D82EE008E2345 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2A2484292D82EE008E2345 /* HomeScreen.swift */; };
 		8C2A2487292DAA32008E2345 /* InformationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2A2486292DAA32008E2345 /* InformationPage.swift */; };
 		8C2A2489292DB03B008E2345 /* PapaClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2A2488292DB03B008E2345 /* PapaClass.swift */; };
 		8C2A248B292DB5FE008E2345 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2A248A292DB5FE008E2345 /* Profile.swift */; };
-		8C3EC7B42952E152005DC346 /* BubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3EC7B32952E152005DC346 /* BubbleView.swift */; };
 		8C3EC7BA2954EF03005DC346 /* Milestone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3EC7B92954EF03005DC346 /* Milestone.swift */; };
 		8C43DB3F293032FA005B6E24 /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43DB3E293032FA005B6E24 /* Tree.swift */; };
 		8CFEC8A12929771400D81934 /* Goalshare_tree2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFEC8A02929771400D81934 /* Goalshare_tree2App.swift */; };
@@ -33,11 +33,11 @@
 		0E8F67D62953C03F0014669F /* NewPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostView.swift; sourceTree = "<group>"; };
 		0E8F67D82966A80C0014669F /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		0E8F67DA2966B2350014669F /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
+		0EEB0B4229A71ED2009FF37C /* ProfileBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBubbleView.swift; sourceTree = "<group>"; };
 		8C2A2484292D82EE008E2345 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		8C2A2486292DAA32008E2345 /* InformationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPage.swift; sourceTree = "<group>"; };
 		8C2A2488292DB03B008E2345 /* PapaClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PapaClass.swift; sourceTree = "<group>"; };
 		8C2A248A292DB5FE008E2345 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
-		8C3EC7B32952E152005DC346 /* BubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleView.swift; sourceTree = "<group>"; };
 		8C3EC7B92954EF03005DC346 /* Milestone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Milestone.swift; sourceTree = "<group>"; };
 		8C43DB3E293032FA005B6E24 /* Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
 		8CFEC89D2929771400D81934 /* Goalshare tree2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Goalshare tree2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,8 +96,8 @@
 				8C2A2486292DAA32008E2345 /* InformationPage.swift */,
 				0E8F67D02952DB2A0014669F /* AddGoal.swift */,
 				8C2A248A292DB5FE008E2345 /* Profile.swift */,
+				0EEB0B4229A71ED2009FF37C /* ProfileBubbleView.swift */,
 				8C3EC7B92954EF03005DC346 /* Milestone.swift */,
-				8C3EC7B32952E152005DC346 /* BubbleView.swift */,
 				8C43DB3E293032FA005B6E24 /* Tree.swift */,
 				0E8F67D82966A80C0014669F /* PostView.swift */,
 				8CFEC8A42929771500D81934 /* Assets.xcassets */,
@@ -186,7 +186,6 @@
 			files = (
 				8C3EC7BA2954EF03005DC346 /* Milestone.swift in Sources */,
 				0E8F67D32953BEB90014669F /* Camera.swift in Sources */,
-				8C3EC7B42952E152005DC346 /* BubbleView.swift in Sources */,
 				8C2A2489292DB03B008E2345 /* PapaClass.swift in Sources */,
 				8CFEC8A32929771400D81934 /* MainFeed.swift in Sources */,
 				8C43DB3F293032FA005B6E24 /* Tree.swift in Sources */,
@@ -197,6 +196,7 @@
 				0E8F67D92966A80C0014669F /* PostView.swift in Sources */,
 				0E8F67D52953BF5B0014669F /* Coordinator.swift in Sources */,
 				0E8F67D72953C03F0014669F /* NewPostView.swift in Sources */,
+				0EEB0B4329A71ED2009FF37C /* ProfileBubbleView.swift in Sources */,
 				8CFEC8A12929771400D81934 /* Goalshare_tree2App.swift in Sources */,
 				8C2A2487292DAA32008E2345 /* InformationPage.swift in Sources */,
 			);
@@ -327,7 +327,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Goalshare tree2/Preview Content\"";
-				DEVELOPMENT_TEAM = GMR2G7RSAM;
+				DEVELOPMENT_TEAM = D352CLPBRJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -356,7 +356,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Goalshare tree2/Preview Content\"";
-				DEVELOPMENT_TEAM = GMR2G7RSAM;
+				DEVELOPMENT_TEAM = D352CLPBRJ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

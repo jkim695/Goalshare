@@ -88,6 +88,6 @@ struct Tree: View {
 struct SwiftUIView_Previews: PreviewProvider {
     static var previews: some View {
 
-        Tree(goal: Goal(name: "Win Wimbledon", date: "Aug 234", id: 1, milestones: []))
+        Tree(goal: Goal(name: "Win Wimbledon", date: "Aug 234", id: 1, image: Image("fedW"), milestones: []))
     }
 }

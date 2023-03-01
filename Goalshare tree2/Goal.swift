@@ -14,6 +14,7 @@ struct Goal: Identifiable {
     var name: String
     var date: String
     var id: Int
+    var image: Image
     var milestones: [Milestone]
 }
 

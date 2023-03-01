@@ -59,6 +59,6 @@ struct NewPostView: View {
 
 struct NewPostView_Previews: PreviewProvider {
     static var previews: some View {
-        NewPostView(tree: Tree(goal: Goal(name: "hi", date: "smth", id: 1, milestones: [])))
+        NewPostView(tree: Tree(goal: Goal(name: "hi", date: "smth", id: 1, image: Image("fedW"), milestones: [])))
     }
 }
