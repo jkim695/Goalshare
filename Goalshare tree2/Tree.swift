@@ -21,7 +21,7 @@ struct Tree: View {
             NavigationStack {
                 ZStack {
                     ScrollViewReader { scrollView in
-                        NavigationLink(destination: NewPostView(tree: self), label: {Image(systemName: "plus")
+                        NavigationLink(destination: AddMilestone(tree: self), label: {Image(systemName: "plus")
                                 .resizable()
                                 .frame(width:25, height:25)
                         })

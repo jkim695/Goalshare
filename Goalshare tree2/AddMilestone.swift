@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct NewPostView: View {
+struct AddMilestone: View {
     var tree: Tree
     @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
     @State public var selectedImage: UIImage?
@@ -59,6 +59,6 @@ struct NewPostView: View {
 
 struct NewPostView_Previews: PreviewProvider {
     static var previews: some View {
-        NewPostView(tree: Tree(goal: Goal(name: "hi", date: "smth", id: 1, image: Image("fedW"), milestones: [])))
+        AddMilestone(tree: Tree(goal: Goal(name: "hi", date: "smth", id: 1, image: Image("fedW"), milestones: [])))
     }
 }

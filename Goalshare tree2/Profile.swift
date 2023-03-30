@@ -53,8 +53,8 @@ struct Profile: View {
                     }
                     Spacer()
             }
+            .ignoresSafeArea(.all, edges: .bottom)
         }
-        .ignoresSafeArea()
     }
 }
 

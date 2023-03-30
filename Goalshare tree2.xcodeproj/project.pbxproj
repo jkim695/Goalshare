@@ -10,7 +10,7 @@
 		0E8F67D12952DB2A0014669F /* AddGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8F67D02952DB2A0014669F /* AddGoal.swift */; };
 		0E8F67D32953BEB90014669F /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8F67D22953BEB90014669F /* Camera.swift */; };
 		0E8F67D52953BF5B0014669F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8F67D42953BF5B0014669F /* Coordinator.swift */; };
-		0E8F67D72953C03F0014669F /* NewPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8F67D62953C03F0014669F /* NewPostView.swift */; };
+		0E8F67D72953C03F0014669F /* AddMilestone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8F67D62953C03F0014669F /* AddMilestone.swift */; };
 		0E8F67D92966A80C0014669F /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8F67D82966A80C0014669F /* PostView.swift */; };
 		0E8F67DB2966B2350014669F /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8F67DA2966B2350014669F /* Goal.swift */; };
 		0EEB0B4329A71ED2009FF37C /* ProfileBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEB0B4229A71ED2009FF37C /* ProfileBubbleView.swift */; };
@@ -20,7 +20,8 @@
 		8C2A248B292DB5FE008E2345 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2A248A292DB5FE008E2345 /* Profile.swift */; };
 		8C3EC7BA2954EF03005DC346 /* Milestone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3EC7B92954EF03005DC346 /* Milestone.swift */; };
 		8C43DB3F293032FA005B6E24 /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43DB3E293032FA005B6E24 /* Tree.swift */; };
-		8CFEC8A12929771400D81934 /* Goalshare_tree2App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFEC8A02929771400D81934 /* Goalshare_tree2App.swift */; };
+		8C7A0E3029D54B270025CD76 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7A0E2F29D54B270025CD76 /* Main.swift */; };
+		8C7A0E3529D54D1E0025CD76 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7A0E3429D54D1E0025CD76 /* Account.swift */; };
 		8CFEC8A32929771400D81934 /* MainFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFEC8A22929771400D81934 /* MainFeed.swift */; };
 		8CFEC8A52929771500D81934 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CFEC8A42929771500D81934 /* Assets.xcassets */; };
 		8CFEC8A82929771500D81934 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CFEC8A72929771500D81934 /* Preview Assets.xcassets */; };
@@ -30,7 +31,7 @@
 		0E8F67D02952DB2A0014669F /* AddGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGoal.swift; sourceTree = "<group>"; };
 		0E8F67D22953BEB90014669F /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		0E8F67D42953BF5B0014669F /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		0E8F67D62953C03F0014669F /* NewPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostView.swift; sourceTree = "<group>"; };
+		0E8F67D62953C03F0014669F /* AddMilestone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMilestone.swift; sourceTree = "<group>"; };
 		0E8F67D82966A80C0014669F /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		0E8F67DA2966B2350014669F /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		0EEB0B4229A71ED2009FF37C /* ProfileBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBubbleView.swift; sourceTree = "<group>"; };
@@ -40,8 +41,9 @@
 		8C2A248A292DB5FE008E2345 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		8C3EC7B92954EF03005DC346 /* Milestone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Milestone.swift; sourceTree = "<group>"; };
 		8C43DB3E293032FA005B6E24 /* Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
+		8C7A0E2F29D54B270025CD76 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
+		8C7A0E3429D54D1E0025CD76 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		8CFEC89D2929771400D81934 /* Goalshare tree2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Goalshare tree2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8CFEC8A02929771400D81934 /* Goalshare_tree2App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Goalshare_tree2App.swift; path = "Goalshare tree2/Goalshare_tree2App.swift"; sourceTree = SOURCE_ROOT; };
 		8CFEC8A22929771400D81934 /* MainFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeed.swift; sourceTree = "<group>"; };
 		8CFEC8A42929771500D81934 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8CFEC8A72929771500D81934 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -58,21 +60,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		8C547FAB29A718AD00B5EB2F /* Mainfeed stuff */ = {
+		8C547FAB29A718AD00B5EB2F /* Stuff for later */ = {
 			isa = PBXGroup;
 			children = (
+				8C2A2484292D82EE008E2345 /* HomeScreen.swift */,
+				8C2A2486292DAA32008E2345 /* InformationPage.swift */,
 				8C2A2488292DB03B008E2345 /* PapaClass.swift */,
 				8CFEC8A22929771400D81934 /* MainFeed.swift */,
 			);
-			path = "Mainfeed stuff";
+			path = "Stuff for later";
+			sourceTree = "<group>";
+		};
+		8C7A0E3129D54B490025CD76 /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				0EEB0B4229A71ED2009FF37C /* ProfileBubbleView.swift */,
+			);
+			path = Subviews;
+			sourceTree = "<group>";
+		};
+		8C7A0E3229D54B8F0025CD76 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				0E8F67D42953BF5B0014669F /* Coordinator.swift */,
+				0E8F67D22953BEB90014669F /* Camera.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		8C7A0E3329D54BBB0025CD76 /* Swift files */ = {
+			isa = PBXGroup;
+			children = (
+				0E8F67DA2966B2350014669F /* Goal.swift */,
+				8C3EC7B92954EF03005DC346 /* Milestone.swift */,
+				8C7A0E3429D54D1E0025CD76 /* Account.swift */,
+			);
+			path = "Swift files";
 			sourceTree = "<group>";
 		};
 		8CFEC8942929771400D81934 = {
 			isa = PBXGroup;
 			children = (
-				0E8F67D62953C03F0014669F /* NewPostView.swift */,
-				0E8F67D42953BF5B0014669F /* Coordinator.swift */,
-				8C547FAB29A718AD00B5EB2F /* Mainfeed stuff */,
+				8C547FAB29A718AD00B5EB2F /* Stuff for later */,
 				8CFEC89F2929771400D81934 /* Goalshare tree2 */,
 				8CFEC89E2929771400D81934 /* Products */,
 			);
@@ -89,17 +118,15 @@
 		8CFEC89F2929771400D81934 /* Goalshare tree2 */ = {
 			isa = PBXGroup;
 			children = (
-				8CFEC8A02929771400D81934 /* Goalshare_tree2App.swift */,
-				0E8F67DA2966B2350014669F /* Goal.swift */,
-				0E8F67D22953BEB90014669F /* Camera.swift */,
-				8C2A2484292D82EE008E2345 /* HomeScreen.swift */,
-				8C2A2486292DAA32008E2345 /* InformationPage.swift */,
+				8C7A0E3229D54B8F0025CD76 /* Tools */,
+				8C7A0E3329D54BBB0025CD76 /* Swift files */,
+				8C7A0E2F29D54B270025CD76 /* Main.swift */,
+				0E8F67D62953C03F0014669F /* AddMilestone.swift */,
 				0E8F67D02952DB2A0014669F /* AddGoal.swift */,
 				8C2A248A292DB5FE008E2345 /* Profile.swift */,
-				0EEB0B4229A71ED2009FF37C /* ProfileBubbleView.swift */,
-				8C3EC7B92954EF03005DC346 /* Milestone.swift */,
 				8C43DB3E293032FA005B6E24 /* Tree.swift */,
 				0E8F67D82966A80C0014669F /* PostView.swift */,
+				8C7A0E3129D54B490025CD76 /* Subviews */,
 				8CFEC8A42929771500D81934 /* Assets.xcassets */,
 				8CFEC8A62929771500D81934 /* Preview Content */,
 			);
@@ -184,10 +211,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C7A0E3029D54B270025CD76 /* Main.swift in Sources */,
 				8C3EC7BA2954EF03005DC346 /* Milestone.swift in Sources */,
 				0E8F67D32953BEB90014669F /* Camera.swift in Sources */,
 				8C2A2489292DB03B008E2345 /* PapaClass.swift in Sources */,
 				8CFEC8A32929771400D81934 /* MainFeed.swift in Sources */,
+				8C7A0E3529D54D1E0025CD76 /* Account.swift in Sources */,
 				8C43DB3F293032FA005B6E24 /* Tree.swift in Sources */,
 				8C2A2485292D82EE008E2345 /* HomeScreen.swift in Sources */,
 				0E8F67D12952DB2A0014669F /* AddGoal.swift in Sources */,
@@ -195,9 +224,8 @@
 				0E8F67DB2966B2350014669F /* Goal.swift in Sources */,
 				0E8F67D92966A80C0014669F /* PostView.swift in Sources */,
 				0E8F67D52953BF5B0014669F /* Coordinator.swift in Sources */,
-				0E8F67D72953C03F0014669F /* NewPostView.swift in Sources */,
+				0E8F67D72953C03F0014669F /* AddMilestone.swift in Sources */,
 				0EEB0B4329A71ED2009FF37C /* ProfileBubbleView.swift in Sources */,
-				8CFEC8A12929771400D81934 /* Goalshare_tree2App.swift in Sources */,
 				8C2A2487292DAA32008E2345 /* InformationPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
