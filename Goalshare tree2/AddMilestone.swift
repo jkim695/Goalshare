@@ -14,10 +14,7 @@ struct AddMilestone: View {
                 if selectedImage != nil {
                     NavigationLink(destination: tree, isActive: $goesToDetail) {
                         Button {
-                            tree.milestones.append(Milestone(sig: significant, id: tree.milestones.count + 1, name: "filler", image: Image(uiImage: selectedImage!), date: "smth", caption: "hi"))
-                            self.goesToDetail = true
-                            
-                            
+                            self.goesToDetail = true                        
                         } label: {
                             Text("ADD!")
                         }
@@ -59,6 +56,6 @@ struct AddMilestone: View {
 
 struct NewPostView_Previews: PreviewProvider {
     static var previews: some View {
-        AddMilestone(tree: Tree(goal: Goal(name: "hi", date: "smth", id: 1, image: Image("fedW"), milestones: [])))
+        AddMilestone(tree: Tree(goal: Goal(name: "hi", date: Date(), image: Image("fedW"))))
     }
 }

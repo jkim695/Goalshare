@@ -10,12 +10,20 @@ import Foundation
 import SwiftUI
 import CoreLocation
 
-struct Goal: Identifiable {
+class Goal: ObservableObject, Identifiable {
     var name: String
-    var date: String
-    var id: Int
+    var date: Date
+    var id: UUID
     var image: Image
     var milestones: [Milestone]
+    init(name: String, date: Date, image: Image) {
+        self.id = UUID()
+        self.name = name
+        self.image = image
+        self.date = date
+        self.milestones = []
+    }
+
 }
 
 

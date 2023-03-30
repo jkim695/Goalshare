@@ -9,14 +9,13 @@ import SwiftUI
 import Foundation
 
 struct AddGoal: View {
+    @EnvironmentObject var account: Account
     @State private var goalTitle = ""
     @State private var goalDescription = ""
     @State private var goalCompletionDate = Date()
-    @State private var goals = [Goal2]()
-    @State private var showingAlert = false
+    @State private var show = true
+    @State private var complete = false
     @Namespace var namespace
-    @State var show = true
-
     var body: some View {
         NavigationView {
             ZStack {
@@ -26,28 +25,29 @@ struct AddGoal: View {
                         TextField("Goal Description", text: $goalDescription)
                         DatePicker("Goal Completion Date", selection: $goalCompletionDate, in: Date()..., displayedComponents: .date)
                     }
-                    
-                    Section {
-                        Button(action: {
-                            self.goals.append(Goal2(title: self.goalTitle, description: self.goalDescription, completionDate: self.goalCompletionDate))
-                            self.showingAlert = true
-                        }) {
-                            Text("Create Goal")
-                        }
-                        .alert(isPresented: $showingAlert) {
-                            Alert(title: Text("Success!"), message: Text("You have created a new goal!"), dismissButton: .default(Text("OK")))
-                        }
+                }
+                NavigationLink(destination: Profile().onAppear(perform: {
+                    account.goals.append(Goal(name: goalTitle, date: goalCompletionDate, image: Image("fedW")))
+                }), isActive: $complete) {
+                    EmptyView()
+                }
+                Button(action: {
+                    // Check your condition here
+                    var conditionIsMet = false
+                    if (!goalTitle.isEmpty && !goalDescription.isEmpty) {
+                        conditionIsMet = true
                     }
-                    
-                    Section(header: Text("My Goals")) {
-                        List {
-                            ForEach(goals) { goal in
-                                NavigationLink(destination: GoalDetailView(goal: goal)) {
-                                    Text(goal.title)
-                                }
-                            }
-                        }
+                    if conditionIsMet {
+                        complete = true
+                    } else {
+                        print("Condition not met")
                     }
+                }) {
+                    Text("Navigate")
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.blue)
+                        .cornerRadius(10)
                 }
                 VStack() {
                     if (show) {
@@ -96,31 +96,9 @@ struct AddGoal: View {
         }
     }
 
-struct Goal2: Identifiable {
-    var id = UUID()
-    var title: String
-    var description: String
-    var completionDate: Date
-}
-
-struct GoalDetailView: View {
-    var goal: Goal2
-
-    var body: some View {
-        ZStack {
-            var milestones: [Milestone] = []
-            Tree(goal: Goal(name: "hi", date: "Aug", id: 1, image: Image("fedW"), milestones: milestones))
-//            Text(goal.title)
-//            Text("Description: \(goal.description)")
-//            Text("Completion Date: \(goal.completionDate)")
-            Spacer()
-        }.navigationBarTitle(goal.title, displayMode: .inline)
-            
-    }
-}
-
 struct AddGoal_Previews: PreviewProvider {
     static var previews: some View {
         AddGoal()
+            .environmentObject(Account(username: "", password: ""))
     }
 }

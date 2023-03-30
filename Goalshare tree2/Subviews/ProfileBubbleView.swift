@@ -41,6 +41,6 @@ struct ProfileBubbleView: View {
 
 struct ProfileBubbleView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileBubbleView(goal: Goal(name: "Win Wimbledon", date: "Aug 234", id: 1, image: Image("fedW"), milestones: []) )
+        ProfileBubbleView(goal: Goal(name: "Win Wimbledon", date: Date(), image: Image("fedW")) )
     }
 }

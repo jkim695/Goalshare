@@ -23,15 +23,16 @@ struct Profile: View {
                     }
                 )
                 GoalDisplay()
-            }
-            .environmentObject(Account(username: "Filler", password: "Filler"))
+            }// Hide the back button
             .ignoresSafeArea(.all, edges: .bottom)
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
 struct Profile_previews: PreviewProvider {
     static var previews: some View {
         Profile()
+            .environmentObject(Account(username: "Filler", password: "Filler"))
     }
 }

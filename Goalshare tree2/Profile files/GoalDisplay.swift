@@ -13,7 +13,7 @@ struct GoalDisplay: View {
         VStack {
             List {
                 ForEach(account.goals) { goal in
-                    goal.image
+                    ProfileBubbleView(goal: goal)
                 }
             }
         }
