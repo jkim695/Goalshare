@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Tree: View {
     var goal: Goal
-    @State var milestones: [Milestone] = []
+    @State var milestones: [Milestone] = [Milestone(name:"poo", sig: false, image: Image("fedW"), date: "", caption: ""), Milestone(name:"poo", sig: false, image: Image("tree"), date: "", caption: ""),Milestone(name:"poo", sig: false, image: Image("overlook-autumn"), date: "", caption: ""), Milestone(name:"poo", sig: false, image: Image("tree"), date: "", caption: "")]
     @State var num = 1.0
     @State var animationAmount = 0.0
     @State var track = 2
@@ -37,13 +37,13 @@ struct Tree: View {
                                         .offset(y:300)
                                 }
                                 else {
-                                    VStack (spacing: 30) {
+                                    VStack (spacing: -180) {
                                         ForEach((milestones)) {
                                             milestone in
 //                                            if (milestone != milestones[milestones.])
                                             Path { path in
-                                                path.move(to: CGPoint(x: 195, y: 180))
-                                                path.addLine(to: CGPoint(x: 195, y:330))
+                                                path.move(to: CGPoint(x: 195, y: -150))
+                                                path.addLine(to: CGPoint(x: 195, y:-250))
                                             }
                                             .stroke(Color.black, lineWidth: 15)
                                             
@@ -69,6 +69,7 @@ struct Tree: View {
                                                 }
                                             }
                                         }
+                                        .offset(y:1400)
                                     }
                                     
                                 }
