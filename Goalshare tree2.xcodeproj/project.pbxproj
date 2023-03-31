@@ -14,6 +14,11 @@
 		0E8F67D92966A80C0014669F /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8F67D82966A80C0014669F /* PostView.swift */; };
 		0E8F67DB2966B2350014669F /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8F67DA2966B2350014669F /* Goal.swift */; };
 		0EEB0B4329A71ED2009FF37C /* ProfileBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EEB0B4229A71ED2009FF37C /* ProfileBubbleView.swift */; };
+		8C070DD129D64296006FDD7D /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C070DD029D64296006FDD7D /* LineView.swift */; };
+		8C070DD429D6431A006FDD7D /* MilestoneImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C070DD329D6431A006FDD7D /* MilestoneImageView.swift */; };
+		8C070DD629D6439B006FDD7D /* SigMilestoneImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C070DD529D6439B006FDD7D /* SigMilestoneImageView.swift */; };
+		8C070DD829D64461006FDD7D /* EmptyMilestoneMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C070DD729D64461006FDD7D /* EmptyMilestoneMessage.swift */; };
+		8C070DDC29D64934006FDD7D /* MilestoneChain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C070DDB29D64934006FDD7D /* MilestoneChain.swift */; };
 		8C2A2485292D82EE008E2345 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2A2484292D82EE008E2345 /* HomeScreen.swift */; };
 		8C2A2487292DAA32008E2345 /* InformationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2A2486292DAA32008E2345 /* InformationPage.swift */; };
 		8C2A2489292DB03B008E2345 /* PapaClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2A2488292DB03B008E2345 /* PapaClass.swift */; };
@@ -36,6 +41,11 @@
 		0E8F67D82966A80C0014669F /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		0E8F67DA2966B2350014669F /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		0EEB0B4229A71ED2009FF37C /* ProfileBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBubbleView.swift; sourceTree = "<group>"; };
+		8C070DD029D64296006FDD7D /* LineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
+		8C070DD329D6431A006FDD7D /* MilestoneImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneImageView.swift; sourceTree = "<group>"; };
+		8C070DD529D6439B006FDD7D /* SigMilestoneImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigMilestoneImageView.swift; sourceTree = "<group>"; };
+		8C070DD729D64461006FDD7D /* EmptyMilestoneMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyMilestoneMessage.swift; sourceTree = "<group>"; };
+		8C070DDB29D64934006FDD7D /* MilestoneChain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneChain.swift; sourceTree = "<group>"; };
 		8C2A2484292D82EE008E2345 /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		8C2A2486292DAA32008E2345 /* InformationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPage.swift; sourceTree = "<group>"; };
 		8C2A2488292DB03B008E2345 /* PapaClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PapaClass.swift; sourceTree = "<group>"; };
@@ -62,6 +72,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C070DD229D642F9006FDD7D /* Tree Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				8C070DD029D64296006FDD7D /* LineView.swift */,
+				8C070DD329D6431A006FDD7D /* MilestoneImageView.swift */,
+				8C070DD529D6439B006FDD7D /* SigMilestoneImageView.swift */,
+				8C070DD729D64461006FDD7D /* EmptyMilestoneMessage.swift */,
+				8C070DDB29D64934006FDD7D /* MilestoneChain.swift */,
+			);
+			path = "Tree Subviews";
+			sourceTree = "<group>";
+		};
 		8C547FAB29A718AD00B5EB2F /* Stuff for later */ = {
 			isa = PBXGroup;
 			children = (
@@ -73,12 +95,13 @@
 			path = "Stuff for later";
 			sourceTree = "<group>";
 		};
-		8C7A0E3129D54B490025CD76 /* Subviews */ = {
+		8C7A0E3129D54B490025CD76 /* Profile Subviews */ = {
 			isa = PBXGroup;
 			children = (
+				8C7A0E3729D550930025CD76 /* GoalDisplay.swift */,
 				0EEB0B4229A71ED2009FF37C /* ProfileBubbleView.swift */,
 			);
-			path = Subviews;
+			path = "Profile Subviews";
 			sourceTree = "<group>";
 		};
 		8C7A0E3229D54B8F0025CD76 /* Tools */ = {
@@ -98,15 +121,6 @@
 				8C7A0E3429D54D1E0025CD76 /* Account.swift */,
 			);
 			path = "Swift files";
-			sourceTree = "<group>";
-		};
-		8C7A0E3629D550700025CD76 /* Profile files */ = {
-			isa = PBXGroup;
-			children = (
-				8C2A248A292DB5FE008E2345 /* Profile.swift */,
-				8C7A0E3729D550930025CD76 /* GoalDisplay.swift */,
-			);
-			path = "Profile files";
 			sourceTree = "<group>";
 		};
 		8CFEC8942929771400D81934 = {
@@ -132,12 +146,13 @@
 				8C7A0E3229D54B8F0025CD76 /* Tools */,
 				8C7A0E3329D54BBB0025CD76 /* Swift files */,
 				8C7A0E2F29D54B270025CD76 /* Main.swift */,
-				8C7A0E3629D550700025CD76 /* Profile files */,
+				8C2A248A292DB5FE008E2345 /* Profile.swift */,
+				8C7A0E3129D54B490025CD76 /* Profile Subviews */,
 				0E8F67D02952DB2A0014669F /* AddGoal.swift */,
 				0E8F67D62953C03F0014669F /* AddMilestone.swift */,
 				8C43DB3E293032FA005B6E24 /* Tree.swift */,
+				8C070DD229D642F9006FDD7D /* Tree Subviews */,
 				0E8F67D82966A80C0014669F /* PostView.swift */,
-				8C7A0E3129D54B490025CD76 /* Subviews */,
 				8CFEC8A42929771500D81934 /* Assets.xcassets */,
 				8CFEC8A62929771500D81934 /* Preview Content */,
 			);
@@ -225,10 +240,12 @@
 				8C7A0E3029D54B270025CD76 /* Main.swift in Sources */,
 				8C3EC7BA2954EF03005DC346 /* Milestone.swift in Sources */,
 				8C7A0E3829D550930025CD76 /* GoalDisplay.swift in Sources */,
+				8C070DD829D64461006FDD7D /* EmptyMilestoneMessage.swift in Sources */,
 				0E8F67D32953BEB90014669F /* Camera.swift in Sources */,
 				8C2A2489292DB03B008E2345 /* PapaClass.swift in Sources */,
 				8CFEC8A32929771400D81934 /* MainFeed.swift in Sources */,
 				8C7A0E3529D54D1E0025CD76 /* Account.swift in Sources */,
+				8C070DDC29D64934006FDD7D /* MilestoneChain.swift in Sources */,
 				8C43DB3F293032FA005B6E24 /* Tree.swift in Sources */,
 				8C2A2485292D82EE008E2345 /* HomeScreen.swift in Sources */,
 				0E8F67D12952DB2A0014669F /* AddGoal.swift in Sources */,
@@ -236,6 +253,9 @@
 				0E8F67DB2966B2350014669F /* Goal.swift in Sources */,
 				0E8F67D92966A80C0014669F /* PostView.swift in Sources */,
 				0E8F67D52953BF5B0014669F /* Coordinator.swift in Sources */,
+				8C070DD429D6431A006FDD7D /* MilestoneImageView.swift in Sources */,
+				8C070DD629D6439B006FDD7D /* SigMilestoneImageView.swift in Sources */,
+				8C070DD129D64296006FDD7D /* LineView.swift in Sources */,
 				0E8F67D72953C03F0014669F /* AddMilestone.swift in Sources */,
 				0EEB0B4329A71ED2009FF37C /* ProfileBubbleView.swift in Sources */,
 				8C2A2487292DAA32008E2345 /* InformationPage.swift in Sources */,

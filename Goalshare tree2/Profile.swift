@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct Profile: View {
+    @EnvironmentObject var account: Account
     var body: some View {
         NavigationStack {
             VStack {

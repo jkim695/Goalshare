@@ -13,6 +13,7 @@ struct Goalshare_tree2App: App {
     var body: some Scene {
         WindowGroup {
             Profile()
+                .environmentObject(Account(username: "placeholder", password: "placeholder"))
         }
     }
 }

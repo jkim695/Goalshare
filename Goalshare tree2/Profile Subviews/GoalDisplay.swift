@@ -13,7 +13,8 @@ struct GoalDisplay: View {
         VStack {
             List {
                 ForEach(account.goals) { goal in
-                    ProfileBubbleView(goal: goal)
+                    ProfileBubbleView()
+                        .environmentObject(goal)
                 }
             }
         }
@@ -23,5 +24,6 @@ struct GoalDisplay: View {
 struct GoalDisplay_Previews: PreviewProvider {
     static var previews: some View {
         GoalDisplay()
+            .environmentObject(Account(username: "", password: ""))
     }
 }

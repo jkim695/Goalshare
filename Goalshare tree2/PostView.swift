@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PostView: View {
-    var milestone: Milestone
+    @EnvironmentObject var milestone: Milestone
     var body: some View {
         VStack {
             milestone.image
@@ -20,8 +20,9 @@ struct PostView: View {
     }
 }
 
-//struct PostView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        PostView(milestone: Milestone(sig: true, id: 1, name: "FED", image: Image("fedW"), date: "Aug 10", caption: "Won my first tennis tournament!"))
-//    }
-//}
+struct PostView_Previews: PreviewProvider {
+    static var previews: some View {
+        PostView()
+            .environmentObject(Milestone(name: "", sig: false, image: Image("fedW"), date: "", caption: ""))
+    }
+}

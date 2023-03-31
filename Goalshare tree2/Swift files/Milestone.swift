@@ -11,12 +11,12 @@ import SwiftUI
 import CoreLocation
 
 class Milestone: ObservableObject, Identifiable {
-    var sig: Bool
-    var id: UUID
-    var name: String
-    var image: Image
-    var date: String
-    var caption: String
+    @Published var sig: Bool
+    @Published var id: UUID
+    @Published var name: String
+    @Published var image: Image
+    @Published var date: String
+    @Published var caption: String
     init(name: String, sig: Bool, image: Image, date: String, caption: String) {
         self.id = UUID()
         self.name = name
