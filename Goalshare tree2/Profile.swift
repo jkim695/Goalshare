@@ -24,6 +24,7 @@ struct Profile: View {
                     }
                 )
                 GoalDisplay()
+                Spacer()
             }// Hide the back button
             .ignoresSafeArea(.all, edges: .bottom)
         }

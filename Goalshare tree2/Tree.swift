@@ -14,7 +14,9 @@ struct Tree: View {
             ZStack {
                 Color.yellow.edgesIgnoringSafeArea(.all) // Set the background color to yellow
                 VStack {
-                    NavigationLink(destination: AddMilestone().environmentObject(goal), label: {Image(systemName: "plus")
+                    NavigationLink(destination: AddMilestone().environmentObject(goal),
+                                   label: {
+                        Image(systemName: "plus")
                             .resizable()
                             .frame(width:25, height:25)
                     })
@@ -37,7 +39,6 @@ struct Tree: View {
                     .frame(maxWidth: .infinity)
                 }
             }
-            .toolbar(.hidden)
         }
     }
 }

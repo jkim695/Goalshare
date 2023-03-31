@@ -11,11 +11,9 @@ struct GoalDisplay: View {
     @EnvironmentObject var account: Account
     var body: some View {
         VStack {
-            List {
-                ForEach(account.goals) { goal in
-                    ProfileBubbleView()
-                        .environmentObject(goal)
-                }
+            ForEach(account.goals) { goal in
+                ProfileBubbleView()
+                    .environmentObject(goal)
             }
         }
     }

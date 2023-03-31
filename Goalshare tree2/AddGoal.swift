@@ -43,7 +43,7 @@ struct AddGoal: View {
                         print("Condition not met")
                     }
                 }) {
-                    Text("Navigate")
+                    Text("Add Goal!")
                         .foregroundColor(.white)
                         .padding()
                         .background(Color.blue)

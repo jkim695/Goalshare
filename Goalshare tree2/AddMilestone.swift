@@ -9,37 +9,25 @@ struct AddMilestone: View {
     @State private var significant = true
     @State var chosen = false
     @State private var complete = false
+    @State private var caption = ""
     var body: some View {
         VStack {
             if selectedImage != nil {
-//                Button( action: {
-//                    goal.milestones.append(Milestone(name: "", sig: true, image: Image(uiImage: selectedImage!), date: "", caption: ""))
-//                    presentationMode.wrappedValue.dismiss()
-//                }) {
-//                    Text("Add Milestone")
-//                }
                 NavigationLink(destination: Tree()
-                    .environmentObject(goal)
-.onAppear(perform: {
-                    goal.milestones.append(Milestone(name: "", sig: true, image: Image(uiImage: selectedImage!), date: "", caption: ""))
-                }), isActive: $complete) {
+                    .environmentObject(goal), isActive: $complete) {
                     EmptyView()
                 }
-                               Button( action: {
-                                   print("HI \(goal.milestones.count)")
-                    goal.milestones.append(Milestone(name: "", sig: true, image: Image(uiImage: selectedImage!), date: "", caption: ""))
-//                    presentationMode.wrappedValue.dismiss()
+                Button( action: {
+                    goal.milestones.append(Milestone(name: "", sig: significant, image: Image(uiImage: selectedImage!), date: "", caption: self.caption))
+                    complete = true
                 }) {
                     Text("Add Milestone")
                 }
-
-                                                            
-                                                            
-//                Image(uiImage: selectedImage!)
-//                    .resizable()
-//                    .aspectRatio(contentMode: .fit)
-//                    .clipShape(Circle())
-//                    .frame(width: 300, height: 300)
+                Image(uiImage: selectedImage!)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .clipShape(Circle())
+                    .frame(width: 300, height: 300)
             } else {
                 Image("fedW")
                     .resizable()
@@ -47,7 +35,6 @@ struct AddMilestone: View {
                     .clipShape(Circle())
                     .frame(width: 300, height: 300)
             }
-
             Button("Take a Photo") {
                 self.sourceType = .camera
                 self.isImagePickerDisplay.toggle()
@@ -59,6 +46,13 @@ struct AddMilestone: View {
             }.padding()
 
             Toggle("Milestone?", isOn: $significant)
+            if (significant) {
+                TextField("Add caption here", text: $caption)
+                    .frame(maxWidth: .infinity, minHeight: 200)
+                    .overlay(RoundedRectangle(cornerRadius: 1)
+                        .stroke(Color.blue, lineWidth: 4))
+                    .padding()
+            }
         }
         .navigationTitle("Add your Milestone")
         .sheet(isPresented: self.$isImagePickerDisplay) {
