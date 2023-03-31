@@ -14,15 +14,20 @@ struct PostView: View {
             milestone.image
                 .resizable()
                 .aspectRatio(contentMode: .fit)
+                .cornerRadius(8)
+                .padding()
             Text(milestone.date)
             Text(milestone.caption)
+                .font(.system(size: 25))
         }
+        .frame(maxHeight: .infinity)
+        .background(.yellow)
     }
 }
 
 struct PostView_Previews: PreviewProvider {
     static var previews: some View {
         PostView()
-            .environmentObject(Milestone(name: "", sig: false, image: Image("fedW"), date: "", caption: ""))
+            .environmentObject(Milestone(name: "", sig: false, image: Image("fedW"), date: "", caption: "I just won wimbledon!!"))
     }
 }
