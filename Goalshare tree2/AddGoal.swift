@@ -26,16 +26,16 @@ struct AddGoal: View {
                         DatePicker("Goal Completion Date", selection: $goalCompletionDate, in: Date()..., displayedComponents: .date)
                     }
                 }
-                NavigationLink(destination: Profile().onAppear(perform: {
-                    account.goals.append(Goal(name: goalTitle, date: goalCompletionDate, image: Image("fedW")))
-                }), isActive: $complete) {
+                NavigationLink(destination: Profile(), isActive: $complete) {
                     EmptyView()
                 }
+
                 Button(action: {
                     // Check your condition here
                     var conditionIsMet = false
                     if (!goalTitle.isEmpty && !goalDescription.isEmpty) {
                         conditionIsMet = true
+                        account.goals.append(Goal(name: goalTitle, date: goalCompletionDate, image: Image("fedW")))
                     }
                     if conditionIsMet {
                         complete = true

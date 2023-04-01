@@ -2,24 +2,17 @@ import SwiftUI
 
 struct MilestoneChain: View {
     @EnvironmentObject var goal: Goal
-
+    
     var body: some View {
-        ScrollView () {
-            ForEach(goal.milestones) { milestone in
+        VStack (spacing: 40) {
+            ForEach(0..<goal.milestones.count, id: \.self) { index in
                 NavigationLink {
                     PostView()
-                        .environmentObject(milestone)
+                        .environmentObject(goal.milestones[goal.milestones.count - 1 - index])
                 } label: {
-                    if (!milestone.sig) {
-                        MilestoneImageView()
-                            .environmentObject(milestone)
-                    }
-                    else {
-                        SigMilestoneImageView()
-                            .environmentObject(milestone)
-                    }
+                    MilestoneImageView()
+                        .environmentObject(goal.milestones[goal.milestones.count - 1 - index])
                 }
-                LineView()
             }
         }
     }

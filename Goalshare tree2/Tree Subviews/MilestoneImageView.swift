@@ -9,17 +9,32 @@ import SwiftUI
 
 struct MilestoneImageView: View {
     @EnvironmentObject var milestone: Milestone
+    var color: Color {
+        if milestone.sig {
+            return .cyan
+        } else {
+            return .black
+        }
+    }
     var body: some View {
-        milestone.image
-            .resizable()
-            .frame(width: 150, height: 150)
-            .clipShape(Circle())
+        HStack(alignment: .center) {
+            milestone.image
+                .resizable()
+                .frame(width: 150, height: 150)
+                .clipShape(Circle())
+                .overlay {
+                    Circle()
+                        .stroke(color, lineWidth: 4)
+                }
+            Text(milestone.date)
+                .font(.system(size: 14))
+        }
     }
 }
 
 struct MilestoneImageView_Previews: PreviewProvider {
     static var previews: some View {
         MilestoneImageView()
-            .environmentObject(Milestone(name: "", sig: false, image: Image("fedW"), date: "", caption: ""))
+            .environmentObject(Milestone(name: "", sig: true, image: Image("fedW"), date: "08/08/2023", caption: ""))
     }
 }
