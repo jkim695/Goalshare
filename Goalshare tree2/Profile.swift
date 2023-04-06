@@ -9,26 +9,30 @@ import SwiftUI
 
 struct Profile: View {
     @EnvironmentObject var account: Account
+    @State private var isSlideUpViewPresented = false
     var body: some View {
         NavigationStack {
             VStack {
                 Text("My Goals.")
                     .font(.largeTitle)
-                NavigationLink(destination: AddGoal(), label: {
-                    Text("Add Goal")
-                        .foregroundColor(Color.black)
-                        .font(.system(size: 22.0))
-                        .frame(width: 100)
-                        .background(.yellow)
-                        .cornerRadius(15)
-                    }
-                )
+                Button(action: {
+                    isSlideUpViewPresented.toggle()
+                }) {
+                    Text("Add goal")
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                }
                 GoalDisplay()
                 Spacer()
             }// Hide the back button
             .ignoresSafeArea(.all, edges: .bottom)
         }
-        .navigationBarBackButtonHidden(true)
+        .fullScreenCover(isPresented: $isSlideUpViewPresented) {
+            AddGoal()
+                .environmentObject(account)
+        }
     }
 }
 
