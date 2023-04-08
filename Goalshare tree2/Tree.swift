@@ -47,8 +47,8 @@ struct Tree: View {
                             else {
                                 ZStack {
                                     Path { path in
-                                        path.move(to: CGPoint(x: 195, y: 0))
-                                        path.addLine(to: CGPoint(x: 195, y: 150 * goal.milestones.count))
+                                        path.move(to: CGPoint(x: 210, y: 0))
+                                        path.addLine(to: CGPoint(x: 210, y: 150 * goal.milestones.count))
                                     }
                                     .stroke(Color.black, lineWidth: 15)
                                     MilestoneChain()

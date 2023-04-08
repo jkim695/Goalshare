@@ -18,7 +18,7 @@ struct MilestoneImageView: View {
     }
     var body: some View {
         HStack(alignment: .center) {
-            milestone.image
+            Image(uiImage: milestone.image)
                 .resizable()
                 .frame(width: 150, height: 150)
                 .clipShape(Circle())
@@ -34,7 +34,8 @@ struct MilestoneImageView: View {
 
 struct MilestoneImageView_Previews: PreviewProvider {
     static var previews: some View {
+        let previewImage = UIImage(named: "fedW")
         MilestoneImageView()
-            .environmentObject(Milestone(name: "", sig: true, image: Image("fedW"), date: "08/08/2023", caption: ""))
+            .environmentObject(Milestone(name: "", sig: true, date: "08/08/2023", caption: "", image: previewImage!))
     }
 }

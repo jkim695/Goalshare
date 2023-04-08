@@ -20,7 +20,7 @@ struct AddMilestone: View {
                         EmptyView()
                     }
                     Button( action: {
-                        goal.milestones.append(Milestone(name: "", sig: significant, image: Image(uiImage: selectedImage!), date: "", caption: self.caption))
+                        goal.milestones.append(Milestone(name: "", sig: significant, date: "", caption: self.caption, image: selectedImage!))
                         complete = true
                     }) {
                         Text("ADD")
