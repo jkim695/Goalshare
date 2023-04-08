@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseAnalyticsSwift
 
 struct Tree: View {
     @EnvironmentObject var goal: Goal
@@ -84,6 +85,7 @@ struct Tree: View {
                 }
             }
         }
+        .analyticsScreen(name: "\(Tree.self)")
     }
 }
 

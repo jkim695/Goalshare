@@ -7,13 +7,9 @@
 
 import Foundation
 import SwiftUI
-import SQLite
 
 @main
 struct Goalshare_tree2App: App {
-    init() {
-        DatabaseManager.shared.createTables()
-    }
     var body: some Scene {
         WindowGroup {
             Profile()

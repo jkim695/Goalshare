@@ -31,7 +31,6 @@
 		8C7A0E3529D54D1E0025CD76 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7A0E3429D54D1E0025CD76 /* Account.swift */; };
 		8C7A0E3829D550930025CD76 /* GoalDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7A0E3729D550930025CD76 /* GoalDisplay.swift */; };
 		8C7FD53329DF576C0036266E /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 8C7FD53229DF576C0036266E /* SQLite */; };
-		8C7FD53529DF5AF10036266E /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7FD53429DF5AF10036266E /* DatabaseManager.swift */; };
 		8CFEC8A32929771400D81934 /* MainFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFEC8A22929771400D81934 /* MainFeed.swift */; };
 		8CFEC8A52929771500D81934 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CFEC8A42929771500D81934 /* Assets.xcassets */; };
 		8CFEC8A82929771500D81934 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CFEC8A72929771500D81934 /* Preview Assets.xcassets */; };
@@ -61,7 +60,6 @@
 		8C7A0E2F29D54B270025CD76 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		8C7A0E3429D54D1E0025CD76 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		8C7A0E3729D550930025CD76 /* GoalDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDisplay.swift; sourceTree = "<group>"; };
-		8C7FD53429DF5AF10036266E /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		8CFEC89D2929771400D81934 /* Goalshare tree2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Goalshare tree2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CFEC8A22929771400D81934 /* MainFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeed.swift; sourceTree = "<group>"; };
 		8CFEC8A42929771500D81934 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -164,7 +162,6 @@
 				8C7A0E3329D54BBB0025CD76 /* Swift files */,
 				8C7A0E2F29D54B270025CD76 /* Main.swift */,
 				8C2A248A292DB5FE008E2345 /* Profile.swift */,
-				8C7FD53429DF5AF10036266E /* DatabaseManager.swift */,
 				8C7A0E3129D54B490025CD76 /* Profile Subviews */,
 				0E8F67D02952DB2A0014669F /* AddGoal.swift */,
 				8C55824C29D8B041005680DC /* ColorSelector.swift */,
@@ -269,7 +266,6 @@
 				0E8F67D32953BEB90014669F /* Camera.swift in Sources */,
 				8C2A2489292DB03B008E2345 /* PapaClass.swift in Sources */,
 				8C2B2F6529D8C30400D07A99 /* Tester.swift in Sources */,
-				8C7FD53529DF5AF10036266E /* DatabaseManager.swift in Sources */,
 				8C2B2F6729D8C32200D07A99 /* SlideUpView.swift in Sources */,
 				8CFEC8A32929771400D81934 /* MainFeed.swift in Sources */,
 				8C7A0E3529D54D1E0025CD76 /* Account.swift in Sources */,
