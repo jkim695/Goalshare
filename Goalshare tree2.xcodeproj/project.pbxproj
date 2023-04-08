@@ -22,8 +22,11 @@
 		8C2A2487292DAA32008E2345 /* InformationPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2A2486292DAA32008E2345 /* InformationPage.swift */; };
 		8C2A2489292DB03B008E2345 /* PapaClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2A2488292DB03B008E2345 /* PapaClass.swift */; };
 		8C2A248B292DB5FE008E2345 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2A248A292DB5FE008E2345 /* Profile.swift */; };
+		8C2B2F6529D8C30400D07A99 /* Tester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2B2F6429D8C30400D07A99 /* Tester.swift */; };
+		8C2B2F6729D8C32200D07A99 /* SlideUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2B2F6629D8C32200D07A99 /* SlideUpView.swift */; };
 		8C3EC7BA2954EF03005DC346 /* Milestone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3EC7B92954EF03005DC346 /* Milestone.swift */; };
 		8C43DB3F293032FA005B6E24 /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43DB3E293032FA005B6E24 /* Tree.swift */; };
+		8C55824D29D8B041005680DC /* ColorSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C55824C29D8B041005680DC /* ColorSelector.swift */; };
 		8C7A0E3029D54B270025CD76 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7A0E2F29D54B270025CD76 /* Main.swift */; };
 		8C7A0E3529D54D1E0025CD76 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7A0E3429D54D1E0025CD76 /* Account.swift */; };
 		8C7A0E3829D550930025CD76 /* GoalDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7A0E3729D550930025CD76 /* GoalDisplay.swift */; };
@@ -48,8 +51,11 @@
 		8C2A2486292DAA32008E2345 /* InformationPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationPage.swift; sourceTree = "<group>"; };
 		8C2A2488292DB03B008E2345 /* PapaClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PapaClass.swift; sourceTree = "<group>"; };
 		8C2A248A292DB5FE008E2345 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		8C2B2F6429D8C30400D07A99 /* Tester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tester.swift; sourceTree = "<group>"; };
+		8C2B2F6629D8C32200D07A99 /* SlideUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideUpView.swift; sourceTree = "<group>"; };
 		8C3EC7B92954EF03005DC346 /* Milestone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Milestone.swift; sourceTree = "<group>"; };
 		8C43DB3E293032FA005B6E24 /* Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
+		8C55824C29D8B041005680DC /* ColorSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelector.swift; sourceTree = "<group>"; };
 		8C7A0E2F29D54B270025CD76 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		8C7A0E3429D54D1E0025CD76 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		8C7A0E3729D550930025CD76 /* GoalDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDisplay.swift; sourceTree = "<group>"; };
@@ -79,6 +85,15 @@
 				8C070DDB29D64934006FDD7D /* MilestoneChain.swift */,
 			);
 			path = "Tree Subviews";
+			sourceTree = "<group>";
+		};
+		8C2B2F6829D8C71500D07A99 /* slideup transition reference */ = {
+			isa = PBXGroup;
+			children = (
+				8C2B2F6429D8C30400D07A99 /* Tester.swift */,
+				8C2B2F6629D8C32200D07A99 /* SlideUpView.swift */,
+			);
+			path = "slideup transition reference";
 			sourceTree = "<group>";
 		};
 		8C547FAB29A718AD00B5EB2F /* Stuff for later */ = {
@@ -123,6 +138,7 @@
 		8CFEC8942929771400D81934 = {
 			isa = PBXGroup;
 			children = (
+				8C2B2F6829D8C71500D07A99 /* slideup transition reference */,
 				8C547FAB29A718AD00B5EB2F /* Stuff for later */,
 				8CFEC89F2929771400D81934 /* Goalshare tree2 */,
 				8CFEC89E2929771400D81934 /* Products */,
@@ -146,6 +162,7 @@
 				8C2A248A292DB5FE008E2345 /* Profile.swift */,
 				8C7A0E3129D54B490025CD76 /* Profile Subviews */,
 				0E8F67D02952DB2A0014669F /* AddGoal.swift */,
+				8C55824C29D8B041005680DC /* ColorSelector.swift */,
 				0E8F67D62953C03F0014669F /* AddMilestone.swift */,
 				8C43DB3E293032FA005B6E24 /* Tree.swift */,
 				8C070DD229D642F9006FDD7D /* Tree Subviews */,
@@ -240,6 +257,8 @@
 				8C070DD829D64461006FDD7D /* EmptyMilestoneMessage.swift in Sources */,
 				0E8F67D32953BEB90014669F /* Camera.swift in Sources */,
 				8C2A2489292DB03B008E2345 /* PapaClass.swift in Sources */,
+				8C2B2F6529D8C30400D07A99 /* Tester.swift in Sources */,
+				8C2B2F6729D8C32200D07A99 /* SlideUpView.swift in Sources */,
 				8CFEC8A32929771400D81934 /* MainFeed.swift in Sources */,
 				8C7A0E3529D54D1E0025CD76 /* Account.swift in Sources */,
 				8C070DDC29D64934006FDD7D /* MilestoneChain.swift in Sources */,
@@ -254,6 +273,7 @@
 				8C070DD129D64296006FDD7D /* LineView.swift in Sources */,
 				0E8F67D72953C03F0014669F /* AddMilestone.swift in Sources */,
 				0EEB0B4329A71ED2009FF37C /* ProfileBubbleView.swift in Sources */,
+				8C55824D29D8B041005680DC /* ColorSelector.swift in Sources */,
 				8C2A2487292DAA32008E2345 /* InformationPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
