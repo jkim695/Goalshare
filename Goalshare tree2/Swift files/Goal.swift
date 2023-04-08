@@ -27,20 +27,22 @@ import SwiftUI
 import Combine
 import SQLite
 
+
 class Goal: Identifiable, Codable, ObservableObject {
     static let goalTable = Table("goals")
-    let idCol = Expression<String>("id")
-    let accountIdCol = Expression<Int64>("account_id")
-    let nameCol = Expression<String>("name")
-    let dateCol = Expression<String>("date")
+    static let idCol = Expression<String>("id")
+    static let accountIdCol = Expression<String>("account_id")
+    static let nameCol = Expression<String>("name")
+    static let dateCol = Expression<String>("date")
 
     @Published var id: UUID
     @Published var name: String
     @Published var date: Date
-    @Published var image: Image
+    @Published var image: UIImage
+    @Published var goalRowId: Int64 = -1
     @Published var milestones: [Milestone]
 
-    init(name: String, date: Date, image: Image, milestones: [Milestone] = []) {
+    init(name: String, date: Date, image: UIImage, milestones: [Milestone] = []) {
         self.id = UUID()
         self.name = name
         self.date = date
@@ -54,10 +56,13 @@ class Goal: Identifiable, Codable, ObservableObject {
         name = try container.decode(String.self, forKey: .name)
         date = try container.decode(Date.self, forKey: .date)
         milestones = try container.decode([Milestone].self, forKey: .milestones)
-        
-        // You may need a custom solution for decoding the Image, as it's not directly Codable.
-        // Here, we set a default image as a placeholder.
-        self.image = Image(systemName: "photo")
+
+        let imageData = try container.decode(Data.self, forKey: .image)
+        if let uiImage = UIImage(data: imageData) {
+            self.image = uiImage
+        } else {
+            self.image = UIImage(systemName: "photo")! // Placeholder
+        }
     }
 
     func encode(to encoder: Encoder) throws {
@@ -66,32 +71,36 @@ class Goal: Identifiable, Codable, ObservableObject {
         try container.encode(name, forKey: .name)
         try container.encode(date, forKey: .date)
         try container.encode(milestones, forKey: .milestones)
-        // You may need a custom solution for encoding the Image, as it's not directly Codable.
+
+        if let imageData = image.jpegData(compressionQuality: 1.0) {
+            try container.encode(imageData, forKey: .image)
+        } else {
+            throw EncodingError.invalidValue(image, EncodingError.Context(codingPath: [CodingKeys.image], debugDescription: "Unable to encode image"))
+        }
     }
 
     enum CodingKeys: String, CodingKey {
-        case id, name, date, milestones
+        case id, name, date, milestones, image
     }
-
-    // ... (Rest of the Goal class implementation)
 
     static func createTable() -> String {
         return goalTable.create(ifNotExists: true) { t in
             t.column(Expression<String>("id"), primaryKey: true)
-            t.column(Expression<Int64>("account_id"))
+            t.column(Expression<String>("account_id"))
             t.column(Expression<String>("name"))
             t.column(Expression<String>("date"))
         }
     }
 
-    func save(accountId: Int64) {
+
+    func save(accountId: UUID) {
         guard let db = DatabaseManager.shared.db else { return }
 
         let insert = Goal.goalTable.insert(
-            self.idCol <- id.uuidString,
-            self.accountIdCol <- accountId,
-            self.nameCol <- name,
-            self.dateCol <- dateFormatter.string(from: date)
+            Goal.idCol <- id.uuidString,
+            Goal.accountIdCol <- accountId.uuidString,
+            Goal.nameCol <- name,
+            Goal.dateCol <- dateFormatter.string(from: date)
         )
         
         do {
@@ -101,6 +110,9 @@ class Goal: Identifiable, Codable, ObservableObject {
             print("Insertion failed")
         }
     }
+
+    
+
 }
 
 

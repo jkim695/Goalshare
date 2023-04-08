@@ -97,7 +97,9 @@ struct AddGoal: View {
                         conditionIsMet = true
                     }
                     if conditionIsMet {
-                        account.goals.append(Goal(name: goalTitle, date: goalCompletionDate, image: Image("fedW")))
+                        let image = UIImage(named: "fedW")
+                        account.goals.append(Goal(name: goalTitle, date: goalCompletionDate, image: image!))
+                        account.save()
                         presentationMode.wrappedValue.dismiss()
                     } else {
                         print("Condition not met")

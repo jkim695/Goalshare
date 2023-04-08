@@ -9,13 +9,13 @@ import SwiftUI
 import SQLite
 class Milestone: Identifiable, Codable, ObservableObject {
     static let milestoneTable = Table("milestones")
-    let idCol = Expression<String>("id")
-    let goalIdCol = Expression<Int64>("goal_id")
-    let nameCol = Expression<String>("name")
-    let sigCol = Expression<Bool>("sig")
-    let dateCol = Expression<String>("date")
-    let captionCol = Expression<String>("caption")
-    let imageCol = Expression<Data>("image")
+    static let idCol = Expression<String>("id")
+    static let goalIdCol = Expression<String>("goal_id")
+    static let nameCol = Expression<String>("name")
+    static let sigCol = Expression<Bool>("sig")
+    static let dateCol = Expression<String>("date")
+    static let captionCol = Expression<String>("caption")
+    static let imageCol = Expression<Data>("image")
     
     @Published var id: UUID
     @Published var name: String
@@ -85,13 +85,13 @@ class Milestone: Identifiable, Codable, ObservableObject {
         guard let db = DatabaseManager.shared.db else { return }
         
         let insert = Milestone.milestoneTable.insert(
-            self.idCol <- id.uuidString,
-            self.goalIdCol <- goalId,
-            self.nameCol <- name,
-            self.sigCol <- sig,
-            self.dateCol <- date,
-            self.captionCol <- caption,
-            self.imageCol <- (self.image.jpegData(compressionQuality: 1.0) ?? Data())
+            Milestone.idCol <- id.uuidString,
+            Milestone.goalIdCol <- goalId,
+            Milestone.nameCol <- name,
+            Milestone.sigCol <- sig,
+            Milestone.dateCol <- date,
+            Milestone.captionCol <- caption,
+            Milestone.imageCol <- (self.image.jpegData(compressionQuality: 1.0) ?? Data())
         )
         
         do {
@@ -101,6 +101,27 @@ class Milestone: Identifiable, Codable, ObservableObject {
             print("Insertion failed")
         }
     }
+    static func fetchMilestones(forGoalId goalId: UUID) -> [Milestone] {
+        guard let db = DatabaseManager.shared.db else { return [] }
+        
+        var milestones = [Milestone]()
+        do {
+            for milestoneRow in try db.prepare(Milestone.milestoneTable.filter(Milestone.goalIdCol == goalId.uuidString)) {
+                let id = UUID(uuidString: milestoneRow[Milestone.idCol])!
+                let name = milestoneRow[Milestone.nameCol]
+                let sig = milestoneRow[Milestone.sigCol]
+                let date = milestoneRow[Milestone.dateCol]
+                let caption = milestoneRow[Milestone.captionCol]
+                if let image = UIImage(data: milestoneRow[Milestone.imageCol]) {
+                    milestones.append(Milestone(name: name, sig: sig, date: date, caption: caption, image: image))
+                }
+            }
+        } catch {
+            print("Failed to fetch milestones")
+        }
+        return milestones
+    }
+
 }
 
 
