@@ -4,7 +4,7 @@ struct MilestoneChain: View {
     @EnvironmentObject var goal: Goal
     
     var body: some View {
-        VStack (spacing: 40) {
+        VStack (alignment: .center, spacing: 40) {
             ForEach(0..<goal.milestones.count, id: \.self) { index in
                 NavigationLink {
                     PostView()
@@ -20,8 +20,19 @@ struct MilestoneChain: View {
 
 struct MilestoneChain_Previews: PreviewProvider {
     static var previews: some View {
-        // add to array to test previews to lazy todo now
-        MilestoneChain()
-            .environmentObject(Goal(name: "", date: Date(), color: Color.red))
+        ScrollView {
+            VStack {
+                let goal = Goal(name: "", date: Date(), color: Color.red)
+                MilestoneChain()
+                    .environmentObject(goal)
+                Button {
+                    goal.milestones.append(Milestone(name: "win", sig: true, image: Image("fedW"), date: "", caption: "won"))
+                } label: {
+                    Text("click")
+                }
+            }
+        }
+
+        
     }
 }

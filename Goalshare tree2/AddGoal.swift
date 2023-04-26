@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Foundation
+import Combine
 
 struct AddGoal: View {
     enum FocusedField {
@@ -27,6 +28,7 @@ struct AddGoal: View {
     @FocusState private var focusedBox: Bool
     @FocusState private var focusedField: FocusedField?
     @Namespace var namespace
+    var textLimit = 16
     var body: some View {
         GeometryReader {_ in
             ZStack {
@@ -91,6 +93,7 @@ struct AddGoal: View {
                         .lineLimit(2...)
                         .frame(height: 70)
                         .padding()
+                        .onReceive(Just(goalTitle)) { _ in limitText(textLimit) }
                     VStack(alignment:.leading, spacing: 40) {
                         DatePicker("Goal Completion Date", selection: $goalCompletionDate, in: Date()..., displayedComponents: .date)
                             .padding()
@@ -125,6 +128,12 @@ struct AddGoal: View {
                 .padding(.bottom, keyboardObserver.keyboardHeight)
                 .ignoresSafeArea(.keyboard)
             }
+        }
+    }
+    //Function to keep text length in limits
+    func limitText(_ upper: Int) {
+        if goalTitle.count > upper {
+            goalTitle = String(goalTitle.prefix(upper))
         }
     }
 }

@@ -26,8 +26,6 @@ struct MilestoneImageView: View {
                     Circle()
                         .stroke(color, lineWidth: 4)
                 }
-            Text(milestone.date)
-                .font(.system(size: 14))
         }
     }
 }

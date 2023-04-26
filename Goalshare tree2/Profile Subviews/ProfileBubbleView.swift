@@ -26,6 +26,7 @@ struct ProfileBubbleView: View {
                 
             }
             Text(goal.name)
+                .font(.system(size: 13))
         }
     }
 }
