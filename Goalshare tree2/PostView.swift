@@ -10,7 +10,7 @@ import SwiftUI
 struct PostView: View {
     @EnvironmentObject var milestone: Milestone
     var body: some View {
-        VStack{
+        VStack {
             milestone.image
                 .resizable()
                 .aspectRatio(contentMode: .fit)

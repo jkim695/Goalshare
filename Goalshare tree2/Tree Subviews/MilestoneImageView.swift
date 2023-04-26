@@ -34,8 +34,8 @@ struct MilestoneImageView: View {
 
 struct MilestoneImageView_Previews: PreviewProvider {
     static var previews: some View {
-        let previewImage = UIImage(named: "fedW")
         MilestoneImageView()
             .environmentObject(Milestone(name: "", sig: true, image: Image(uiImage: previewImage!), date: "08/08/2023", caption: ""))
+
     }
 }
