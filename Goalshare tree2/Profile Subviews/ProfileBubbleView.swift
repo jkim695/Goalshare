@@ -16,15 +16,14 @@ struct ProfileBubbleView: View {
                     .environmentObject(goal)
             }
             label: {
-                goal.image
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .clipShape(Circle())
-                    .overlay {
-                    Circle().stroke(.gray, lineWidth: 4)
-                    }
-                    .shadow(radius: 7)
-                    .frame(width: 175)
+                Circle()
+                    .fill(goal.color)
+                    .overlay(
+                        Circle()
+                            .stroke(.gray, lineWidth: 2)
+                    )
+                    .frame(width: 110, height: 110)
+                
             }
             Text(goal.name)
         }
@@ -34,6 +33,6 @@ struct ProfileBubbleView: View {
 struct ProfileBubbleView_Previews: PreviewProvider {
     static var previews: some View {
         ProfileBubbleView()
-            .environmentObject(Goal(name: "Win Wimbledon", date: Date(), image: Image("fedW")))
+            .environmentObject(Goal(name: "Win Wimbledon", date: Date(), color: Color.red))
     }
 }

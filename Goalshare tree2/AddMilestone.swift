@@ -83,6 +83,6 @@ struct AddMilestone: View {
 struct NewPostView_Previews: PreviewProvider {
     static var previews: some View {
         AddMilestone()
-            .environmentObject(Goal(name: "hi", date: Date(), image: Image(systemName: "photo")))
+            .environmentObject(Goal(name: "hi", date: Date(), color: Color.red))
     }
 }

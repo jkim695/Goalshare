@@ -23,6 +23,7 @@ struct AddGoal: View {
     @State private var goalCompletionDate = Date()
     @State private var show = true
     @State private var complete = false
+    @State private var color = Color.red
     @FocusState private var focusedBox: Bool
     @FocusState private var focusedField: FocusedField?
     @Namespace var namespace
@@ -93,18 +94,17 @@ struct AddGoal: View {
                     VStack(alignment:.leading, spacing: 40) {
                         DatePicker("Goal Completion Date", selection: $goalCompletionDate, in: Date()..., displayedComponents: .date)
                             .padding()
-                        ColorSelector(selectedColor: .red)
+                        ColorSelector(selectedColor: $color)
                             .frame(maxWidth: .infinity, alignment: .center)
                         HStack {
                             Spacer()
                             Button(action: {
-                                // Check your condition here
                                 var conditionIsMet = false
                                 if (!goalTitle.isEmpty) {
                                     conditionIsMet = true
                                 }
                                 if conditionIsMet {
-                                    account.goals.append(Goal(name: goalTitle, date: goalCompletionDate, image: Image("fedW")))
+                                    account.goals.append(Goal(name: goalTitle, date: goalCompletionDate, color: color))
                                     presentationMode.wrappedValue.dismiss()
                                 } else {
                                     print("Condition not met")

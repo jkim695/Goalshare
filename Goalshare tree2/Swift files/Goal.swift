@@ -14,12 +14,12 @@ class Goal: ObservableObject, Identifiable {
     @Published var name: String
     @Published var date: Date
     @Published var id: UUID
-    @Published var image: Image
+    @Published var color: Color
     @Published var milestones: [Milestone]
-    init(name: String, date: Date, image: Image) {
+    init(name: String, date: Date, color: Color) {
         self.id = UUID()
         self.name = name
-        self.image = image
+        self.color = color
         self.date = date
         self.milestones = []
     }

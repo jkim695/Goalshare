@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ColorSelector: View {
-    @State var selectedColor: Color
+    @Binding var selectedColor: Color
     let colors: [Color] = [.red, .blue, .green, .yellow, .orange, .purple]
 
     var body: some View {
@@ -29,8 +29,3 @@ struct ColorSelector: View {
     }
 }
 
-struct ColorSelector_Previews: PreviewProvider {
-    static var previews: some View {
-        ColorSelector(selectedColor: .red)
-    }
-}

@@ -22,6 +22,6 @@ struct MilestoneChain_Previews: PreviewProvider {
     static var previews: some View {
         // add to array to test previews to lazy todo now
         MilestoneChain()
-            .environmentObject(Goal(name: "", date: Date(), image: Image("fedW")))
+            .environmentObject(Goal(name: "", date: Date(), color: Color.red))
     }
 }
