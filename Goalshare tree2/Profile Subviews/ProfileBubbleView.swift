@@ -20,7 +20,7 @@ struct ProfileBubbleView: View {
                     .fill(goal.color)
                     .overlay(
                         Circle()
-                            .stroke(.gray, lineWidth: 2)
+                            .stroke(.black, lineWidth: 2)
                     )
                     .frame(width: 110, height: 110)
                 

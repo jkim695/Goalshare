@@ -57,7 +57,7 @@ struct AddGoal: View {
                                     }
                                 }
                         }
-                        .offset(y: -25)
+                        .offset(y: -15)
                     }
                     else {
                         VStack (alignment: .trailing, spacing: 12){

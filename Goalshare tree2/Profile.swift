@@ -25,7 +25,7 @@ struct Profile: View {
                         .cornerRadius(10)
                 }
                 GoalDisplay()
-                Spacer()
+                    .padding(.top, 20.0)
             }// Hide the back button
             .ignoresSafeArea(.all, edges: .bottom)
         }
