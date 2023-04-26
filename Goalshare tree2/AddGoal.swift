@@ -12,110 +12,122 @@ struct AddGoal: View {
     enum FocusedField {
         case goalTitle
     }
-    
+    func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
     @EnvironmentObject var account: Account
     @Environment(\.presentationMode) var presentationMode
+    @ObservedObject private var keyboardObserver = KeyboardObserver()
     @State private var goalTitle = ""
     @State private var goalDescription = ""
     @State private var goalCompletionDate = Date()
     @State private var show = true
     @State private var complete = false
+    @FocusState private var focusedBox: Bool
     @FocusState private var focusedField: FocusedField?
     @Namespace var namespace
     var body: some View {
-        NavigationView {
-            VStack(alignment:.leading, spacing: 60) {
-                if (show) {
-                    HStack() {
-                        Spacer()
-                        Image(systemName: "questionmark.circle")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                            .padding(20)
-                            .bold()
-                            .onTapGesture {
-                                withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
-                                    show.toggle()
-                                }
-                            }
-                    }
-                    .offset(y: -25)
-                }
-                else {
-                    VStack (alignment: .trailing, spacing: 12){
-                        ZStack() {
-                            Image("fedW")
-                                .resizable()
-                                .frame(width: 300, height: 300)
-                                .cornerRadius(20)
-                            VStack {
-                                Text("Criteria for a good goal:")
-                                    .padding()
-                                Text("1) Is the goal SPECIFIC?")
-                                Text("2) Is the goal MEASURABLE?")
-                                Text("3) Is the goal ATTAINABLE?")
-                                Text("4) Is the goal RELEVANT?")
-                                Text("5) Is the goal TIMELY?")
-                            }
-                            .foregroundColor(.black)
-                        }
-                    }
+        GeometryReader {_ in
+            ZStack {
+                Color.clear
                     .onTapGesture {
-                        withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
-                            show.toggle()
-                        }
+                        hideKeyboard()
                     }
-                }
-                Section(header: Text("       What is your Goal?")
-                    .font(.headline)
-                    .scaleEffect(1.5)
-                ) {
-                    ZStack(alignment: .topLeading) {
-                        TextEditor(text: $goalTitle)
-                            .frame(height: 120)
-                            .cornerRadius(8)
-                            .focused($focusedField, equals: .goalTitle)
-                            .onAppear {
-                                focusedField = .goalTitle
+                    .ignoresSafeArea(.all)
+                VStack(alignment: .leading) {
+                    if (show) {
+                        HStack() {
+                            Button {
+                                presentationMode.wrappedValue.dismiss()
+                            } label: {
+                                Text("Cancel")
+                                    .padding(20)
                             }
-                        if goalTitle.isEmpty {
-                            Text("Ex. Learn how to do a backflip")
-                                .foregroundColor(.gray)
-                                .padding(.top, 8)
-                                .padding(.leading, 8)
+
+                            Spacer()
+                            Image(systemName: "questionmark.circle")
+                                .resizable()
+                                .frame(width: 30, height: 30)
+                                .padding(20)
+                                .bold()
+                                .onTapGesture {
+                                    withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
+                                        show.toggle()
+                                    }
+                                }
+                        }
+                        .offset(y: -25)
+                    }
+                    else {
+                        VStack (alignment: .trailing, spacing: 12){
+                            VStack() {
+                                Image("fedW")
+                                    .resizable()
+                                    .frame(width: 300, height: 300)
+                                    .cornerRadius(20)
+                                VStack {
+                                    Text("Criteria for a good goal:")
+                                        .padding()
+                                    Text("1) Is the goal SPECIFIC?")
+                                    Text("2) Is the goal MEASURABLE?")
+                                    Text("3) Is the goal ATTAINABLE?")
+                                    Text("4) Is the goal RELEVANT?")
+                                    Text("5) Is the goal TIMELY?")
+                                }
+                                .foregroundColor(.black)
+                            }
+                        }
+                        .onTapGesture {
+                            withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
+                                show.toggle()
+                            }
                         }
                     }
-                    DatePicker("Goal Completion Date", selection: $goalCompletionDate, in: Date()..., displayedComponents: .date)
-                }
-                .padding()
-                ColorSelector(selectedColor: .red)
-                    .frame(maxWidth: .infinity, alignment: .center)
-                Button(action: {
-                    // Check your condition here
-                    var conditionIsMet = false
-                    if (!goalTitle.isEmpty) {
-                        conditionIsMet = true
-                    }
-                    if conditionIsMet {
-                        account.goals.append(Goal(name: goalTitle, date: goalCompletionDate, image: Image("fedW")))
-                        presentationMode.wrappedValue.dismiss()
-                    } else {
-                        print("Condition not met")
-                    }
-                }) {
-                    Text("Add Goal!")
-                        .foregroundColor(.white)
+                    Text("          What is your Goal?")
+                        .font(.headline)
+                        .scaleEffect(1.5)
+                    TextField("Enter goal here", text: $goalTitle, axis: .vertical)
+                        .lineLimit(2...)
+                        .frame(height: 70)
                         .padding()
-                        .background(Color.blue)
-                        .cornerRadius(10)
-                        .frame(maxWidth: .infinity, alignment: .center)
+                    VStack(alignment:.leading, spacing: 40) {
+                        DatePicker("Goal Completion Date", selection: $goalCompletionDate, in: Date()..., displayedComponents: .date)
+                            .padding()
+                        ColorSelector(selectedColor: .red)
+                            .frame(maxWidth: .infinity, alignment: .center)
+                        HStack {
+                            Spacer()
+                            Button(action: {
+                                // Check your condition here
+                                var conditionIsMet = false
+                                if (!goalTitle.isEmpty) {
+                                    conditionIsMet = true
+                                }
+                                if conditionIsMet {
+                                    account.goals.append(Goal(name: goalTitle, date: goalCompletionDate, image: Image("fedW")))
+                                    presentationMode.wrappedValue.dismiss()
+                                } else {
+                                    print("Condition not met")
+                                }
+                            }) {
+                                Text("Add Goal!")
+                                    .foregroundColor(.white)
+                                    .padding()
+                                    .background(Color.blue)
+                                    .cornerRadius(10)
+                                    .frame(alignment: .trailing)
+                            }
+                            Spacer()
+                        }
+                    }
+                    Spacer()
                 }
-                Spacer()
+                .padding(.bottom, keyboardObserver.keyboardHeight)
+                .ignoresSafeArea(.keyboard)
             }
         }
     }
 }
-
 struct AddGoal_Previews: PreviewProvider {
     static var previews: some View {
         AddGoal()
