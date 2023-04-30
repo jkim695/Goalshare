@@ -3,7 +3,7 @@ import SwiftUI
 struct AddMilestone: View {
     @EnvironmentObject var goal: Goal
     @Environment(\.presentationMode) var presentationMode
-    @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
+    @State private var sourceType: UIImagePickerController.SourceType = .camera
     @State public var selectedImage: UIImage?
     @State private var isImagePickerDisplay = false
     @State private var significant = true
@@ -53,6 +53,7 @@ struct AddMilestone: View {
                     .padding()
                 Button("Take a Photo") {
                     self.sourceType = .camera
+                    print("Take a Photo button tapped, sourceType: \(self.sourceType)")
                     self.isImagePickerDisplay.toggle()
                 }.padding()
 
@@ -73,9 +74,10 @@ struct AddMilestone: View {
                 .padding() // Add padding around the VStack
             }
             .navigationTitle("Add your Milestone")
-            .sheet(isPresented: self.$isImagePickerDisplay) {
+            .fullScreenCover(isPresented: self.$isImagePickerDisplay, content: {
                 Camera(selectedImage: self.$selectedImage, sourceType: self.sourceType)
-        }
+                   .edgesIgnoringSafeArea(.all)
+             })
         }
     }
 }

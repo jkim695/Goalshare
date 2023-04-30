@@ -12,6 +12,7 @@ struct Camera: UIViewControllerRepresentable {
         let imagePicker = UIImagePickerController()
         imagePicker.sourceType = self.sourceType
         imagePicker.delegate = context.coordinator // confirming the delegate
+        imagePicker.modalPresentationStyle = .fullScreen // Present the camera in full-screen mode
         return imagePicker
     }
 

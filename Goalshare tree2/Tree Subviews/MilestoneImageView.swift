@@ -20,6 +20,7 @@ struct MilestoneImageView: View {
         HStack(alignment: .center) {
             milestone.image
                 .resizable()
+                .aspectRatio(contentMode: .fill)
                 .frame(width: 150, height: 150)
                 .clipShape(Circle())
                 .overlay {
@@ -34,6 +35,5 @@ struct MilestoneImageView_Previews: PreviewProvider {
     static var previews: some View {
         MilestoneImageView()
             .environmentObject(Milestone(name: "", sig: true, image: Image("fedW"), date: "08/08/2023", caption: ""))
-
     }
 }
