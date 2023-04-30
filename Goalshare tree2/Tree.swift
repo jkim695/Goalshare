@@ -20,6 +20,17 @@ struct Tree: View {
                 ZStack {
                     Color.yellow.edgesIgnoringSafeArea(.all) // Set the background color to yellow
                     VStack {
+                        HStack {
+                            Button {
+                                presentationMode.wrappedValue.dismiss()
+                            } label: {
+                                Image(systemName: "house.circle")
+                                    .resizable()
+                                    .frame(width: 32, height: 32)
+                                    .padding()
+                            }
+                            Spacer()
+                        }
                         ZStack {
                             HStack (alignment: .center) {
                                 Spacer()
@@ -68,6 +79,7 @@ struct Tree: View {
                 }
             }
         }
+        .navigationBarBackButtonHidden(true)
         .analyticsScreen(name: "\(Tree.self)")
     }
 }

@@ -9,6 +9,8 @@ struct AddMilestone: View {
     @State private var significant = true
     @State var chosen = false
     @State private var complete = false
+    @State private var isCameraPickerDisplayed = false
+    @State private var isPhotoLibraryPickerDisplayed = false
     @State private var caption = ""
     var body: some View {
         ZStack {
@@ -52,15 +54,22 @@ struct AddMilestone: View {
                         .stroke(Color.black, lineWidth: 0.2))
                     .padding()
                 Button("Take a Photo") {
-                    self.sourceType = .camera
-                    print("Take a Photo button tapped, sourceType: \(self.sourceType)")
-                    self.isImagePickerDisplay.toggle()
+                    if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                        self.isCameraPickerDisplayed.toggle()
+                    } else {
+                        print("Camera is not available")
+                    }
                 }.padding()
 
                 Button("Choose a Photo") {
-                    self.sourceType = .photoLibrary
-                    self.isImagePickerDisplay.toggle()
+                    if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
+                        self.isPhotoLibraryPickerDisplayed.toggle()
+                    } else {
+                        print("Photo Library is not available")
+                    }
                 }.padding()
+
+
                 VStack {
                     Text("Milestone?")
                     Toggle(isOn: $significant) {
@@ -74,10 +83,14 @@ struct AddMilestone: View {
                 .padding() // Add padding around the VStack
             }
             .navigationTitle("Add your Milestone")
-            .fullScreenCover(isPresented: self.$isImagePickerDisplay, content: {
-                Camera(selectedImage: self.$selectedImage, sourceType: self.sourceType)
-                   .edgesIgnoringSafeArea(.all)
-             })
+            .fullScreenCover(isPresented: self.$isCameraPickerDisplayed, content: {
+                Camera(selectedImage: self.$selectedImage, sourceType: .camera)
+                    .edgesIgnoringSafeArea(.all)
+            })
+            .fullScreenCover(isPresented: self.$isPhotoLibraryPickerDisplayed, content: {
+                Camera(selectedImage: self.$selectedImage, sourceType: .photoLibrary)
+                    .edgesIgnoringSafeArea(.all)
+            })
         }
     }
 }
