@@ -3,7 +3,7 @@ import SwiftUI
 struct AddMilestone: View {
     @EnvironmentObject var goal: Goal
     @Environment(\.presentationMode) var presentationMode
-    @State private var sourceType: UIImagePickerController.SourceType = .camera
+    @State private var sourceType: UIImagePickerController.SourceType? = nil
     @State public var selectedImage: UIImage?
     @State private var isImagePickerDisplay = false
     @State private var significant = true
@@ -12,6 +12,8 @@ struct AddMilestone: View {
     @State private var isCameraPickerDisplayed = false
     @State private var isPhotoLibraryPickerDisplayed = false
     @State private var caption = ""
+    @State private var isCameraDisplay = false
+    @State private var isPhotoLibraryDisplay = false
     var body: some View {
         ZStack {
             Color.yellow.edgesIgnoringSafeArea(.all)
@@ -53,20 +55,25 @@ struct AddMilestone: View {
                     .overlay(RoundedRectangle(cornerRadius: 20)
                         .stroke(Color.black, lineWidth: 0.2))
                     .padding()
+//                Button("Take a Photo") {
+//                    self.sourceType = .camera
+//                    print("Take a Photo button tapped, sourceType: \(self.sourceType ?? .camera)")
+//                    self.isImagePickerDisplay.toggle()
+//                }.padding()
                 Button("Take a Photo") {
-                    if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                        self.isCameraPickerDisplayed.toggle()
-                    } else {
-                        print("Camera is not available")
-                    }
+                    self.sourceType = .camera
+                    self.isCameraDisplay.toggle()
                 }.padding()
 
+//                Button("Choose a Photo") {
+//                    self.sourceType = .photoLibrary
+//                    print("Take a Photo button tapped, sourceType: \(self.sourceType ?? .photoLibrary)")
+//                    self.isImagePickerDisplay.toggle()
+//                }.padding()
                 Button("Choose a Photo") {
-                    if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
-                        self.isPhotoLibraryPickerDisplayed.toggle()
-                    } else {
-                        print("Photo Library is not available")
-                    }
+
+                    self.sourceType = .photoLibrary
+                    self.isPhotoLibraryDisplay.toggle()
                 }.padding()
 
 
@@ -83,11 +90,11 @@ struct AddMilestone: View {
                 .padding() // Add padding around the VStack
             }
             .navigationTitle("Add your Milestone")
-            .fullScreenCover(isPresented: self.$isCameraPickerDisplayed, content: {
+            .fullScreenCover(isPresented: self.$isCameraDisplay, content: {
                 Camera(selectedImage: self.$selectedImage, sourceType: .camera)
                     .edgesIgnoringSafeArea(.all)
             })
-            .fullScreenCover(isPresented: self.$isPhotoLibraryPickerDisplayed, content: {
+            .fullScreenCover(isPresented: self.$isPhotoLibraryDisplay, content: {
                 Camera(selectedImage: self.$selectedImage, sourceType: .photoLibrary)
                     .edgesIgnoringSafeArea(.all)
             })
