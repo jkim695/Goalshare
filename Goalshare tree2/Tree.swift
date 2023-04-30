@@ -20,31 +20,31 @@ struct Tree: View {
                 ZStack {
                     Color.yellow.edgesIgnoringSafeArea(.all) // Set the background color to yellow
                     VStack {
-                        ZStack {
+                        //ZStack {
+                        HStack (spacing: 20) {
+                            Spacer()
+                            ShareLink(item: /*@START_MENU_TOKEN@*/URL(string: "https://developer.apple.com/xcode/swiftui")!/*@END_MENU_TOKEN@*/)
+                            {
+                                Image(systemName: "square.and.arrow.up")
+                                    .resizable()
+                                    .frame(width: 23, height: 32)
+                            }
+                            NavigationLink(destination: AddMilestone().environmentObject(goal),
+                                           label: {
+                                Image(systemName: "plus")
+                                    .resizable()
+                                    .frame(width:25, height:25)
+                            })
+                            .foregroundColor(.blue)
+                        }
+                        .padding(.trailing)
                             HStack (alignment: .center) {
                                 Spacer()
                                 Text(goal.name)
                                     .font(.largeTitle.bold())
                                 Spacer()
                             }
-                            HStack (spacing: 20) {
-                                Spacer()
-                                ShareLink(item: /*@START_MENU_TOKEN@*/URL(string: "https://developer.apple.com/xcode/swiftui")!/*@END_MENU_TOKEN@*/)
-                                {
-                                    Image(systemName: "square.and.arrow.up")
-                                        .resizable()
-                                        .frame(width: 23, height: 32)
-                                }
-                                NavigationLink(destination: AddMilestone().environmentObject(goal),
-                                               label: {
-                                    Image(systemName: "plus")
-                                        .resizable()
-                                        .frame(width:25, height:25)
-                                })
-                                .foregroundColor(.blue)
-                            }
-                            .padding(.trailing)
-                        }
+                        //}
                         ScrollView(.vertical) {
                                 if (goal.milestones.isEmpty) {
                                     EmptyMilestoneMessage()
@@ -68,6 +68,7 @@ struct Tree: View {
                 }
             }
         }
+        .navigationBarBackButtonHidden(true)
         .analyticsScreen(name: "\(Tree.self)")
     }
 }
