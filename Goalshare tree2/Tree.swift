@@ -20,7 +20,17 @@ struct Tree: View {
                 ZStack {
                     Color.yellow.edgesIgnoringSafeArea(.all) // Set the background color to yellow
                     VStack {
-                        //ZStack {
+                        HStack {
+                            Button {
+                                presentationMode.wrappedValue.dismiss()
+                            } label: {
+                                Image(systemName: "house.circle")
+                                    .resizable()
+                                    .frame(width: 32, height: 32)
+                                    .padding()
+                            }
+                            Spacer()
+                        }
                         HStack (spacing: 20) {
                             Spacer()
                             ShareLink(item: /*@START_MENU_TOKEN@*/URL(string: "https://developer.apple.com/xcode/swiftui")!/*@END_MENU_TOKEN@*/)
@@ -44,7 +54,7 @@ struct Tree: View {
                                     .font(.largeTitle.bold())
                                 Spacer()
                             }
-                        //}
+                        
                         ScrollView(.vertical) {
                                 if (goal.milestones.isEmpty) {
                                     EmptyMilestoneMessage()

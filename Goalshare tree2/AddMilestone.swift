@@ -9,6 +9,8 @@ struct AddMilestone: View {
     @State private var significant = true
     @State var chosen = false
     @State private var complete = false
+    @State private var isCameraPickerDisplayed = false
+    @State private var isPhotoLibraryPickerDisplayed = false
     @State private var caption = ""
     @State private var isCameraDisplay = false
     @State private var isPhotoLibraryDisplay = false
@@ -69,9 +71,12 @@ struct AddMilestone: View {
 //                    self.isImagePickerDisplay.toggle()
 //                }.padding()
                 Button("Choose a Photo") {
+
                     self.sourceType = .photoLibrary
                     self.isPhotoLibraryDisplay.toggle()
                 }.padding()
+
+
                 VStack {
                     Text("Milestone?")
                     Toggle(isOn: $significant) {
