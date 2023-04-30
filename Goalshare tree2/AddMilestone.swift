@@ -8,7 +8,6 @@ struct AddMilestone: View {
     @State private var isImagePickerDisplay = false
     @State private var significant = true
     @State var chosen = false
-    @State private var complete = false
     @State private var isCameraPickerDisplayed = false
     @State private var isPhotoLibraryPickerDisplayed = false
     @State private var caption = ""
@@ -18,14 +17,28 @@ struct AddMilestone: View {
         ZStack {
             Color.yellow.edgesIgnoringSafeArea(.all)
             VStack {
-                if selectedImage != nil {
-                    NavigationLink(destination: Tree()
-                        .environmentObject(goal), isActive: $complete) {
-                        EmptyView()
+                ZStack {
+                    HStack {
+                        Button {
+                            presentationMode.wrappedValue.dismiss()
+                        } label: {
+                            Text("Cancel")
+                                .padding(20)
+                        }
+                        Spacer()
                     }
+                    HStack {
+                        Spacer()
+                        Text("Add miletone")
+                            .font(.headline)
+                            .scaleEffect(1.5)
+                        Spacer()
+                    }
+                }
+                if selectedImage != nil {
                     Button( action: {
                         goal.milestones.append(Milestone(name: "", sig: significant, image: Image(uiImage: selectedImage!), date: "", caption: self.caption))
-                        complete = true
+                        presentationMode.wrappedValue.dismiss()
                     }) {
                         Text("ADD")
                             .font(.headline)
@@ -55,21 +68,12 @@ struct AddMilestone: View {
                     .overlay(RoundedRectangle(cornerRadius: 20)
                         .stroke(Color.black, lineWidth: 0.2))
                     .padding()
-//                Button("Take a Photo") {
-//                    self.sourceType = .camera
-//                    print("Take a Photo button tapped, sourceType: \(self.sourceType ?? .camera)")
-//                    self.isImagePickerDisplay.toggle()
-//                }.padding()
+
                 Button("Take a Photo") {
                     self.sourceType = .camera
                     self.isCameraDisplay.toggle()
                 }.padding()
 
-//                Button("Choose a Photo") {
-//                    self.sourceType = .photoLibrary
-//                    print("Take a Photo button tapped, sourceType: \(self.sourceType ?? .photoLibrary)")
-//                    self.isImagePickerDisplay.toggle()
-//                }.padding()
                 Button("Choose a Photo") {
 
                     self.sourceType = .photoLibrary
@@ -88,8 +92,8 @@ struct AddMilestone: View {
                 }
                 .frame(maxWidth: .infinity, maxHeight: 150, alignment: .center) // Set frame to fill the available space
                 .padding() // Add padding around the VStack
+                Spacer()
             }
-            .navigationTitle("Add your Milestone")
             .fullScreenCover(isPresented: self.$isCameraDisplay, content: {
                 Camera(selectedImage: self.$selectedImage, sourceType: .camera)
                     .edgesIgnoringSafeArea(.all)

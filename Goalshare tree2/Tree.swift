@@ -13,70 +13,83 @@ struct Tree: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var offset: CGFloat = 0
     @State private var atTopOfScrollView = true
-
+    @State private var addingMilestone = false
     var body: some View {
-        NavigationStack {
-            GeometryReader { geometry in
-                ZStack {
-                    Color.yellow.edgesIgnoringSafeArea(.all) // Set the background color to yellow
-                    VStack {
-                        HStack {
-                            Button {
-                                presentationMode.wrappedValue.dismiss()
-                            } label: {
-                                Image(systemName: "house.circle")
-                                    .resizable()
-                                    .frame(width: 32, height: 32)
-                                    .padding()
-                            }
-                            Spacer()
+        GeometryReader { geometry in
+            ZStack {
+                Color.yellow.edgesIgnoringSafeArea(.all) // Set the background color to yellow
+                VStack {
+                    HStack {
+                        Button {
+                            presentationMode.wrappedValue.dismiss()
+                        } label: {
+                            Image(systemName: "house.circle")
+                                .resizable()
+                                .frame(width: 32, height: 32)
+                                .padding()
                         }
-                        HStack (spacing: 20) {
-                            Spacer()
-                            ShareLink(item: /*@START_MENU_TOKEN@*/URL(string: "https://developer.apple.com/xcode/swiftui")!/*@END_MENU_TOKEN@*/)
-                            {
-                                Image(systemName: "square.and.arrow.up")
-                                    .resizable()
-                                    .frame(width: 23, height: 32)
-                            }
-                            NavigationLink(destination: AddMilestone().environmentObject(goal),
-                                           label: {
-                                Image(systemName: "plus")
-                                    .resizable()
-                                    .frame(width:25, height:25)
-                            })
-                            .foregroundColor(.blue)
+                        Spacer()
+                    }
+                    HStack (spacing: 20) {
+                        Spacer()
+                        ShareLink(item: /*@START_MENU_TOKEN@*/URL(string: "https://developer.apple.com/xcode/swiftui")!/*@END_MENU_TOKEN@*/)
+                        {
+                            Image(systemName: "square.and.arrow.up")
+                                .resizable()
+                                .frame(width: 23, height: 32)
                         }
-                        .padding(.trailing)
-                            HStack (alignment: .center) {
-                                Spacer()
-                                Text(goal.name)
-                                    .font(.largeTitle.bold())
-                                Spacer()
+                        Button(action: {
+                            addingMilestone = true
+                        }) {
+                            Image(systemName: "plus")
+                                .resizable()
+                                .frame(width:25, height:25)
+                        }
+                        .navigationDestination(for: Int.self) { int in
+                            AddMilestone().environmentObject(goal)
+                        }
+                        //                            NavigationLink(destination: AddMilestone().environmentObject(goal),
+                        //                                           label: {
+                        //                                Image(systemName: "plus")
+                        //                                    .resizable()
+                        //                                    .frame(width:25, height:25)
+                        //                            })
+                        //                            .foregroundColor(.blue)
+                    }
+                    .padding(.trailing)
+                    HStack (alignment: .center) {
+                        Spacer()
+                        Text(goal.name)
+                            .font(.largeTitle.bold())
+                        Spacer()
+                    }
+                    
+                    ScrollView(.vertical) {
+                        if (goal.milestones.isEmpty) {
+                            EmptyMilestoneMessage()
+                        }
+                        else {
+                            ZStack {
+                                Path { path in
+                                    path.move(to: CGPoint(x: geometry.size.width / 2, y: 5))
+                                    path.addLine(to: CGPoint(x: Int(geometry.size.width) / 2, y: 150 * goal.milestones.count))
+                                }
+                                .stroke(Color.black, lineWidth: 15)
+                                .frame(height: CGFloat(150 * goal.milestones.count))
+                                .frame(maxWidth: .infinity)
+                                MilestoneChain()
+                                    .environmentObject(goal)
+                                    .offset(y: 5)
                             }
-                        
-                        ScrollView(.vertical) {
-                                if (goal.milestones.isEmpty) {
-                                    EmptyMilestoneMessage()
-                                }
-                                else {
-                                    ZStack {
-                                        Path { path in
-                                            path.move(to: CGPoint(x: geometry.size.width / 2, y: 5))
-                                            path.addLine(to: CGPoint(x: Int(geometry.size.width) / 2, y: 150 * goal.milestones.count))
-                                        }
-                                        .stroke(Color.black, lineWidth: 15)
-                                        .frame(height: CGFloat(150 * goal.milestones.count))
-                                        .frame(maxWidth: .infinity)
-                                        MilestoneChain()
-                                            .environmentObject(goal)
-                                            .offset(y: 5)
-                                    }
-                                }
                         }
                     }
                 }
             }
+        }
+        .fullScreenCover(isPresented: $addingMilestone) {
+        AddMilestone()
+            .environmentObject(goal)
+            .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
         }
         .navigationBarBackButtonHidden(true)
         .analyticsScreen(name: "\(Tree.self)")
