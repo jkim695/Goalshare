@@ -19,42 +19,37 @@ struct Tree: View {
             ZStack {
                 Color.yellow.edgesIgnoringSafeArea(.all) // Set the background color to yellow
                 VStack {
-                    HStack {
-                        Button {
-                            presentationMode.wrappedValue.dismiss()
-                        } label: {
-                            Image(systemName: "house.circle")
-                                .resizable()
-                                .frame(width: 32, height: 32)
-                                .padding()
+                    ZStack {
+                        HStack {
+                            Button {
+                                presentationMode.wrappedValue.dismiss()
+                            } label: {
+                                Image(systemName: "house.circle")
+                                    .resizable()
+                                    .frame(width: 32, height: 32)
+                                    .padding()
+                            }
+                            Spacer()
                         }
-                        Spacer()
-                    }
-                    HStack (spacing: 20) {
-                        Spacer()
-                        ShareLink(item: /*@START_MENU_TOKEN@*/URL(string: "https://developer.apple.com/xcode/swiftui")!/*@END_MENU_TOKEN@*/)
-                        {
-                            Image(systemName: "square.and.arrow.up")
-                                .resizable()
-                                .frame(width: 23, height: 32)
+                        HStack (spacing: 20) {
+                            Spacer()
+                            ShareLink(item: /*@START_MENU_TOKEN@*/URL(string: "https://developer.apple.com/xcode/swiftui")!/*@END_MENU_TOKEN@*/)
+                            {
+                                Image(systemName: "square.and.arrow.up")
+                                    .resizable()
+                                    .frame(width: 23, height: 32)
+                            }
+                            Button(action: {
+                                addingMilestone = true
+                            }) {
+                                Image(systemName: "plus")
+                                    .resizable()
+                                    .frame(width:25, height:25)
+                            }
+                            .navigationDestination(for: Int.self) { int in
+                                AddMilestone().environmentObject(goal)
+                            }
                         }
-                        Button(action: {
-                            addingMilestone = true
-                        }) {
-                            Image(systemName: "plus")
-                                .resizable()
-                                .frame(width:25, height:25)
-                        }
-                        .navigationDestination(for: Int.self) { int in
-                            AddMilestone().environmentObject(goal)
-                        }
-                        //                            NavigationLink(destination: AddMilestone().environmentObject(goal),
-                        //                                           label: {
-                        //                                Image(systemName: "plus")
-                        //                                    .resizable()
-                        //                                    .frame(width:25, height:25)
-                        //                            })
-                        //                            .foregroundColor(.blue)
                     }
                     .padding(.trailing)
                     HStack (alignment: .center) {
@@ -83,6 +78,7 @@ struct Tree: View {
                             }
                         }
                     }
+                    Spacer()
                 }
             }
         }
