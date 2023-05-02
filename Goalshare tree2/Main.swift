@@ -7,13 +7,25 @@
 
 import Foundation
 import SwiftUI
-
 @main
 struct Goalshare_tree2App: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     var body: some Scene {
         WindowGroup {
             Profile()
                 .environmentObject(Account(username: "placeholder", password: "placeholder"))
+                .onAppear {
+                    UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation") // Forcing the rotation to portrait
+                    AppDelegate.orientationLock = .portrait // And making sure it stays that way
+                }.onDisappear {
+                    AppDelegate.orientationLock = .all // Unlocking the rotation when leaving the view
+                }
         }
+    }
+}
+class AppDelegate: NSObject, UIApplicationDelegate {
+    static var orientationLock = UIInterfaceOrientationMask.all //By default you want all your views to rotate freely
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        return AppDelegate.orientationLock
     }
 }
