@@ -24,6 +24,8 @@
 		8C2A248B292DB5FE008E2345 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2A248A292DB5FE008E2345 /* Profile.swift */; };
 		8C2B2F6529D8C30400D07A99 /* Tester.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2B2F6429D8C30400D07A99 /* Tester.swift */; };
 		8C2B2F6729D8C32200D07A99 /* SlideUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C2B2F6629D8C32200D07A99 /* SlideUpView.swift */; };
+		8C3DE42C2A009F770027EED0 /* IntroductionVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3DE42B2A009F770027EED0 /* IntroductionVideo.swift */; };
+		8C3DE42E2A00AD990027EED0 /* pexels-mohan-reddy-4250244-1440x2160-60fps.mov in Resources */ = {isa = PBXBuildFile; fileRef = 8C3DE42D2A00AD990027EED0 /* pexels-mohan-reddy-4250244-1440x2160-60fps.mov */; };
 		8C3EC7BA2954EF03005DC346 /* Milestone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3EC7B92954EF03005DC346 /* Milestone.swift */; };
 		8C43DB3F293032FA005B6E24 /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43DB3E293032FA005B6E24 /* Tree.swift */; };
 		8C55824D29D8B041005680DC /* ColorSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C55824C29D8B041005680DC /* ColorSelector.swift */; };
@@ -31,6 +33,7 @@
 		8C7A0E3529D54D1E0025CD76 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7A0E3429D54D1E0025CD76 /* Account.swift */; };
 		8C7A0E3829D550930025CD76 /* GoalDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7A0E3729D550930025CD76 /* GoalDisplay.swift */; };
 		8C7FD53329DF576C0036266E /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 8C7FD53229DF576C0036266E /* SQLite */; };
+		8CB5149D2A00B197002AC434 /* pexels-mohan-reddy-4250244-1440x2160-60fps.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8CB5149C2A00B197002AC434 /* pexels-mohan-reddy-4250244-1440x2160-60fps.mp4 */; };
 		8CC6512D29EA803C00D534AD /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8CC6512C29EA803C00D534AD /* FirebaseAnalytics */; };
 		8CC6512F29EA803C00D534AD /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8CC6512E29EA803C00D534AD /* FirebaseAnalyticsSwift */; };
 		8CC6513129EA803C00D534AD /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 8CC6513029EA803C00D534AD /* FirebaseDatabase */; };
@@ -60,12 +63,15 @@
 		8C2A248A292DB5FE008E2345 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		8C2B2F6429D8C30400D07A99 /* Tester.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tester.swift; sourceTree = "<group>"; };
 		8C2B2F6629D8C32200D07A99 /* SlideUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideUpView.swift; sourceTree = "<group>"; };
+		8C3DE42B2A009F770027EED0 /* IntroductionVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionVideo.swift; sourceTree = "<group>"; };
+		8C3DE42D2A00AD990027EED0 /* pexels-mohan-reddy-4250244-1440x2160-60fps.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = "pexels-mohan-reddy-4250244-1440x2160-60fps.mov"; sourceTree = "<group>"; };
 		8C3EC7B92954EF03005DC346 /* Milestone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Milestone.swift; sourceTree = "<group>"; };
 		8C43DB3E293032FA005B6E24 /* Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
 		8C55824C29D8B041005680DC /* ColorSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelector.swift; sourceTree = "<group>"; };
 		8C7A0E2F29D54B270025CD76 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		8C7A0E3429D54D1E0025CD76 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		8C7A0E3729D550930025CD76 /* GoalDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDisplay.swift; sourceTree = "<group>"; };
+		8CB5149C2A00B197002AC434 /* pexels-mohan-reddy-4250244-1440x2160-60fps.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pexels-mohan-reddy-4250244-1440x2160-60fps.mp4"; sourceTree = "<group>"; };
 		8CC6513429F2FE4200D534AD /* KeyboardObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardObserver.swift; sourceTree = "<group>"; };
 		8CC6513629F88E1E00D534AD /* Gesture_Recognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gesture_Recognizer.swift; sourceTree = "<group>"; };
 		8CFEC89D2929771400D81934 /* Goalshare tree2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Goalshare tree2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,6 +148,8 @@
 		8C7A0E3329D54BBB0025CD76 /* Swift files */ = {
 			isa = PBXGroup;
 			children = (
+				8CB5149C2A00B197002AC434 /* pexels-mohan-reddy-4250244-1440x2160-60fps.mp4 */,
+				8C3DE42D2A00AD990027EED0 /* pexels-mohan-reddy-4250244-1440x2160-60fps.mov */,
 				8C7A0E3429D54D1E0025CD76 /* Account.swift */,
 				0E8F67DA2966B2350014669F /* Goal.swift */,
 				8C3EC7B92954EF03005DC346 /* Milestone.swift */,
@@ -173,6 +181,7 @@
 				8C7A0E3229D54B8F0025CD76 /* Tools */,
 				8C7A0E3329D54BBB0025CD76 /* Swift files */,
 				8C7A0E2F29D54B270025CD76 /* Main.swift */,
+				8C3DE42B2A009F770027EED0 /* IntroductionVideo.swift */,
 				8C2A248A292DB5FE008E2345 /* Profile.swift */,
 				8C7A0E3129D54B490025CD76 /* Profile Subviews */,
 				0E8F67D02952DB2A0014669F /* AddGoal.swift */,
@@ -266,7 +275,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CB5149D2A00B197002AC434 /* pexels-mohan-reddy-4250244-1440x2160-60fps.mp4 in Resources */,
 				8CFEC8A82929771500D81934 /* Preview Assets.xcassets in Resources */,
+				8C3DE42E2A00AD990027EED0 /* pexels-mohan-reddy-4250244-1440x2160-60fps.mov in Resources */,
 				8CFEC8A52929771500D81934 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C7A0E3029D54B270025CD76 /* Main.swift in Sources */,
+				8C3DE42C2A009F770027EED0 /* IntroductionVideo.swift in Sources */,
 				8C3EC7BA2954EF03005DC346 /* Milestone.swift in Sources */,
 				8C7A0E3829D550930025CD76 /* GoalDisplay.swift in Sources */,
 				8C070DD829D64461006FDD7D /* EmptyMilestoneMessage.swift in Sources */,
