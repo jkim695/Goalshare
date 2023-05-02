@@ -16,7 +16,7 @@ struct PostView: View {
                 .aspectRatio(contentMode: .fit)
                 .cornerRadius(8)
                 .padding()
-            Text(milestone.date)
+            Text(milestone.date, style: .date)
             Text(milestone.caption)
                 .font(.system(size: 25))
         }
@@ -28,6 +28,6 @@ struct PostView: View {
 struct PostView_Previews: PreviewProvider {
     static var previews: some View {
         PostView()
-            .environmentObject(Milestone(name: "", sig: false, image: Image("fedW"), date: "", caption: "I just won wimbledon!!"))
+            .environmentObject(Milestone(name: "", sig: false, image: Image("fedW"), caption: "I just won wimbledon!!"))
     }
 }

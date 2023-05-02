@@ -37,7 +37,7 @@ struct AddMilestone: View {
                 }
                 if selectedImage != nil {
                     Button( action: {
-                        goal.milestones.append(Milestone(name: "", sig: significant, image: Image(uiImage: selectedImage!), date: "", caption: self.caption))
+                        goal.milestones.append(Milestone(name: "", sig: significant, image: Image(uiImage: selectedImage!), caption: self.caption))
                         presentationMode.wrappedValue.dismiss()
                     }) {
                         Text("ADD")

@@ -26,7 +26,7 @@ struct MilestoneChain_Previews: PreviewProvider {
                 MilestoneChain()
                     .environmentObject(goal)
                 Button {
-                    goal.milestones.append(Milestone(name: "win", sig: true, image: Image("fedW"), date: "", caption: "won"))
+                    goal.milestones.append(Milestone(name: "win", sig: true, image: Image("fedW"), caption: "won"))
                 } label: {
                     Text("click")
                 }
