@@ -17,7 +17,7 @@ struct MilestoneImageView: View {
         }
     }
     var body: some View {
-        HStack(alignment: .center) {
+        HStack(alignment: .center, spacing: 25) {
             milestone.image
                 .resizable()
                 .aspectRatio(contentMode: .fill)
@@ -27,6 +27,8 @@ struct MilestoneImageView: View {
                     Circle()
                         .stroke(color, lineWidth: 4)
                 }
+            Text(milestone.date, style: .date)
+                .font(.system(size: 10))
         }
     }
 }
@@ -34,6 +36,6 @@ struct MilestoneImageView: View {
 struct MilestoneImageView_Previews: PreviewProvider {
     static var previews: some View {
         MilestoneImageView()
-            .environmentObject(Milestone(name: "", sig: true, image: Image("fedW"), date: "08/08/2023", caption: ""))
+            .environmentObject(Milestone(name: "", sig: true, image: Image("fedW"), caption: ""))
     }
 }

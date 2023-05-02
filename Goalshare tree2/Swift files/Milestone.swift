@@ -15,14 +15,14 @@ class Milestone: ObservableObject, Identifiable {
     @Published var id: UUID
     @Published var name: String
     @Published var image: Image
-    @Published var date: String
+    @Published var date: Date
     @Published var caption: String
-    init(name: String, sig: Bool, image: Image, date: String, caption: String) {
+    init(name: String, sig: Bool, image: Image, caption: String) {
         self.id = UUID()
         self.name = name
         self.sig = sig
         self.image = image
-        self.date = date
+        self.date = Date()
         self.caption = caption
     }
 }
