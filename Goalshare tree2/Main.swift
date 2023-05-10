@@ -27,6 +27,7 @@ struct Goalshare_tree2App: App {
                 }
                 .fullScreenCover(isPresented: $introducing) {
                     IntroductionVideo()
+                        .environmentObject(MyState())
                 }
         }
     }

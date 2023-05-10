@@ -49,6 +49,7 @@ class LoopingPlayerUIView: UIView {
 }
 struct IntroductionVideo: View {
     @Environment(\.presentationMode) var presentationMode
+    @State var currentSlide = 0
     var body: some View {
         ZStack {
             GeometryReader{ geo in
@@ -59,19 +60,23 @@ struct IntroductionVideo: View {
                     .overlay(Color.black.opacity(0.2))
                     .edgesIgnoringSafeArea(.all)
             }
+            
             VStack {
                 Spacer()
-                Button {
-                    presentationMode.wrappedValue.dismiss()
-                } label: {
-                    Text("Let's go!")
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Color.red)
-                        .cornerRadius(10)
-                        .frame(alignment: .trailing)
-                }
-
+                HorizontalSlideshow(slides: [
+                    AnyView(Text(" Goalshare").font(.system(size:72)).foregroundColor(.white)),
+                    AnyView(
+                        VStack {
+                            if (currentSlide == 1) {
+                                GradualTrimAnimation(backgroundOpacity: 0, animationProgress: 0, animationProgress2: 0)
+                            }
+                            else {
+                                GradualTrimAnimation(backgroundOpacity: 0, animationProgress: 0, animationProgress2: 0)
+                                    .isHidden(true, remove: false)
+                            }
+                            Text("Keep track of your goals and progression throughout them").font(.title).foregroundColor(.white)
+                        }),
+                        ], currentSlide: $currentSlide)
             }
         }
     }
@@ -80,5 +85,32 @@ struct IntroductionVideo: View {
 struct IntroductionVideo_Previews: PreviewProvider {
     static var previews: some View {
         IntroductionVideo()
+    }
+}
+extension View {
+    
+    /// Hide or show the view based on a boolean value.
+    ///
+    /// Example for visibility:
+    ///
+    ///     Text("Label")
+    ///         .isHidden(true)
+    ///
+    /// Example for complete removal:
+    ///
+    ///     Text("Label")
+    ///         .isHidden(true, remove: true)
+    ///
+    /// - Parameters:
+    ///   - hidden: Set to `false` to show the view. Set to `true` to hide the view.
+    ///   - remove: Boolean value indicating whether or not to remove the view.
+    @ViewBuilder func isHidden(_ hidden: Bool, remove: Bool = false) -> some View {
+        if hidden {
+            if !remove {
+                self.hidden()
+            }
+        } else {
+            self
+        }
     }
 }
