@@ -39,6 +39,7 @@ class LoopingPlayerUIView: UIView {
         layer.addSublayer(playerLayer)
         // Create a new player looper with the queue player and template item
         playerLooper = AVPlayerLooper(player: player, templateItem: item)
+        player.volume = 0
         // Start the movie
         player.play()
     }
@@ -66,16 +67,34 @@ struct IntroductionVideo: View {
                 HorizontalSlideshow(slides: [
                     AnyView(Text(" Goalshare").font(.system(size:72)).foregroundColor(.white)),
                     AnyView(
-                        VStack {
-                            if (currentSlide == 1) {
-                                GradualTrimAnimation(backgroundOpacity: 0, animationProgress: 0, animationProgress2: 0)
+                        GeometryReader { geometry in
+                            VStack {
+                                if (currentSlide == 1) {
+                                    GradualTrimAnimation(backgroundOpacity: 0, animationProgress: 0, animationProgress2: 0).position(x:geometry.size.width/2, y: geometry.size.height/2.3)
+                                }
+                                else {
+                                    GradualTrimAnimation(backgroundOpacity: 0, animationProgress: 0, animationProgress2: 0)
+                                        .isHidden(true, remove: false)
+                                }
+                                Text("Keep track of your goals and progression throughout them").font(.title).foregroundColor(.white).position(x:geometry.size.width/2, y: geometry.size.height / 2.7)
                             }
-                            else {
-                                GradualTrimAnimation(backgroundOpacity: 0, animationProgress: 0, animationProgress2: 0)
-                                    .isHidden(true, remove: false)
-                            }
-                            Text("Keep track of your goals and progression throughout them").font(.title).foregroundColor(.white)
                         }),
+                    AnyView(VStack {
+                        Spacer()
+                        Button (action: {
+                            presentationMode.wrappedValue.dismiss()
+                        }) {
+                            Text("Let's get started!")
+                                .foregroundColor(.white)
+                                .padding(.vertical, 30.0)
+                                .padding(.horizontal, 15)
+                                .background(.blue)
+                                .cornerRadius(10)
+                        }
+                        .offset(y:-40)
+
+                    }
+                    )
                         ], currentSlide: $currentSlide)
             }
         }
@@ -88,22 +107,6 @@ struct IntroductionVideo_Previews: PreviewProvider {
     }
 }
 extension View {
-    
-    /// Hide or show the view based on a boolean value.
-    ///
-    /// Example for visibility:
-    ///
-    ///     Text("Label")
-    ///         .isHidden(true)
-    ///
-    /// Example for complete removal:
-    ///
-    ///     Text("Label")
-    ///         .isHidden(true, remove: true)
-    ///
-    /// - Parameters:
-    ///   - hidden: Set to `false` to show the view. Set to `true` to hide the view.
-    ///   - remove: Boolean value indicating whether or not to remove the view.
     @ViewBuilder func isHidden(_ hidden: Bool, remove: Bool = false) -> some View {
         if hidden {
             if !remove {

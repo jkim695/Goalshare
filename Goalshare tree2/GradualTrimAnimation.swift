@@ -37,8 +37,6 @@ struct GradualTrimAnimation: View {
                 }
                 
                 VStack(spacing: totalSpacing) {
-                    Spacer()
-                    
                     ZStack {
                         Circle()
                             .fill(Color.green)
@@ -123,8 +121,6 @@ struct GradualTrimAnimation: View {
                                 }
                             }
                     }
-                    
-                    Spacer()
                 }
                 .frame(maxWidth: .infinity)
             }
@@ -134,6 +130,7 @@ struct GradualTrimAnimation: View {
 struct GradualTrimAnimation_Previews: PreviewProvider {
     static var previews: some View {
         GradualTrimAnimation(backgroundOpacity: 0, animationProgress: 0, animationProgress2: 0)
+            .background(.pink)
     }
 }
 
