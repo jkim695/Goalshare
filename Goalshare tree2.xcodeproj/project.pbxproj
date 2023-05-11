@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E2298CB2A0D97880032DD4B /* NunitoSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E2298CA2A0D97880032DD4B /* NunitoSans-BoldItalic.ttf */; };
+		0E2298CD2A0D99E70032DD4B /* SF-Pro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E2298CC2A0D99E70032DD4B /* SF-Pro.ttf */; };
+		0E2298CF2A0D9A4E0032DD4B /* SF-Pro-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E2298CE2A0D9A4E0032DD4B /* SF-Pro-Text-Bold.otf */; };
+		0E2298D12A0D9A830032DD4B /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E2298D02A0D9A830032DD4B /* SF-Pro-Text-Regular.otf */; };
+		0E2298D32A0D9BF50032DD4B /* SF-Compact-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 0E2298D22A0D9BF50032DD4B /* SF-Compact-Text-Bold.otf */; };
+		0E2298D52A0D9CA20032DD4B /* SF-Compact.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E2298D42A0D9CA20032DD4B /* SF-Compact.ttf */; };
+		0E2298D72A0D9D0C0032DD4B /* Futura.ttc in Resources */ = {isa = PBXBuildFile; fileRef = 0E2298D62A0D9D0C0032DD4B /* Futura.ttc */; };
 		0E8F67D12952DB2A0014669F /* AddGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8F67D02952DB2A0014669F /* AddGoal.swift */; };
 		0E8F67D32953BEB90014669F /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8F67D22953BEB90014669F /* Camera.swift */; };
 		0E8F67D52953BF5B0014669F /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E8F67D42953BF5B0014669F /* Coordinator.swift */; };
@@ -49,6 +56,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E2298CA2A0D97880032DD4B /* NunitoSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NunitoSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		0E2298CC2A0D99E70032DD4B /* SF-Pro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro.ttf"; sourceTree = "<group>"; };
+		0E2298CE2A0D9A4E0032DD4B /* SF-Pro-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Bold.otf"; sourceTree = "<group>"; };
+		0E2298D02A0D9A830032DD4B /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
+		0E2298D22A0D9BF50032DD4B /* SF-Compact-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact-Text-Bold.otf"; sourceTree = "<group>"; };
+		0E2298D42A0D9CA20032DD4B /* SF-Compact.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Compact.ttf"; sourceTree = "<group>"; };
+		0E2298D62A0D9D0C0032DD4B /* Futura.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Futura.ttc; sourceTree = "<group>"; };
 		0E8F67D02952DB2A0014669F /* AddGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGoal.swift; sourceTree = "<group>"; };
 		0E8F67D22953BEB90014669F /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		0E8F67D42953BF5B0014669F /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -199,6 +213,13 @@
 				8C55824C29D8B041005680DC /* ColorSelector.swift */,
 				0E8F67D62953C03F0014669F /* AddMilestone.swift */,
 				8C43DB3E293032FA005B6E24 /* Tree.swift */,
+				0E2298CA2A0D97880032DD4B /* NunitoSans-BoldItalic.ttf */,
+				0E2298CC2A0D99E70032DD4B /* SF-Pro.ttf */,
+				0E2298CE2A0D9A4E0032DD4B /* SF-Pro-Text-Bold.otf */,
+				0E2298D02A0D9A830032DD4B /* SF-Pro-Text-Regular.otf */,
+				0E2298D22A0D9BF50032DD4B /* SF-Compact-Text-Bold.otf */,
+				0E2298D42A0D9CA20032DD4B /* SF-Compact.ttf */,
+				0E2298D62A0D9D0C0032DD4B /* Futura.ttc */,
 				8C070DD229D642F9006FDD7D /* Tree Subviews */,
 				0E8F67D82966A80C0014669F /* PostView.swift */,
 				8CFEC8A42929771500D81934 /* Assets.xcassets */,
@@ -284,10 +305,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E2298D32A0D9BF50032DD4B /* SF-Compact-Text-Bold.otf in Resources */,
+				0E2298CB2A0D97880032DD4B /* NunitoSans-BoldItalic.ttf in Resources */,
+				0E2298CF2A0D9A4E0032DD4B /* SF-Pro-Text-Bold.otf in Resources */,
+				0E2298CD2A0D99E70032DD4B /* SF-Pro.ttf in Resources */,
 				8CB5149D2A00B197002AC434 /* pexels-mohan-reddy-4250244-1440x2160-60fps.mp4 in Resources */,
 				8CFEC8A82929771500D81934 /* Preview Assets.xcassets in Resources */,
 				8C3DE42E2A00AD990027EED0 /* pexels-mohan-reddy-4250244-1440x2160-60fps.mov in Resources */,
+				0E2298D12A0D9A830032DD4B /* SF-Pro-Text-Regular.otf in Resources */,
+				0E2298D72A0D9D0C0032DD4B /* Futura.ttc in Resources */,
 				8CFEC8A52929771500D81934 /* Assets.xcassets in Resources */,
+				0E2298D52A0D9CA20032DD4B /* SF-Compact.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
