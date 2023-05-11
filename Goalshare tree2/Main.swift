@@ -7,9 +7,14 @@
 
 import Foundation
 import SwiftUI
+
+
+
+
 @main
 struct Goalshare_tree2App: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @State var introducing = true
     var body: some Scene {
         WindowGroup {
             Profile()
@@ -20,6 +25,10 @@ struct Goalshare_tree2App: App {
                 }.onDisappear {
                     AppDelegate.orientationLock = .all // Unlocking the rotation when leaving the view
                 }
+                .fullScreenCover(isPresented: $introducing) {
+                    IntroductionVideo()
+                        .environmentObject(MyState())
+                }
         }
     }
 }
@@ -29,3 +38,4 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         return AppDelegate.orientationLock
     }
 }
+
