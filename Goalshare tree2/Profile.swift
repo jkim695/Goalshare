@@ -10,24 +10,40 @@ import UIKit
 struct Profile: View {
     @EnvironmentObject var account: Account
     @State private var isSlideUpViewPresented = false
+    @State private var isAnimating = false
     var body: some View {
         NavigationStack {
             VStack {
-                Text("My Goals.")
-                    .font(.largeTitle)
-                Button(action: {
-                    isSlideUpViewPresented.toggle()
-                }) {
-                    Text("Add goal")
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Color.blue)
-                        .cornerRadius(10)
+                GeometryReader { geometry in
+                    HStack {
+                        Text("My Goals")
+                            .font(.largeTitle)
+                            .position(x: geometry.size.width/2, y: geometry.size.height/18)
+                        Button(action: {
+                            isSlideUpViewPresented.toggle()
+                        }) {
+                            Image(systemName: "plus")
+                                .resizable()
+                                .frame(width:25, height:25)
+                        }
+                        .position(x: geometry.size.width/2.4, y: geometry.size.height/17)
+                    }
                 }
                 GoalDisplay()
                     .padding(.top, 20.0)
             }// Hide the back button
+            .frame(maxWidth: .infinity)
             .ignoresSafeArea(.all, edges: .bottom)
+            .background(
+                ZStack {
+                    LinearGradient(gradient: Gradient(colors: [Color.yellow, Color.blue]), startPoint: .top, endPoint: .bottom)
+                }
+                .animation(Animation.easeInOut(duration: 4).repeatForever(autoreverses: true), value: isAnimating)
+                .edgesIgnoringSafeArea(.all)
+                .onAppear() {
+                    self.isAnimating = true
+                }
+            )
         }
         .fullScreenCover(isPresented: $isSlideUpViewPresented) {
         AddGoal()
@@ -36,6 +52,7 @@ struct Profile: View {
         }
     }
 }
+
 
 extension UIApplication {
     func addTapGestureRecognizer() {
