@@ -6,12 +6,16 @@ struct MilestoneChain: View {
     var body: some View {
         VStack (alignment: .center, spacing: 40) {
             ForEach(0..<goal.milestones.count, id: \.self) { index in
-                NavigationLink {
-                    PostView()
-                        .environmentObject(goal.milestones[goal.milestones.count - 1 - index])
-                } label: {
-                    MilestoneImageView()
-                        .environmentObject(goal.milestones[goal.milestones.count - 1 - index])
+                HStack {
+                    NavigationLink {
+                        PostView()
+                            .environmentObject(goal.milestones[goal.milestones.count - 1 - index])
+                    } label: {
+                        MilestoneImageView()
+                            .environmentObject(goal.milestones[goal.milestones.count - 1 - index])
+                    }
+                    Text(goal.milestones[goal.milestones.count - 1 - index].date, style: .date)
+                        .font(.system(size: 10))
                 }
             }
         }

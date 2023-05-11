@@ -74,7 +74,7 @@ struct Tree: View {
                                 .frame(maxWidth: .infinity)
                                 MilestoneChain()
                                     .environmentObject(goal)
-                                    .offset(y: 5)
+                                    .offset(x: 40, y: 5)
                             }
                         }
                     }

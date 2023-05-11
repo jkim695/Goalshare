@@ -17,19 +17,16 @@ struct MilestoneImageView: View {
         }
     }
     var body: some View {
-        HStack(alignment: .center, spacing: 25) {
-            milestone.image
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 150, height: 150)
-                .clipShape(Circle())
-                .overlay {
-                    Circle()
-                        .stroke(color, lineWidth: 4)
-                }
-            Text(milestone.date, style: .date)
-                .font(.system(size: 10))
-        }
+        milestone.image
+            .resizable()
+            .aspectRatio(contentMode: .fill)
+            .frame(width: 150, height: 150)
+            .clipShape(Circle())
+            .overlay {
+                Circle()
+                    .stroke(color, lineWidth: 4)
+            }
+        
     }
 }
 
