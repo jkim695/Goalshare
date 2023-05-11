@@ -51,6 +51,7 @@ class LoopingPlayerUIView: UIView {
 struct IntroductionVideo: View {
     @Environment(\.presentationMode) var presentationMode
     @State var currentSlide = 0
+    @State var animationDone = false
     var body: some View {
         ZStack {
             GeometryReader{ geo in
@@ -69,8 +70,9 @@ struct IntroductionVideo: View {
                     AnyView(
                         GeometryReader { geometry in
                             VStack {
-                                if (currentSlide == 1) {
+                                if (currentSlide == 1 || animationDone) {
                                     GradualTrimAnimation(backgroundOpacity: 0, animationProgress: 0, animationProgress2: 0).position(x:geometry.size.width/2, y: geometry.size.height/2.3)
+                                        .onAppear { animationDone = true }
                                 }
                                 else {
                                     GradualTrimAnimation(backgroundOpacity: 0, animationProgress: 0, animationProgress2: 0)
