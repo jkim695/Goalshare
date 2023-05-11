@@ -13,8 +13,8 @@ struct Profile: View {
     @State private var isAnimating = false
     var body: some View {
         NavigationStack {
-            VStack {
-                GeometryReader { geometry in
+            GeometryReader { geometry in
+                VStack {
                     HStack {
                         Text("My Goals")
                             .font(.largeTitle)
@@ -28,9 +28,10 @@ struct Profile: View {
                         }
                         .position(x: geometry.size.width/2.4, y: geometry.size.height/17)
                     }
+                    GoalDisplay()
+                        .padding(.top, 20.0)
+                        .position(x: geometry.size.width/2, y: -geometry.size.height/6)
                 }
-                GoalDisplay()
-                    .padding(.top, 20.0)
             }// Hide the back button
             .frame(maxWidth: .infinity)
             .ignoresSafeArea(.all, edges: .bottom)
@@ -38,11 +39,8 @@ struct Profile: View {
                 ZStack {
                     LinearGradient(gradient: Gradient(colors: [Color.yellow, Color.blue]), startPoint: .top, endPoint: .bottom)
                 }
-                .animation(Animation.easeInOut(duration: 4).repeatForever(autoreverses: true), value: isAnimating)
                 .edgesIgnoringSafeArea(.all)
-                .onAppear() {
-                    self.isAnimating = true
-                }
+                
             )
         }
         .fullScreenCover(isPresented: $isSlideUpViewPresented) {
