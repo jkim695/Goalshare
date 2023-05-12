@@ -35,6 +35,7 @@
 		8C7A0E3529D54D1E0025CD76 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7A0E3429D54D1E0025CD76 /* Account.swift */; };
 		8C7A0E3829D550930025CD76 /* GoalDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7A0E3729D550930025CD76 /* GoalDisplay.swift */; };
 		8C7FD53329DF576C0036266E /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 8C7FD53229DF576C0036266E /* SQLite */; };
+		8CA912312A0E963800F390A7 /* TreeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA912302A0E963800F390A7 /* TreeTabView.swift */; };
 		8CB5149D2A00B197002AC434 /* pexels-mohan-reddy-4250244-1440x2160-60fps.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8CB5149C2A00B197002AC434 /* pexels-mohan-reddy-4250244-1440x2160-60fps.mp4 */; };
 		8CC6512D29EA803C00D534AD /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8CC6512C29EA803C00D534AD /* FirebaseAnalytics */; };
 		8CC6512F29EA803C00D534AD /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8CC6512E29EA803C00D534AD /* FirebaseAnalyticsSwift */; };
@@ -76,6 +77,7 @@
 		8C7A0E2F29D54B270025CD76 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		8C7A0E3429D54D1E0025CD76 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		8C7A0E3729D550930025CD76 /* GoalDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDisplay.swift; sourceTree = "<group>"; };
+		8CA912302A0E963800F390A7 /* TreeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeTabView.swift; sourceTree = "<group>"; };
 		8CB5149C2A00B197002AC434 /* pexels-mohan-reddy-4250244-1440x2160-60fps.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pexels-mohan-reddy-4250244-1440x2160-60fps.mp4"; sourceTree = "<group>"; };
 		8CC6513429F2FE4200D534AD /* KeyboardObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardObserver.swift; sourceTree = "<group>"; };
 		8CC6513629F88E1E00D534AD /* Gesture_Recognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gesture_Recognizer.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				8C55824C29D8B041005680DC /* ColorSelector.swift */,
 				0E8F67D62953C03F0014669F /* AddMilestone.swift */,
 				8C43DB3E293032FA005B6E24 /* Tree.swift */,
+				8CA912302A0E963800F390A7 /* TreeTabView.swift */,
 				8C070DD229D642F9006FDD7D /* Tree Subviews */,
 				0E8F67D82966A80C0014669F /* PostView.swift */,
 				8CFEC8A42929771500D81934 /* Assets.xcassets */,
@@ -320,6 +323,7 @@
 				0E8F67D92966A80C0014669F /* PostView.swift in Sources */,
 				0E8F67D52953BF5B0014669F /* Coordinator.swift in Sources */,
 				8C070DD429D6431A006FDD7D /* MilestoneImageView.swift in Sources */,
+				8CA912312A0E963800F390A7 /* TreeTabView.swift in Sources */,
 				8C070DD129D64296006FDD7D /* LineView.swift in Sources */,
 				8C675E582A00E6C1002247B1 /* SlideView.swift in Sources */,
 				0E8F67D72953C03F0014669F /* AddMilestone.swift in Sources */,
