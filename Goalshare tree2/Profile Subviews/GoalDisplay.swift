@@ -18,8 +18,8 @@ struct GoalDisplay: View {
                         Spacer()
                         ForEach(0..<2) { columnIndex in
                             if rowIndex * 2 + columnIndex < account.goals.count {
-                                ProfileBubbleView()
-                                    .environmentObject(account.goals[rowIndex * 2 + columnIndex])
+                                ProfileBubbleView(index: rowIndex * 2 + columnIndex)
+                                    .environmentObject(account)
                             }
                         }
                         Spacer()
@@ -41,7 +41,7 @@ struct GoalDisplay_Previews: PreviewProvider {
             GoalDisplay()
                 .environmentObject(account)
             Button {
-                account.goals.append(Goal(name: "1616161616161616", date: Date(), color: Color.red))
+                account.goals.append(Goal(name: "Filler", date: Date(), color: Color.red))
             } label: {
                 Text("add goal")
             }
