@@ -7,16 +7,18 @@
 
 import Foundation
 import SwiftUI
-
-
-
+import Firebase
 
 @main
 struct Goalshare_tree2App: App {
+    init () {
+        FirebaseApp.configure()
+    }
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @State var introducing = true
     var body: some Scene {
         WindowGroup {
+//            LoginView()
             Profile()
                 .environmentObject(Account(username: "placeholder", password: "placeholder"))
                 .onAppear {
