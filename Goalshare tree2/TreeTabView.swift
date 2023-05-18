@@ -41,15 +41,10 @@ struct TreeTabView: View {
                                 .resizable()
                                 .frame(width: 23, height: 32)
                         }
-                        Button(action: {
-                            addingMilestone = true
-                        }) {
+                        NavigationLink(destination: AddMilestone().environmentObject(account.goals[currentSlide])) {
                             Image(systemName: "plus")
                                 .resizable()
                                 .frame(width:25, height:25)
-                        }
-                        .navigationDestination(for: Int.self) { int in
-                            AddMilestone().environmentObject(account.goals[currentSlide])
                         }
                     }
                 }
