@@ -18,7 +18,7 @@ struct GoalDisplay: View {
                         Spacer()
                         ForEach(0..<2) { columnIndex in
                             if rowIndex * 2 + columnIndex < account.goals.count {
-                                ProfileBubbleView(index: rowIndex * 2 + columnIndex)
+                                GoalView(index: rowIndex * 2 + columnIndex)
                                     .environmentObject(account)
                             }
                         }
@@ -28,7 +28,7 @@ struct GoalDisplay: View {
 
                 Spacer()
             }
-            .offset(y: 5)
+            .offset(y: 20)
             .frame(maxHeight: .infinity)
         }
     }

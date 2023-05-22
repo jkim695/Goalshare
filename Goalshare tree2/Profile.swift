@@ -17,13 +17,6 @@ struct Profile: View {
         NavigationStack {
                 VStack {
                     HStack {
-                        Button {
-                            editing.toggle()
-                        } label: {
-                            Text("edit")
-                                .padding(.leading, 10)
-                        }
-
                         Spacer()
                         Text("My Goals")
                             .font(.largeTitle)
