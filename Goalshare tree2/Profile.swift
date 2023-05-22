@@ -12,14 +12,22 @@ struct Profile: View {
     @EnvironmentObject var account: Account
     @State private var isSlideUpViewPresented = false
     @State private var isAnimating = false
+    @State private var editing = false
     var body: some View {
         NavigationStack {
-            GeometryReader { geometry in
                 VStack {
                     HStack {
+                        Button {
+                            editing.toggle()
+                        } label: {
+                            Text("edit")
+                                .padding(.leading, 10)
+                        }
+
+                        Spacer()
                         Text("My Goals")
                             .font(.largeTitle)
-                            .position(x: geometry.size.width/2, y: geometry.size.height/18)
+                        Spacer()
                         Button(action: {
                             isSlideUpViewPresented.toggle()
                         }) {
@@ -27,13 +35,11 @@ struct Profile: View {
                                 .resizable()
                                 .frame(width:25, height:25)
                         }
-                        .position(x: geometry.size.width/2.4, y: geometry.size.height/17)
+                        .padding(.trailing, 10)
                     }
                     GoalDisplay()
                         .padding(.top, 20.0)
-                        .position(x: geometry.size.width/2, y: -geometry.size.height/6)
                 }
-            }// Hide the back button
             .frame(maxWidth: .infinity)
             .ignoresSafeArea(.all, edges: .bottom)
             .background(
@@ -48,6 +54,10 @@ struct Profile: View {
         AddGoal()
             .environmentObject(account)
             .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
+        }
+        .fullScreenCover(isPresented: $editing) {
+            GoalSelector()
+                .environmentObject(account)
         }
     }
 }
