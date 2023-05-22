@@ -8,16 +8,17 @@
 import SwiftUI
 
 struct ProfileBubbleView: View {
-    @EnvironmentObject var goal: Goal
+    @EnvironmentObject var account: Account
+    @State var index: Int
     var body: some View {
         VStack {
             NavigationLink {
-                Tree()
-                    .environmentObject(goal)
+                TreeTabView(currentSlide: index)
+                    .environmentObject(account)
             }
             label: {
                 Circle()
-                    .fill(goal.color)
+                    .fill(account.goals[index].color)
                     .overlay(
                         Circle()
                             .stroke(.black, lineWidth: 2)
@@ -25,7 +26,7 @@ struct ProfileBubbleView: View {
                     .frame(width: 110, height: 110)
                 
             }
-            Text(goal.name)
+            Text(account.goals[index].name)
                 .font(.system(size: 13))
         }
     }
@@ -33,7 +34,9 @@ struct ProfileBubbleView: View {
 
 struct ProfileBubbleView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileBubbleView()
-            .environmentObject(Goal(name: "Win Wimbledon", date: Date(), color: Color.red))
+        let account = Account(username: "", password: "")
+        account.goals.append(Goal(name: "this is a goal", date: Date(), color: .red))
+        return ProfileBubbleView(index: 0)
+            .environmentObject(account)
     }
 }

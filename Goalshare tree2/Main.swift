@@ -7,16 +7,21 @@
 
 import Foundation
 import SwiftUI
-
-
-
+import Firebase
 
 @main
 struct Goalshare_tree2App: App {
+    init () {
+        FirebaseApp.configure()
+    }
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @State var introducing = true
     var body: some Scene {
-        WindowGroup {
+        let account = Account(username: "", password: "")
+        account.goals.append(Goal(name: "win", date: Date(), color: Color.red))
+        account.goals.append(Goal(name: "win", date: Date(), color: Color.red))
+        account.goals.append(Goal(name: "win", date: Date(), color: Color.red))
+        return WindowGroup {
             Profile()
                 .environmentObject(Account(username: "placeholder", password: "placeholder"))
                 .onAppear {

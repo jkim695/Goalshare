@@ -65,9 +65,7 @@ struct Tree: View {
                             Spacer()
                         }
                     }
-                    .padding(.trailing)
-                    
-                    
+                    .padding(.trailing)                
                     ScrollView(.vertical) {
                         if (goal.milestones.isEmpty) {
                             EmptyMilestoneMessage()
