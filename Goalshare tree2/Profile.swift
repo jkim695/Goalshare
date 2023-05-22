@@ -7,7 +7,6 @@
 
 import SwiftUI
 import UIKit
-
 struct Profile: View {
     @EnvironmentObject var account: Account
     @State private var isSlideUpViewPresented = false
