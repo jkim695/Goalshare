@@ -9,6 +9,11 @@ import SwiftUI
 import FirebaseAnalyticsSwift
 
 struct Tree: View {
+    init() {
+           let fontURL = Bundle.main.url(forResource: "Futura", withExtension: "ttc")
+           var error: Unmanaged<CFError>?
+           CTFontManagerRegisterFontsForURL(fontURL! as CFURL, .process, &error)
+       }
     @EnvironmentObject var goal: Goal
     @Environment(\.presentationMode) var presentationMode
     @State private var offset: CGFloat = 0
@@ -19,13 +24,48 @@ struct Tree: View {
             ZStack {
                 Color.yellow.edgesIgnoringSafeArea(.all) // Set the background color to yellow
                 VStack {
-                    HStack (alignment: .center) {
-                        Spacer()
-                        Text(goal.name)
-                            .font(.largeTitle.bold())
-                        Spacer()
+                    ZStack {
+                        HStack {
+                            Button {
+                                presentationMode.wrappedValue.dismiss()
+                            } label: {
+                                Image(systemName: "arrowshape.left.fill")
+                                    .resizable()
+                                    .frame(width: 18, height: 15)
+                                    .foregroundColor(.gray)
+                                    .padding()
+                            }
+                            Spacer()
+                        }
+                        HStack (spacing: 20) {
+                            Spacer()
+                            ShareLink(item: /*@START_MENU_TOKEN@*/URL(string: "https://developer.apple.com/xcode/swiftui")!/*@END_MENU_TOKEN@*/)
+                            {
+                                Image(systemName: "square.and.arrow.up")
+                                    .resizable()
+                                    .frame(width: 15, height: 20)
+                                    .foregroundColor(.gray)
+                            }
+                            Button(action: {
+                                addingMilestone = true
+                            }) {
+                                Image(systemName: "plus")
+                                    .resizable()
+                                    .frame(width:15, height:15)
+                                    .foregroundColor(.gray)
+                            }
+                            .navigationDestination(for: Int.self) { int in
+                                AddMilestone().environmentObject(goal)
+                            }
+                        }
+                        HStack (alignment: .center) {
+                            Spacer()
+                            Text(goal.name)
+                                .font(.custom("Futura", size: 20))
+                            Spacer()
+                        }
                     }
-                    
+                    .padding(.trailing)                
                     ScrollView(.vertical) {
                         if (goal.milestones.isEmpty) {
                             EmptyMilestoneMessage()
