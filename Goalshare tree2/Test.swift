@@ -6,6 +6,7 @@
 //
 import SwiftUI
 struct ContentView: View {
+    @EnvironmentObject var goal: Goal
     @State private var isPressed = false
     @State private var showSubCircles = false
     @State private var isLongPress = false
@@ -13,6 +14,8 @@ struct ContentView: View {
     @State private var changeColor = false
     @State private var changeColor1 = false
     @State private var changeColor2 = false
+    @State private var link1 = false
+    @State private var link2 = false
     
     var body: some View {
         NavigationView {
@@ -39,10 +42,13 @@ struct ContentView: View {
                     .foregroundColor(.blue)
                     .scaleEffect(isPressed ? 1.0 : 0.9)
                     .animation(.easeInOut, value: isPressed)
-                NavigationLink(destination: Text("New View"), isActive: $dragThresholdPassed) {
-                    EmptyView()
-                }
             }
+            .fullScreenCover(isPresented: $link1, content: {
+                <#code#>
+            })
+            .fullScreenCover(isPresented: $link2, content: {
+                <#code#>
+            })
             .animation(.easeInOut, value: changeColor)
             .gesture(
                 LongPressGesture(minimumDuration: 0.5)
@@ -79,8 +85,14 @@ struct ContentView: View {
                             isPressed = false
                             isLongPress = false
                             showSubCircles = false
-                            if abs(value.translation.height) > 50 {
-                                dragThresholdPassed = true
+                            if abs(value.translation.height) > 50 && value.translation.width > 30 {
+                                if value.translation.height > 0 {
+                                    link1 = true
+                                }
+                                else {
+                                    link2 = true
+                                }
+                                
                             }
                         }
                     )
