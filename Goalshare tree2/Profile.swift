@@ -16,19 +16,40 @@ struct Profile: View {
     var body: some View {
         NavigationStack {
                 VStack {
-                    HStack {
+                    HStack(alignment: .top) {
+                        VStack(alignment: .leading) {
+                            Text("My")
+                                .font(Font.custom(
+                                    "Lexend-SemiBold",
+                                    fixedSize: 36))
+                            Text("Goals.")
+                                .font(Font.custom(
+                                    "Lexend-SemiBold",
+                                    fixedSize: 50))
+                        }
+                        .padding(.leading, 30)
                         Spacer()
-                        Text("My Goals")
-                            .font(.largeTitle)
-                        Spacer()
+                        Image(systemName: "gearshape.fill")
+                            .resizable()
+                            .frame(width:25, height: 25)
+                            .foregroundColor(Color(red: 0.2, green: 0.2, blue: 0.2))
+                            .padding(.top, 34)
+                            .padding(.trailing, 13)
                         Button(action: {
                             isSlideUpViewPresented.toggle()
                         }) {
-                            Image(systemName: "plus")
-                                .resizable()
-                                .frame(width:25, height:25)
+                            ZStack {
+                                Circle()
+                                    .frame(width:55, height: 55)
+                                    .foregroundColor(Color(red: 0.2, green: 0.2, blue: 0.2))
+                                Image(systemName: "plus")
+                                    .resizable()
+                                    .foregroundColor(.yellow)
+                                    .frame(width:30, height:30)
+                            }
                         }
-                        .padding(.trailing, 10)
+                        .padding(.trailing, 30)
+                        .padding(.top, 20)
                     }
                     GoalDisplay()
                         .padding(.top, 20.0)
@@ -37,7 +58,7 @@ struct Profile: View {
             .ignoresSafeArea(.all, edges: .bottom)
             .background(
                 ZStack {
-                    LinearGradient(gradient: Gradient(colors: [Color.yellow, Color.blue]), startPoint: .top, endPoint: .bottom)
+                    LinearGradient(gradient: Gradient(colors: [Color(red: 0.998, green: 0.998, blue: 0.99607), Color(red: 0.898, green: 0.8588, blue: 0.79607)]), startPoint: .top, endPoint: .bottom)
                 }
                 .edgesIgnoringSafeArea(.all)
                 

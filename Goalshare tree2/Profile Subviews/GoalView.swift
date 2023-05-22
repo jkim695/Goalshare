@@ -28,30 +28,30 @@ struct GoalView: View {
                         .frame(width: 50, height: 50)
                         .foregroundColor(changeColor2 ? .purple : .red)
                         .scaleEffect(changeColor2 ? 1.0 : 0.9)
-                        .offset(x: 40, y: -40)
+                        .offset(x: 62, y: -62)
                         .opacity(showSubCircles ? 1 : 0)
                         .animation(.easeInOut(duration: 0.25), value: showSubCircles)
                     Image(systemName: "plus")
                         .resizable()
                         .frame(width:20, height: 20)
-                        .offset(x: 45.5, y: -45.5)
+                        .offset(x: 70.5, y: -70.5)
                         .opacity(showSubCircles ? 1 : 0)
-                        .scaleEffect(changeColor2 ? 1.0 : 0.9)
+                        .scaleEffect(changeColor2 ? 0.95 : 0.9)
                     Circle()
                         .frame(width: 50, height: 50)
                         .foregroundColor(changeColor1 ? .purple : .red)
                         .scaleEffect(changeColor1 ? 1.0 : 0.9)
-                        .offset(x: 40, y: 40)
+                        .offset(x: 62, y: 62)
                         .opacity(showSubCircles ? 1 : 0)
                         .animation(.easeInOut(duration: 0.25), value: showSubCircles)
                     Image(systemName: "pencil")
                         .resizable()
                         .frame(width:22, height: 25)
-                        .offset(x: 44.5, y: 44.5)
+                        .offset(x: 70.5, y: 70.5)
                         .opacity(showSubCircles ? 1 : 0)
-                        .scaleEffect(changeColor1 ? 1.0 : 0.9)
+                        .scaleEffect(changeColor1 ? 0.95 : 0.9)
                     Circle()
-                        .frame(width: 100, height: 100)
+                        .frame(width: 161, height: 161)
                         .foregroundColor(account.goals[index].color)
                         .scaleEffect(isPressed ? 1.0 : 0.9)
                         .overlay(
@@ -60,11 +60,13 @@ struct GoalView: View {
                                 .scaleEffect(isPressed ? 1.0 : 0.9)
                         )
                         .animation(.easeInOut, value: isPressed)
-                    NavigationLink(destination: TreeTabView(currentSlide: 0).environmentObject(account), isActive: $isTapped) {
+                        .shadow(color: Color.black.opacity(0.4), radius: 3.3, x: 0, y: 2)
+                    NavigationLink(destination: TreeTabView(currentSlide: index).environmentObject(account), isActive: $isTapped) {
                         EmptyView()
                     }
                 }
                 Text(account.goals[index].name)
+                    .font(.custom("Lexend-Regular", size: 16))
             }
             .fullScreenCover(isPresented: $link1, content: {
                 EditGoalView()
@@ -138,7 +140,7 @@ struct GoalView: View {
 struct GoalView_preview: PreviewProvider {
     static var previews: some View {
         let account = Account(username: "", password: "")
-        account.goals.append(Goal(name: "win", date: Date(), color: Color.green))
+        account.goals.append(Goal(name: "Win Wimbledon and Win everything", date: Date(), color: Color.green))
         account.goals.append(Goal(name: "win", date: Date(), color: Color.red))
         account.goals.append(Goal(name: "win", date: Date(), color: Color.red))
         return GoalView(index: 0)
