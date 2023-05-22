@@ -7,28 +7,31 @@
 
 import Foundation
 import SwiftUI
-
-
-
+import Firebase
 
 @main
 struct Goalshare_tree2App: App {
+    init () {
+        FirebaseApp.configure()
+    }
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @State var introducing = true
     var body: some Scene {
         WindowGroup {
-            Profile()
-                .environmentObject(Account(username: "placeholder", password: "placeholder"))
-                .onAppear {
-                    UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation") // Forcing the rotation to portrait
-                    AppDelegate.orientationLock = .portrait // And making sure it stays that way
-                }.onDisappear {
-                    AppDelegate.orientationLock = .all // Unlocking the rotation when leaving the view
-                }
-                .fullScreenCover(isPresented: $introducing) {
-                    IntroductionVideo()
-                        .environmentObject(MyState())
-                }
+//            LoginView()
+            ContentView()
+//            Profile()
+//                .environmentObject(Account(username: "placeholder", password: "placeholder"))
+//                .onAppear {
+//                    UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation") // Forcing the rotation to portrait
+//                    AppDelegate.orientationLock = .portrait // And making sure it stays that way
+//                }.onDisappear {
+//                    AppDelegate.orientationLock = .all // Unlocking the rotation when leaving the view
+//                }
+//                .fullScreenCover(isPresented: $introducing) {
+//                    IntroductionVideo()
+//                        .environmentObject(MyState())
+//                }
         }
     }
 }
