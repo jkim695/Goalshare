@@ -29,6 +29,7 @@
 		8C3EC7BA2954EF03005DC346 /* Milestone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3EC7B92954EF03005DC346 /* Milestone.swift */; };
 		8C43DB3F293032FA005B6E24 /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43DB3E293032FA005B6E24 /* Tree.swift */; };
 		8C55824D29D8B041005680DC /* ColorSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C55824C29D8B041005680DC /* ColorSelector.swift */; };
+		8C612C062A17F52A00B258B0 /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C612C052A17F52A00B258B0 /* Test.swift */; };
 		8C675E582A00E6C1002247B1 /* SlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C675E562A00E663002247B1 /* SlideView.swift */; };
 		8C675E5A2A00E6D9002247B1 /* HorizontalSlideshow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C675E592A00E6D9002247B1 /* HorizontalSlideshow.swift */; };
 		8C7A0E3029D54B270025CD76 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7A0E2F29D54B270025CD76 /* Main.swift */; };
@@ -74,6 +75,7 @@
 		8C3EC7B92954EF03005DC346 /* Milestone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Milestone.swift; sourceTree = "<group>"; };
 		8C43DB3E293032FA005B6E24 /* Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
 		8C55824C29D8B041005680DC /* ColorSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelector.swift; sourceTree = "<group>"; };
+		8C612C052A17F52A00B258B0 /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		8C675E562A00E663002247B1 /* SlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideView.swift; sourceTree = "<group>"; };
 		8C675E592A00E6D9002247B1 /* HorizontalSlideshow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalSlideshow.swift; sourceTree = "<group>"; };
 		8C7A0E2F29D54B270025CD76 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 				8C675E562A00E663002247B1 /* SlideView.swift */,
 				8C675E592A00E6D9002247B1 /* HorizontalSlideshow.swift */,
 				8CA912322A101D5B00F390A7 /* LoginView.swift */,
+				8C612C052A17F52A00B258B0 /* Test.swift */,
 				8CA912342A101F6F00F390A7 /* GoogleService-Info.plist */,
 				8CDA9B792A017A41006AF263 /* GradualTrimAnimation.swift */,
 				8C7A0E3229D54B8F0025CD76 /* Tools */,
@@ -321,6 +324,7 @@
 				8C3EC7BA2954EF03005DC346 /* Milestone.swift in Sources */,
 				8C7A0E3829D550930025CD76 /* GoalDisplay.swift in Sources */,
 				8C070DD829D64461006FDD7D /* EmptyMilestoneMessage.swift in Sources */,
+				8C612C062A17F52A00B258B0 /* Test.swift in Sources */,
 				0E8F67D32953BEB90014669F /* Camera.swift in Sources */,
 				8CC6513529F2FE4200D534AD /* KeyboardObserver.swift in Sources */,
 				8C2A2489292DB03B008E2345 /* PapaClass.swift in Sources */,
@@ -473,6 +477,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Goalshare tree2/Preview Content\"";
@@ -491,8 +496,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.josh.Goalshare;
+				PRODUCT_BUNDLE_IDENTIFIER = com.joshkim.Goalshare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -505,6 +511,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Goalshare tree2/Preview Content\"";
@@ -523,8 +530,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.josh.Goalshare;
+				PRODUCT_BUNDLE_IDENTIFIER = com.joshkim.Goalshare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
