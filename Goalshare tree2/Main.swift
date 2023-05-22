@@ -18,19 +18,20 @@ struct Goalshare_tree2App: App {
     @State var introducing = true
     var body: some Scene {
         WindowGroup {
-//            LoginView()
-            Profile()
-                .environmentObject(Account(username: "placeholder", password: "placeholder"))
-                .onAppear {
-                    UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation") // Forcing the rotation to portrait
-                    AppDelegate.orientationLock = .portrait // And making sure it stays that way
-                }.onDisappear {
-                    AppDelegate.orientationLock = .all // Unlocking the rotation when leaving the view
-                }
-                .fullScreenCover(isPresented: $introducing) {
-                    IntroductionVideo()
-                        .environmentObject(MyState())
-                }
+            GoalView()
+                .environmentObject(Goal(name: "win", date: Date(), color: .red))
+//            Profile()
+//                .environmentObject(Account(username: "placeholder", password: "placeholder"))
+//                .onAppear {
+//                    UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation") // Forcing the rotation to portrait
+//                    AppDelegate.orientationLock = .portrait // And making sure it stays that way
+//                }.onDisappear {
+//                    AppDelegate.orientationLock = .all // Unlocking the rotation when leaving the view
+//                }
+//                .fullScreenCover(isPresented: $introducing) {
+//                    IntroductionVideo()
+//                        .environmentObject(MyState())
+//                }
         }
     }
 }
