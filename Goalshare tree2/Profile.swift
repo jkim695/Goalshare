@@ -51,8 +51,8 @@ struct Profile: View {
                         .padding(.trailing, 30)
                         .padding(.top, 20)
                     }
+                    .frame(maxWidth: .infinity)
                     GoalDisplay()
-                        .padding(.top, 20.0)
                 }
             .frame(maxWidth: .infinity)
             .ignoresSafeArea(.all, edges: .bottom)

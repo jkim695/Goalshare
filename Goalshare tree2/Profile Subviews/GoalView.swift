@@ -67,6 +67,7 @@ struct GoalView: View {
                 }
                 Text(account.goals[index].name)
                     .font(.custom("Lexend-Regular", size: 16))
+                    .offset(y: -3)
             }
             .fullScreenCover(isPresented: $link1, content: {
                 EditGoalView()
