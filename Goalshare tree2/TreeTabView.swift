@@ -21,34 +21,6 @@ struct TreeTabView: View {
                 let slides = Array(stride(from: 0, to: rows, by: 1)).map { num -> AnyView in
                     AnyView(Tree().environmentObject(account.goals[num]))
                 }
-                ZStack {
-                    HStack {
-                        Button {
-                            presentationMode.wrappedValue.dismiss()
-                        } label: {
-                            Image(systemName: "house.circle")
-                                .resizable()
-                                .frame(width: 32, height: 32)
-                                .padding()
-                        }
-                        Spacer()
-                    }
-                    HStack (spacing: 20) {
-                        Spacer()
-                        ShareLink(item: /*@START_MENU_TOKEN@*/URL(string: "https://developer.apple.com/xcode/swiftui")!/*@END_MENU_TOKEN@*/)
-                        {
-                            Image(systemName: "square.and.arrow.up")
-                                .resizable()
-                                .frame(width: 23, height: 32)
-                        }
-                        NavigationLink(destination: AddMilestone().environmentObject(account.goals[currentSlide])) {
-                            Image(systemName: "plus")
-                                .resizable()
-                                .frame(width:25, height:25)
-                        }
-                    }
-                }
-                .padding(.trailing)
                 HorizontalSlideshow(slides: slides, currentSlide: $currentSlide)
                     .frame(height: 1000)
             }
