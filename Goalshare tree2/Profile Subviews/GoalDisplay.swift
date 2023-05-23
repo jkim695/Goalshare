@@ -33,7 +33,7 @@ struct GoalDisplay: View {
 
 struct GoalDisplay_Previews: PreviewProvider {
     static var previews: some View {
-        var account: Account = Account(username: "", password: "")
+        var account: Account = Account()
         VStack {
             GoalDisplay()
                 .environmentObject(account)

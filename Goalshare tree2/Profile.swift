@@ -111,6 +111,6 @@ extension View {
 struct Profile_previews: PreviewProvider {
     static var previews: some View {
         Profile()
-            .environmentObject(Account(username: "Filler", password: "Filler"))
+            .environmentObject(Account())
     }
 }

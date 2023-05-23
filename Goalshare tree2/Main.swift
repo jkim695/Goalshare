@@ -17,13 +17,13 @@ struct Goalshare_tree2App: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @State var introducing = true
     var body: some Scene {
-        let account = Account(username: "", password: "")
+        let account = Account()
         account.goals.append(Goal(name: "win", date: Date(), color: Color.red))
         account.goals.append(Goal(name: "win", date: Date(), color: Color.red))
         account.goals.append(Goal(name: "win", date: Date(), color: Color.red))
         return WindowGroup {
             Profile()
-                .environmentObject(Account(username: "placeholder", password: "placeholder"))
+                .environmentObject(Account())
                 .onAppear {
                     UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation") // Forcing the rotation to portrait
                     AppDelegate.orientationLock = .portrait // And making sure it stays that way

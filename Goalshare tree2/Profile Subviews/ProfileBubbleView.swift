@@ -34,7 +34,7 @@ struct ProfileBubbleView: View {
 
 struct ProfileBubbleView_Previews: PreviewProvider {
     static var previews: some View {
-        let account = Account(username: "", password: "")
+        let account = Account()
         account.goals.append(Goal(name: "this is a goal", date: Date(), color: .red))
         return ProfileBubbleView(index: 0)
             .environmentObject(account)

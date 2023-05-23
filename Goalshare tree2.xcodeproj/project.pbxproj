@@ -54,6 +54,8 @@
 		8C7A0E3529D54D1E0025CD76 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7A0E3429D54D1E0025CD76 /* Account.swift */; };
 		8C7A0E3829D550930025CD76 /* GoalDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7A0E3729D550930025CD76 /* GoalDisplay.swift */; };
 		8C7FD53329DF576C0036266E /* SQLite in Frameworks */ = {isa = PBXBuildFile; productRef = 8C7FD53229DF576C0036266E /* SQLite */; };
+		8CA43D462A1CA9D1004E8336 /* Goalshare-tree2-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C6933202A1BEEDA00C73F23 /* Goalshare-tree2-Info.plist */; };
+		8CA43D482A1CAA6E004E8336 /* Goalshare-tree2-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8CA43D472A1CAA6E004E8336 /* Goalshare-tree2-Info.plist */; };
 		8CA912312A0E963800F390A7 /* TreeTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA912302A0E963800F390A7 /* TreeTabView.swift */; };
 		8CA912332A101D5B00F390A7 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA912322A101D5B00F390A7 /* LoginView.swift */; };
 		8CA912352A101F6F00F390A7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8CA912342A101F6F00F390A7 /* GoogleService-Info.plist */; };
@@ -121,6 +123,7 @@
 		8C7A0E2F29D54B270025CD76 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		8C7A0E3429D54D1E0025CD76 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		8C7A0E3729D550930025CD76 /* GoalDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDisplay.swift; sourceTree = "<group>"; };
+		8CA43D472A1CAA6E004E8336 /* Goalshare-tree2-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Goalshare-tree2-Info.plist"; sourceTree = "<group>"; };
 		8CA912302A0E963800F390A7 /* TreeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeTabView.swift; sourceTree = "<group>"; };
 		8CA912322A101D5B00F390A7 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		8CA912342A101F6F00F390A7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -252,6 +255,7 @@
 		8CFEC8942929771400D81934 = {
 			isa = PBXGroup;
 			children = (
+				8CA43D472A1CAA6E004E8336 /* Goalshare-tree2-Info.plist */,
 				8C2B2F6829D8C71500D07A99 /* slideup transition reference */,
 				8C547FAB29A718AD00B5EB2F /* Stuff for later */,
 				8CFEC89F2929771400D81934 /* Goalshare tree2 */,
@@ -395,6 +399,7 @@
 				8C69331C2A1BED5E00C73F23 /* Lexend-Bold.ttf in Resources */,
 				8CFEC8A82929771500D81934 /* Preview Assets.xcassets in Resources */,
 				8C6933192A1BED5E00C73F23 /* Lexend-Thin.ttf in Resources */,
+				8CA43D462A1CA9D1004E8336 /* Goalshare-tree2-Info.plist in Resources */,
 				8C69331E2A1BED5E00C73F23 /* Lexend-VariableFont_wght.ttf in Resources */,
 				8CA912352A101F6F00F390A7 /* GoogleService-Info.plist in Resources */,
 				8C3DE42E2A00AD990027EED0 /* pexels-mohan-reddy-4250244-1440x2160-60fps.mov in Resources */,
@@ -403,6 +408,7 @@
 				8C69331B2A1BED5E00C73F23 /* Lexend-Medium.ttf in Resources */,
 				8C6933142A1BED5E00C73F23 /* Lexend-Regular.ttf in Resources */,
 				8C6933182A1BED5E00C73F23 /* Lexend-ExtraLight.ttf in Resources */,
+				8CA43D482A1CAA6E004E8336 /* Goalshare-tree2-Info.plist in Resources */,
 				8CFEC8A52929771500D81934 /* Assets.xcassets in Resources */,
 				0E2298D52A0D9CA20032DD4B /* SF-Compact.ttf in Resources */,
 				8C6933172A1BED5E00C73F23 /* Lexend-ExtraBold.ttf in Resources */,

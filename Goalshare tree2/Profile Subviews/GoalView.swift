@@ -140,7 +140,7 @@ struct GoalView: View {
 
 struct GoalView_preview: PreviewProvider {
     static var previews: some View {
-        let account = Account(username: "", password: "")
+        let account = Account()
         account.goals.append(Goal(name: "Win Wimbledon and Win everything", date: Date(), color: Color.green))
         account.goals.append(Goal(name: "win", date: Date(), color: Color.red))
         account.goals.append(Goal(name: "win", date: Date(), color: Color.red))

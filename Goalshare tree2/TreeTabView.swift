@@ -32,7 +32,7 @@ struct TreeTabView: View {
 
 struct TreeTabView_Previews: PreviewProvider {
     static var previews: some View {
-        let account2 = Account(username: "", password: "")
+        let account2 = Account()
         account2.goals.append(contentsOf: [Goal(name: "goal1", date: Date(), color: .red), Goal(name: "goal2", date: Date(), color: .blue)])
         return VStack {
             TreeTabView(currentSlide: 0)

@@ -140,6 +140,6 @@ struct AddGoal: View {
 struct AddGoal_Previews: PreviewProvider {
     static var previews: some View {
         AddGoal()
-            .environmentObject(Account(username: "", password: ""))
+            .environmentObject(Account())
     }
 }

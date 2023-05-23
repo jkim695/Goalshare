@@ -9,8 +9,6 @@ import Foundation
 import SwiftUI
 import Combine
 class Account: ObservableObject {
-    @Published var username: String
-    @Published var password: String
     @Published var goals: [Goal] {
             didSet {
                 for goal in goals {
@@ -22,9 +20,7 @@ class Account: ObservableObject {
             }
         }
     private var cancellables: Set<AnyCancellable> = []
-    init(username: String, password: String) {
-        self.username = username
-        self.password = password
+    init() {
         self.goals = []
     }
 }

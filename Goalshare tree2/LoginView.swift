@@ -15,7 +15,7 @@ struct LoginView: View {
     var body: some View {
         if userIsLoggedIn {
             Profile()
-                .environmentObject(Account(username: "", password: ""))
+                .environmentObject(Account())
         }
         else {
             content
