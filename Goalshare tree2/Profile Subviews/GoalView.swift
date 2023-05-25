@@ -50,17 +50,25 @@ struct GoalView: View {
                         .offset(x: 70.5, y: 70.5)
                         .opacity(showSubCircles ? 1 : 0)
                         .scaleEffect(changeColor1 ? 0.95 : 0.9)
-                    Circle()
-                        .frame(width: 161, height: 161)
-                        .foregroundColor(account.goals[index].color)
-                        .scaleEffect(isPressed ? 1.0 : 0.9)
-                        .overlay(
-                            Circle()
-                                .stroke(.black, lineWidth: 2)
-                                .scaleEffect(isPressed ? 1.0 : 0.9)
-                        )
-                        .animation(.easeInOut, value: isPressed)
-                        .shadow(color: Color.black.opacity(0.4), radius: 3.3, x: 0, y: 2)
+                    if account.goals.count == 0 {
+                        Image("fedW") // To be changed to an image loaded in from firebase storage!!
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .clipShape(Circle())
+                            .frame(width: 150, height: 150)
+                            .overlay(
+                                Circle()
+                                    .stroke(.black, lineWidth: 4)
+                            )
+                            .scaleEffect(isLongPress ? 1.0 : 0.9)
+                            .animation(.easeInOut(duration: 0.5), value: isLongPress)
+                    }
+                    else {
+                        MilestoneImageView()
+                            .environmentObject(account.goals[index].milestones[account.goals[index].milestones.count - 1])
+                    }
+
+
                     NavigationLink(destination: TreeTabView(currentSlide: index).environmentObject(account), isActive: $isTapped) {
                         EmptyView()
                     }
@@ -74,7 +82,7 @@ struct GoalView: View {
                     .environmentObject(account.goals[index])
             })
             .fullScreenCover(isPresented: $link2, content: {
-                AddMilestone()
+                AddMilestone(index: index)
                     .environmentObject(account.goals[index])
             })
             .animation(.easeInOut, value: changeColor)
@@ -140,10 +148,10 @@ struct GoalView: View {
 
 struct GoalView_preview: PreviewProvider {
     static var previews: some View {
-        let account = Account()
-        account.goals.append(Goal(name: "Win Wimbledon and Win everything", date: Date(), color: Color.green))
-        account.goals.append(Goal(name: "win", date: Date(), color: Color.red))
-        account.goals.append(Goal(name: "win", date: Date(), color: Color.red))
+        let account = Account(id: " ")
+        account.goals.append(Goal(name: "Win Wimbledon and Win everything", date: Date(), pin: false))
+        account.goals.append(Goal(name: "win", date: Date(), pin: false))
+        account.goals.append(Goal(name: "win", date: Date(), pin: false))
         return GoalView(index: 0)
             .environmentObject(account)
     }

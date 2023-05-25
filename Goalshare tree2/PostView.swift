@@ -11,7 +11,7 @@ struct PostView: View {
     @EnvironmentObject var milestone: Milestone
     var body: some View {
         VStack {
-            milestone.image
+            milestone.image?
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .cornerRadius(8)
@@ -28,6 +28,6 @@ struct PostView: View {
 struct PostView_Previews: PreviewProvider {
     static var previews: some View {
         PostView()
-            .environmentObject(Milestone(name: "", sig: false, image: Image("fedW"), caption: "I just won wimbledon!!"))
+            .environmentObject(Milestone(name: "", sig: false, image: Image("fedW"), imageUrl: URL(string: ""), caption: "I just won wimbledon!!"))
     }
 }

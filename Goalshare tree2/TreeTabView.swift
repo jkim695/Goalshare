@@ -15,11 +15,10 @@ struct TreeTabView: View {
     @State var addingMilestone = false
     var body: some View {
         ScrollView {
-            
             VStack {
                 let rows = account.goals.count
                 let slides = Array(stride(from: 0, to: rows, by: 1)).map { num -> AnyView in
-                    AnyView(Tree().environmentObject(account.goals[num]))
+                    AnyView(Tree(index: num).environmentObject(account.goals[num]))
                 }
                 HorizontalSlideshow(slides: slides, currentSlide: $currentSlide)
                     .frame(height: 1000)
@@ -32,8 +31,8 @@ struct TreeTabView: View {
 
 struct TreeTabView_Previews: PreviewProvider {
     static var previews: some View {
-        let account2 = Account()
-        account2.goals.append(contentsOf: [Goal(name: "goal1", date: Date(), color: .red), Goal(name: "goal2", date: Date(), color: .blue)])
+        let account2 = Account(id: " ")
+        account2.goals.append(contentsOf: [Goal(name: "goal1", date: Date(), pin: false), Goal(name: "goal2", date: Date(), pin: false)])
         return VStack {
             TreeTabView(currentSlide: 0)
                 .environmentObject(account2)

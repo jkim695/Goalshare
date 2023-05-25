@@ -8,6 +8,7 @@
 import SwiftUI
 import Foundation
 import Combine
+import FirebaseFirestore
 
 struct AddGoal: View {
     enum FocusedField {
@@ -24,9 +25,13 @@ struct AddGoal: View {
     @State private var goalCompletionDate = Date()
     @State private var show = true
     @State private var complete = false
-    @State private var color = Color.red
+    @State private var isPhotoLibraryDisplay = false
+    @State private var isCameraDisplay = false
+    @State public var selectedImage: UIImage?
     @FocusState private var focusedBox: Bool
     @FocusState private var focusedField: FocusedField?
+    @State private var sourceType: UIImagePickerController.SourceType? = nil
+
     @Namespace var namespace
     var textLimit = 16
     var body: some View {
@@ -48,43 +53,8 @@ struct AddGoal: View {
                             }
 
                             Spacer()
-                            Image(systemName: "questionmark.circle")
-                                .resizable()
-                                .frame(width: 30, height: 30)
-                                .padding(20)
-                                .bold()
-                                .onTapGesture {
-                                    withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
-                                        show.toggle()
-                                    }
-                                }
                         }
                         .offset(y: -15)
-                    }
-                    else {
-                        VStack (alignment: .trailing, spacing: 12){
-                            VStack() {
-                                Image("fedW")
-                                    .resizable()
-                                    .frame(width: 300, height: 300)
-                                    .cornerRadius(20)
-                                VStack {
-                                    Text("Criteria for a good goal:")
-                                        .padding()
-                                    Text("1) Is the goal SPECIFIC?")
-                                    Text("2) Is the goal MEASURABLE?")
-                                    Text("3) Is the goal ATTAINABLE?")
-                                    Text("4) Is the goal RELEVANT?")
-                                    Text("5) Is the goal TIMELY?")
-                                }
-                                .foregroundColor(.black)
-                            }
-                        }
-                        .onTapGesture {
-                            withAnimation(.spring(response: 0.6, dampingFraction: 0.8)) {
-                                show.toggle()
-                            }
-                        }
                     }
                     Text("          What is your Goal?")
                         .font(.headline)
@@ -97,8 +67,27 @@ struct AddGoal: View {
                     VStack(alignment:.leading, spacing: 40) {
                         DatePicker("Goal Completion Date", selection: $goalCompletionDate, in: Date()..., displayedComponents: .date)
                             .padding()
-                        ColorSelector(selectedColor: $color)
-                            .frame(maxWidth: .infinity, alignment: .center)
+                        .frame(maxWidth: .infinity)
+                        HStack {
+                            Spacer()
+                            if selectedImage != nil {
+                                Image(uiImage: selectedImage!)
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 150, height: 150)
+                                    .clipShape(Circle())
+                                    .overlay {
+                                        Circle()
+                                            .stroke(.black, lineWidth: 4)
+                                    }
+                            }
+                            else {
+                                Circle()
+                                    .stroke(.black, lineWidth: 4)
+                                    .frame(width: 150, height: 150)
+                            }
+                            Spacer()
+                        }
                         HStack {
                             Spacer()
                             Button(action: {
@@ -107,7 +96,23 @@ struct AddGoal: View {
                                     conditionIsMet = true
                                 }
                                 if conditionIsMet {
-                                    account.goals.append(Goal(name: goalTitle, date: goalCompletionDate, color: color))
+                                    let newGoal = Goal(name: goalTitle, date: goalCompletionDate, pin: false)
+                                    account.goals.append(newGoal)
+                                    
+                                    // Add new goal to Firestore
+                                    let db = Firestore.firestore()
+                                    db.collection("accounts").document(account.id).collection("goals").document(newGoal.id.uuidString).setData([
+                                        "name": newGoal.name,
+                                        "date": newGoal.date,
+                                        "pin": newGoal.pin
+                                    ]) { error in
+                                        if let error = error {
+                                            print("Error adding goal: \(error)")
+                                        } else {
+                                            print("Goal successfully added!")
+                                        }
+                                    }
+                                    
                                     presentationMode.wrappedValue.dismiss()
                                 } else {
                                     print("Condition not met")
@@ -120,26 +125,36 @@ struct AddGoal: View {
                                     .cornerRadius(10)
                                     .frame(alignment: .trailing)
                             }
+
                             Spacer()
                         }
                     }
                     Spacer()
                 }
+                .fullScreenCover(isPresented: self.$isPhotoLibraryDisplay, content: {
+                    Camera(selectedImage: self.$selectedImage, sourceType: .photoLibrary)
+                        .edgesIgnoringSafeArea(.all)
+                })
+                .fullScreenCover(isPresented: self.$isCameraDisplay, content: {
+                    Camera(selectedImage: self.$selectedImage, sourceType: .camera)
+                        .edgesIgnoringSafeArea(.all)
+                })
                 .padding(.bottom, keyboardObserver.keyboardHeight)
                 .ignoresSafeArea(.keyboard)
             }
         }
     }
-    //Function to keep text length in limits
     func limitText(_ upper: Int) {
         if goalTitle.count > upper {
             goalTitle = String(goalTitle.prefix(upper))
         }
     }
 }
+
+// Just for visuals, note id is empty
 struct AddGoal_Previews: PreviewProvider {
     static var previews: some View {
         AddGoal()
-            .environmentObject(Account())
+            .environmentObject(Account(id: ""))
     }
 }

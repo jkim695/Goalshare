@@ -7,21 +7,37 @@
 
 import SwiftUI
 import Foundation
-import SwiftUI
-import CoreLocation
+import FirebaseFirestore
+
 
 class Goal: ObservableObject, Identifiable {
     @Published var name: String
     @Published var date: Date
     @Published var id: UUID
-    @Published var color: Color
     @Published var milestones: [Milestone]
-    init(name: String, date: Date, color: Color) {
+    @Published var pin: Bool
+
+    init(name: String, date: Date, pin: Bool) {
         self.id = UUID()
         self.name = name
-        self.color = color
         self.date = date
         self.milestones = []
+        self.pin = pin
+    }
+    init?(data: [String: Any]) {
+        guard let name = data["name"] as? String,
+              let timestamp = data["date"] as? Timestamp,
+              let pin = data["pin"] as? Bool,
+              let idString = data["id"] as? String,
+              let id = UUID(uuidString: idString) else {
+            return nil
+        }
+        
+        self.name = name
+        self.date = timestamp.dateValue()
+        self.id = id
+        self.pin = pin
+        self.milestones = [] // You'll populate this asynchronously with loadMilestones
     }
 
 }

@@ -9,16 +9,24 @@ import SwiftUI
 import FirebaseAnalyticsSwift
 
 struct Tree: View {
-    init() {
-           let fontURL = Bundle.main.url(forResource: "Futura", withExtension: "ttc")
-           var error: Unmanaged<CFError>?
-           CTFontManagerRegisterFontsForURL(fontURL! as CFURL, .process, &error)
-       }
-    @EnvironmentObject var goal: Goal
+    @State var index: Int?
+    @EnvironmentObject var account: Account
     @Environment(\.presentationMode) var presentationMode
     @State private var offset: CGFloat = 0
     @State private var atTopOfScrollView = true
     @State private var addingMilestone = false
+
+    init(index: Int) {
+        self._index = State(initialValue: index)  // Use the underlying `_` variable to set initial value
+
+        if let fontURL = Bundle.main.url(forResource: "Futura", withExtension: "ttc") {
+            var error: Unmanaged<CFError>?
+            CTFontManagerRegisterFontsForURL(fontURL as CFURL, .process, &error)
+        } else {
+            print("Error: Futura font file not found.")
+        }
+    }
+
     var body: some View {
         GeometryReader { geometry in
             ZStack {
@@ -55,32 +63,32 @@ struct Tree: View {
                                     .foregroundColor(.gray)
                             }
                             .navigationDestination(for: Int.self) { int in
-                                AddMilestone().environmentObject(goal)
+                                AddMilestone(index: index!).environmentObject(account)
                             }
                         }
                         HStack (alignment: .center) {
                             Spacer()
-                            Text(goal.name)
+                            Text(account.goals[index!].name)
                                 .font(.custom("Futura", size: 20))
                             Spacer()
                         }
                     }
-                    .padding(.trailing)                
+                    .padding(.trailing)
                     ScrollView(.vertical) {
-                        if (goal.milestones.isEmpty) {
+                        if (account.goals[index!].milestones.isEmpty) {
                             EmptyMilestoneMessage()
                         }
                         else {
                             ZStack {
                                 Path { path in
                                     path.move(to: CGPoint(x: geometry.size.width / 2, y: 5))
-                                    path.addLine(to: CGPoint(x: Int(geometry.size.width) / 2, y: 150 * goal.milestones.count))
+                                    path.addLine(to: CGPoint(x: Int(geometry.size.width) / 2, y: 150 * account.goals[index!].milestones.count))
                                 }
                                 .stroke(Color.black, lineWidth: 15)
-                                .frame(height: CGFloat(150 * goal.milestones.count))
+                                .frame(height: CGFloat(150 * account.goals[index!].milestones.count))
                                 .frame(maxWidth: .infinity)
                                 MilestoneChain()
-                                    .environmentObject(goal)
+                                    .environmentObject(account.goals[index!])
                                     .offset(x: 40, y: 5)
                             }
                         }
@@ -90,9 +98,9 @@ struct Tree: View {
             }
         }
         .fullScreenCover(isPresented: $addingMilestone) {
-        AddMilestone()
-            .environmentObject(goal)
-            .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
+            AddMilestone(index: index!)
+                .environmentObject(account.goals[index!])
+                .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
         }
         .navigationBarBackButtonHidden(true)
         .analyticsScreen(name: "\(Tree.self)")
@@ -101,8 +109,10 @@ struct Tree: View {
 
 struct Trees_Previews: PreviewProvider {
     static var previews: some View {
-        Tree()
-            .environmentObject(Goal(name: "Ace test", date: Date(), color: Color.red))
+        let account = Account(id: "")
+        account.goals.append(Goal(name: "Develop this app", date: Date(), pin: false))
+        return Tree(index: 0)
+            .environmentObject(account)
     }
 }
 

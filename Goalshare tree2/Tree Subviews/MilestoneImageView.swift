@@ -17,7 +17,7 @@ struct MilestoneImageView: View {
         }
     }
     var body: some View {
-        milestone.image
+        milestone.image!
             .resizable()
             .aspectRatio(contentMode: .fill)
             .frame(width: 150, height: 150)
@@ -33,6 +33,6 @@ struct MilestoneImageView: View {
 struct MilestoneImageView_Previews: PreviewProvider {
     static var previews: some View {
         MilestoneImageView()
-            .environmentObject(Milestone(name: "", sig: true, image: Image("fedW"), caption: ""))
+            .environmentObject(Milestone(name: "", sig: true, image: Image("fedW"), imageUrl: URL(string: ""), caption: ""))
     }
 }
