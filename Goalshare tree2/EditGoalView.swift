@@ -102,6 +102,6 @@ struct EditGoalView: View {
 struct EditGoalView_Previews: PreviewProvider {
     static var previews: some View {
         EditGoalView()
-            .environmentObject(Goal(name: "This is my goal", date: Date(), pin: false))
+            .environmentObject(Goal(id: "", name: "This is my goal", date: Date(), pin: false))
     }
 }

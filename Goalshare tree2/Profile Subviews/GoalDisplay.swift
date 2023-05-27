@@ -38,7 +38,7 @@ struct GoalDisplay_Previews: PreviewProvider {
             GoalDisplay()
                 .environmentObject(account)
             Button {
-                account.goals.append(Goal(name: "Filler", date: Date(), pin: false))
+                account.goals.append(Goal(id: "", name: "Filler", date: Date(), pin: false))
             } label: {
                 Text("add goal")
             }

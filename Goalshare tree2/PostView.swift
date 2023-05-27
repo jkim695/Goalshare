@@ -28,6 +28,6 @@ struct PostView: View {
 struct PostView_Previews: PreviewProvider {
     static var previews: some View {
         PostView()
-            .environmentObject(Milestone(name: "", sig: false, image: Image("fedW"), imageUrl: URL(string: ""), caption: "I just won wimbledon!!"))
+            .environmentObject(Milestone(name: "", sig: false, image: Image("fedW"), imageUrlString: "", caption: "I just won wimbledon!!"))
     }
 }

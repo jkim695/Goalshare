@@ -11,16 +11,18 @@ import FirebaseAuth
 import FirebaseFirestoreSwift
 import FirebaseFirestore
 import FirebaseFirestoreSwift
-struct LoginView: View {
+struct RegisterView: View {
     @State var username = ""
     @State var password = ""
     @State var userIsLoggedIn = false
     @State var emailAlreadyInUse = false // <-- Here
+    @EnvironmentObject var viewModel: AccountViewModel
     @State var userID = ""
     var body: some View {
-        if userIsLoggedIn {
+        if let account = viewModel.account {
             Profile()
-                .environmentObject(Account(id: userID))
+                .environmentObject(account)
+                .environmentObject(viewModel)
         }
         else {
             content
@@ -44,28 +46,65 @@ struct LoginView: View {
             } label: {
                 Text("Register")
             }
+            Button {
+                login()
+            } label: {
+                Text("Already have account? Take me to login page")
+            }
         }
-//        .onAppear {
-//            Auth.auth().addStateDidChangeListener { auth, user in
-//                if user != nil {
-//                    userIsLoggedIn.toggle()
-//                }
-//            }
-//        }
+        .onAppear {
+            do {
+                try Auth.auth().signOut()
+                self.userIsLoggedIn = false
+            } catch let signOutError as NSError {
+                print("Error signing out: %@", signOutError)
+            }
+        }
+        .onAppear {
+            Auth.auth().addStateDidChangeListener { auth, user in
+                if user != nil {
+                    userIsLoggedIn = true
+                }
+            }
+        }
     }
 
     func login() {
         Auth.auth().signIn(withEmail: username, password: password) { result, error in
-            if error != nil {
-                print(error?.localizedDescription ?? "unknown error")
+            if let error = error {
+                print(error.localizedDescription)
+                self.userIsLoggedIn = false // Here
+                return
+            }
+            
+            if let user = result?.user {
+                loadAccount(userId: user.uid) { result in
+                    switch result {
+                    case .success(let account):
+                        print("Account loaded successfully")
+                        // Do what you want with the loaded account here
+                        // e.g., assign it to your view model
+                        DispatchQueue.main.async {
+                            self.viewModel.account = account
+                        }
+                    case .failure(let error):
+                        print("Error loading account: \(error)")
+                        self.userIsLoggedIn = false // And here
+                    }
+                }
+            } else {
+                self.userIsLoggedIn = false // And here
             }
         }
     }
+
+
 
     func register() {
         Auth.auth().createUser(withEmail: username, password: password) { authResult, error in
             guard let user = authResult?.user, error == nil else {
                 print(error?.localizedDescription ?? "unknown error")
+                self.userIsLoggedIn = false // Here
                 return
             }
             let db = Firestore.firestore()
@@ -76,18 +115,26 @@ struct LoginView: View {
             ]) { error in
                 if let error = error {
                     print("Error writing document: \(error)")
+                    self.userIsLoggedIn = false // And here
                 } else {
                     print("Document successfully written!")
+
+                    // Add this after successfully writing document
+                    // Login the user after registering
+                    self.login()
                 }
             }
         }
     }
+    
+
+
 
 }
 
-struct LoginView_Previews: PreviewProvider {
+struct RegisterView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        RegisterView()
     }
 }
 func loadAccount(userId: String, completion: @escaping (Result<Account, Error>) -> Void) {
@@ -103,7 +150,7 @@ func loadAccount(userId: String, completion: @escaping (Result<Account, Error>) 
             completion(.failure(FirebaseError.noAccountData))
             return
         }
-        var account = Account(document: accountSnapshot) // Assuming you have an Account initializer
+        let account = Account(document: accountSnapshot) // Assuming you have an Account initializer
         loadGoals(userId: userId) { result in
             switch result {
             case .success(let goals):
@@ -133,7 +180,7 @@ func loadGoals(userId: String, completion: @escaping (Result<[Goal], Error>) -> 
         let dispatchGroup = DispatchGroup()
         for goalDocument in goalSnapshot.documents {
             dispatchGroup.enter()
-            var goal = Goal(data: goalDocument.data()) // Assuming you have a Goal initializer
+            var goal = Goal(data: goalDocument.data()) 
             loadMilestones(userId: userId, goalId: goalDocument.documentID) { result in
                 switch result {
                 case .success(let milestones):
@@ -151,10 +198,9 @@ func loadGoals(userId: String, completion: @escaping (Result<[Goal], Error>) -> 
         }
     }
 }
-
 func loadMilestones(userId: String, goalId: String, completion: @escaping (Result<[Milestone], Error>) -> Void) {
     let db = Firestore.firestore()
-    db.collection("accounts").document(userId).collection("goals").document(goalId).collection("milestones").getDocuments { (snapshot, error) in
+    db.collection("accounts").document(userId).collection("goals").document(goalId).collection("milestones").order(by: "date").getDocuments { (snapshot, error) in
         if let error = error {
             completion(.failure(error))
             return
@@ -165,10 +211,24 @@ func loadMilestones(userId: String, goalId: String, completion: @escaping (Resul
             return
         }
 
-        let milestones = snapshot.documents.compactMap { Milestone(data: $0.data()) } // Assuming you have a Milestone initializer
+        var milestones: [Milestone] = []
+        for document in snapshot.documents {
+            do {
+                if let milestone = try Milestone(data: document.data()) {
+                    milestones.append(milestone)
+                }
+            } catch {
+                print("Error decoding milestone: \(error)")
+                completion(.failure(error))
+                return
+            }
+        }
+        print(milestones)
         completion(.success(milestones))
     }
 }
+
+
 
 enum FirebaseError: Error {
     case noAccountData

@@ -26,11 +26,11 @@ struct MilestoneChain_Previews: PreviewProvider {
     static var previews: some View {
         ScrollView {
             VStack {
-                let goal = Goal(name: "", date: Date(), pin: false)
+                let goal = Goal(id: "",name: "", date: Date(), pin: false)
                 MilestoneChain()
                     .environmentObject(goal)
                 Button {
-                    goal.milestones.append(Milestone(name: "win", sig: true, image: Image("fedW"), imageUrl: URL(string: ""), caption: "won"))
+                    goal.milestones.append(Milestone(name: "win", sig: true, image: Image("fedW"), imageUrlString: "", caption: "won"))
                 } label: {
                     Text("click")
                 }

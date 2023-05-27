@@ -96,24 +96,25 @@ struct AddGoal: View {
                                     conditionIsMet = true
                                 }
                                 if conditionIsMet {
-                                    let newGoal = Goal(name: goalTitle, date: goalCompletionDate, pin: false)
-                                    account.goals.append(newGoal)
-                                    
-                                    // Add new goal to Firestore
                                     let db = Firestore.firestore()
-                                    db.collection("accounts").document(account.id).collection("goals").document(newGoal.id.uuidString).setData([
-                                        "name": newGoal.name,
-                                        "date": newGoal.date,
-                                        "pin": newGoal.pin
+                                    let newGoalRef = db.collection("accounts").document(account.id).collection("goals").document()
+                                    newGoalRef.setData([
+                                        "id": newGoalRef.documentID,
+                                        "name": goalTitle,
+                                        "date": goalCompletionDate,
+                                        "pin": false
                                     ]) { error in
                                         if let error = error {
                                             print("Error adding goal: \(error)")
                                         } else {
                                             print("Goal successfully added!")
+                                            
+                                            let newGoal = Goal(id: newGoalRef.documentID, name: goalTitle, date: goalCompletionDate, pin: false)
+                                            account.goals.append(newGoal)
+                                            
+                                            presentationMode.wrappedValue.dismiss()
                                         }
                                     }
-                                    
-                                    presentationMode.wrappedValue.dismiss()
                                 } else {
                                     print("Condition not met")
                                 }

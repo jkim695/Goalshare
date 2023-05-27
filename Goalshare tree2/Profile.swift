@@ -7,9 +7,10 @@
 
 import SwiftUI
 import UIKit
-
+import FirebaseAuth
 struct Profile: View {
     @EnvironmentObject var account: Account
+    @EnvironmentObject var viewModel: AccountViewModel
     @State private var isSlideUpViewPresented = false
     @State private var isAnimating = false
     @State private var editing = false
@@ -29,6 +30,14 @@ struct Profile: View {
                         }
                         .padding(.leading, 30)
                         Spacer()
+                        Button("Logout") {
+                                    do {
+                                        try Auth.auth().signOut()
+                                        viewModel.account = nil
+                                    } catch {
+                                        print("Error signing out")
+                                    }
+                                }
                         Image(systemName: "gearshape.fill")
                             .resizable()
                             .frame(width:25, height: 25)

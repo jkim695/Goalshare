@@ -17,7 +17,7 @@ struct MilestoneImageView: View {
         }
     }
     var body: some View {
-        milestone.image!
+        milestone.image?
             .resizable()
             .aspectRatio(contentMode: .fill)
             .frame(width: 150, height: 150)
@@ -26,13 +26,17 @@ struct MilestoneImageView: View {
                 Circle()
                     .stroke(color, lineWidth: 4)
             }
-        
+            .onAppear {
+                if milestone.image == nil {
+                    milestone.loadImage()
+                }
+            }
     }
 }
 
 struct MilestoneImageView_Previews: PreviewProvider {
     static var previews: some View {
         MilestoneImageView()
-            .environmentObject(Milestone(name: "", sig: true, image: Image("fedW"), imageUrl: URL(string: ""), caption: ""))
+            .environmentObject(Milestone(name: "", sig: true, image: Image("fedW"), imageUrlString:  "", caption: ""))
     }
 }

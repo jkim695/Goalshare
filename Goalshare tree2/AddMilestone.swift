@@ -61,19 +61,25 @@ struct AddMilestone: View {
                                     return
                                 }
                                 
+                                // Convert URL to String
+                                
                                 // Create a new milestone with the image URL
-                                let newMilestone = Milestone(name: "", sig: significant, image: Image(uiImage: selectedImage!), imageUrl: url, caption: self.caption)
+                                let newMilestone = Milestone(name: "", sig: significant, image: Image(uiImage: selectedImage!), imageUrlString: url.absoluteString, caption: self.caption)
                                 
                                 // Add the new milestone to the goal's milestones array
                                 account.goals[index].milestones.append(newMilestone)
                                 
                                 // Add the new milestone to Firestore
                                 let db = Firestore.firestore()
-                                db.collection("accounts").document(account.id).collection("goals").document(account.goals[index].id.uuidString).collection("milestones").document(newMilestone.id.uuidString).setData([
+                                let newMilestoneRef = db.collection("accounts").document(account.id).collection("goals").document(account.goals[index].id!).collection("milestones").document(newMilestone.id.uuidString)
+                                    newMilestoneRef.setData([
                                     "name": newMilestone.name,
                                     "sig": newMilestone.sig,
-                                    "image": newMilestone.imageUrl,
-                                    "caption": newMilestone.caption
+                                    "image": newMilestone.imageUrlString, // Assuming imageUrl is a String property
+                                    "caption": newMilestone.caption,
+                                    "id": newMilestoneRef.documentID,
+                                    "date": newMilestone.date
+                                    
                                 ]) { error in
                                     if let error = error {
                                         print("Error adding milestone: \(error)")
@@ -84,6 +90,7 @@ struct AddMilestone: View {
                                 
                                 presentationMode.wrappedValue.dismiss()
                             }
+
                         }
                     }) {
                         Text("ADD")
@@ -156,7 +163,7 @@ struct AddMilestone: View {
 struct NewPostView_Previews: PreviewProvider {
     static var previews: some View {
         let account = Account(id: "")
-        account.goals.append(Goal(name: "", date: Date(), pin: false))
+        account.goals.append(Goal(id: "", name: "", date: Date(), pin: false))
         return AddMilestone(index: 0)
             .environmentObject(Account(id: ""))
     }

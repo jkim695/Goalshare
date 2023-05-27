@@ -110,7 +110,7 @@ struct Tree: View {
 struct Trees_Previews: PreviewProvider {
     static var previews: some View {
         let account = Account(id: "")
-        account.goals.append(Goal(name: "Develop this app", date: Date(), pin: false))
+        account.goals.append(Goal(id: "",name: "Develop this app", date: Date(), pin: false))
         return Tree(index: 0)
             .environmentObject(account)
     }
