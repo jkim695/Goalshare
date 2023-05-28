@@ -17,22 +17,38 @@ struct MilestoneImageView: View {
         }
     }
     var body: some View {
-        milestone.image
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .frame(width: 150, height: 150)
-            .clipShape(Circle())
-            .overlay {
-                Circle()
-                    .stroke(color, lineWidth: 4)
-            }
-        
+        if let image = milestone.image {
+            image
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: 150, height: 150)
+                .clipShape(Circle())
+                .overlay {
+                    Circle()
+                        .stroke(color, lineWidth: 4)
+                }
+                .onAppear {
+                    if milestone.image == nil {
+                        milestone.loadImage()
+                    }
+                }
+        }
+        else {
+            Circle()
+                .fill(.red)
+                .frame(width: 150, height: 150)
+                .onAppear {
+                    if milestone.image == nil {
+                        milestone.loadImage()
+                    }
+                }
+        }
     }
 }
 
 struct MilestoneImageView_Previews: PreviewProvider {
     static var previews: some View {
         MilestoneImageView()
-            .environmentObject(Milestone(name: "", sig: true, image: Image("fedW"), caption: ""))
+            .environmentObject(Milestone(name: "", sig: true, image: Image("fedW"), imageUrlString:  "", caption: ""))
     }
 }

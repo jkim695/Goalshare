@@ -33,12 +33,12 @@ struct GoalDisplay: View {
 
 struct GoalDisplay_Previews: PreviewProvider {
     static var previews: some View {
-        var account: Account = Account(username: "", password: "")
+        var account: Account = Account(id: "")
         VStack {
             GoalDisplay()
                 .environmentObject(account)
             Button {
-                account.goals.append(Goal(name: "Filler", date: Date(), color: Color.red))
+                account.goals.append(Goal(id: "", name: "Filler", date: Date(), pin: false))
             } label: {
                 Text("add goal")
             }

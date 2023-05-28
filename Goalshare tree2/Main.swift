@@ -17,23 +17,23 @@ struct Goalshare_tree2App: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @State var introducing = true
     var body: some Scene {
-        let account = Account(username: "", password: "")
-        account.goals.append(Goal(name: "win", date: Date(), color: Color.red))
-        account.goals.append(Goal(name: "win", date: Date(), color: Color.red))
-        account.goals.append(Goal(name: "win", date: Date(), color: Color.red))
+        let viewModel = AccountViewModel()
+        viewModel.account = nil
         return WindowGroup {
-            Profile()
-                .environmentObject(Account(username: "placeholder", password: "placeholder"))
-                .onAppear {
-                    UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation") // Forcing the rotation to portrait
-                    AppDelegate.orientationLock = .portrait // And making sure it stays that way
-                }.onDisappear {
-                    AppDelegate.orientationLock = .all // Unlocking the rotation when leaving the view
-                }
-                .fullScreenCover(isPresented: $introducing) {
-                    IntroductionVideo()
-                        .environmentObject(MyState())
-                }
+            RegisterView()
+                .environmentObject(viewModel)
+            //            Profile()
+            //                .environmentObject(Account(id:""))
+            //                .onAppear {
+            //                    UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation") // Forcing the rotation to portrait
+            //                    AppDelegate.orientationLock = .portrait // And making sure it stays that way
+            //                }.onDisappear {
+            //                    AppDelegate.orientationLock = .all // Unlocking the rotation when leaving the view
+            //                }
+            //                .fullScreenCover(isPresented: $introducing) {
+            //                    IntroductionVideo()
+            //                        .environmentObject(MyState())
+            //                }
         }
     }
 }

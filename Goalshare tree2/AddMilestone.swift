@@ -1,15 +1,16 @@
 import SwiftUI
+import FirebaseFirestore
+import FirebaseStorage
 
 struct AddMilestone: View {
-    @EnvironmentObject var goal: Goal
+    @EnvironmentObject var account: Account
     @Environment(\.presentationMode) var presentationMode
+    @State var index: Int
     @State private var sourceType: UIImagePickerController.SourceType? = nil
     @State public var selectedImage: UIImage?
     @State private var isImagePickerDisplay = false
     @State private var significant = true
     @State var chosen = false
-    @State private var isCameraPickerDisplayed = false
-    @State private var isPhotoLibraryPickerDisplayed = false
     @State private var caption = ""
     @State private var isCameraDisplay = false
     @State private var isPhotoLibraryDisplay = false
@@ -36,13 +37,66 @@ struct AddMilestone: View {
                     }
                 }
                 if selectedImage != nil {
-                    Button( action: {
-                        goal.milestones.append(Milestone(name: "", sig: significant, image: Image(uiImage: selectedImage!), caption: self.caption))
-                        presentationMode.wrappedValue.dismiss()
+                    Button(action: {
+                        // Convert the image to data
+                        guard let imageData = selectedImage?.jpegData(compressionQuality: 0.5) else { return }
+                        
+                        // Generate a unique name for the image file
+                        let imageName = UUID().uuidString
+                        
+                        // Create a reference to the image file in Firebase Storage
+                        let storageRef = Storage.storage().reference().child("images/\(imageName).jpg")
+                        
+                        // Upload the image data to the new reference
+                        storageRef.putData(imageData, metadata: nil) { metadata, error in
+                            guard error == nil else {
+                                print("Failed to upload image: \(error?.localizedDescription ?? "No error description.")")
+                                return
+                            }
+                            
+                            // Get the download URL for the image
+                            storageRef.downloadURL { url, error in
+                                guard let url = url, error == nil else {
+                                    print("Failed to get download URL: \(error?.localizedDescription ?? "No error description.")")
+                                    return
+                                }
+                                
+                                // Convert URL to String
+                                
+                                // Create a new milestone with the image URL
+                                let newMilestone = Milestone(name: "", sig: significant, image: Image(uiImage: selectedImage!), imageUrlString: url.absoluteString, caption: self.caption)
+                                
+                                // Add the new milestone to the goal's milestones array
+                                account.goals[index].milestones.append(newMilestone)
+                                
+                                // Add the new milestone to Firestore
+                                let db = Firestore.firestore()
+                                let newMilestoneRef = db.collection("accounts").document(account.id).collection("goals").document(account.goals[index].id!).collection("milestones").document(newMilestone.id.uuidString)
+                                    newMilestoneRef.setData([
+                                    "name": newMilestone.name,
+                                    "sig": newMilestone.sig,
+                                    "image": newMilestone.imageUrlString, // Assuming imageUrl is a String property
+                                    "caption": newMilestone.caption,
+                                    "id": newMilestoneRef.documentID,
+                                    "date": newMilestone.date
+                                    
+                                ]) { error in
+                                    if let error = error {
+                                        print("Error adding milestone: \(error)")
+                                    } else {
+                                        print("Milestone successfully added!")
+                                    }
+                                }
+                                
+                                presentationMode.wrappedValue.dismiss()
+                            }
+
+                        }
                     }) {
                         Text("ADD")
                             .font(.headline)
                     }
+
                     Image(uiImage: selectedImage!)
                         .resizable()
                         .aspectRatio(contentMode: .fit)
@@ -108,7 +162,9 @@ struct AddMilestone: View {
 
 struct NewPostView_Previews: PreviewProvider {
     static var previews: some View {
-        AddMilestone()
-            .environmentObject(Goal(name: "hi", date: Date(), color: Color.red))
+        let account = Account(id: "")
+        account.goals.append(Goal(id: "", name: "", date: Date(), pin: false))
+        return AddMilestone(index: 0)
+            .environmentObject(Account(id: ""))
     }
 }
