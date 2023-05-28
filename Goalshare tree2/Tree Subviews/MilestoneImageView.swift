@@ -37,6 +37,11 @@ struct MilestoneImageView: View {
             Circle()
                 .fill(.red)
                 .frame(width: 150, height: 150)
+                .onAppear {
+                    if milestone.image == nil {
+                        milestone.loadImage()
+                    }
+                }
         }
     }
 }

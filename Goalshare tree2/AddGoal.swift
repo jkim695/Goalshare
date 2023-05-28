@@ -27,6 +27,7 @@ struct AddGoal: View {
     @State private var complete = false
     @State private var isPhotoLibraryDisplay = false
     @State private var isCameraDisplay = false
+    @State private var isChecked = false
     @State public var selectedImage: UIImage?
     @FocusState private var focusedBox: Bool
     @FocusState private var focusedField: FocusedField?
@@ -84,21 +85,16 @@ struct AddGoal: View {
                     .frame(maxWidth: .infinity)
                     
                     
-                    VStack(alignment:.leading, spacing: 0) {
-                        Text("Goal Target Completion Date")
-                            .font(.custom("lexend-semiBold", size: 14)) // adjust font as needed
-                                .foregroundColor(.black) // adjust color as needed
-                                .padding()
-                            DatePicker(
-                                "",
-                                selection: $goalCompletionDate,
-                                in: Date()...,
-                                displayedComponents: [.date]
-                            )
+                    VStack(alignment:.leading, spacing: 30) {
+                        Toggle(isOn: $isChecked) {
+                            Text("Update Goal Picture to be most recent milestone")
+                                .font(.custom("lexend-semiBold", size: 14))
+                        }
+                        .padding()
+                        .toggleStyle(CheckboxToggleStyle())
+                        DatePicker("Goal Completion Date", selection: $goalCompletionDate, in: Date()..., displayedComponents: .date)
                             .padding()
-                            .datePickerStyle(.graphical)
-                            .labelsHidden()
-
+                        
                         HStack(alignment: .center, spacing: 70) {
                             Button {
                                 presentationMode.wrappedValue.dismiss()
@@ -198,6 +194,23 @@ struct CustomDatePicker: UIViewRepresentable {
         
         @objc func dateChanged(_ sender: UIDatePicker) {
             parent.date = sender.date
+        }
+    }
+}
+struct CheckboxToggleStyle: ToggleStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        HStack {
+            configuration.label
+            
+            Spacer()
+            
+            Image(systemName: configuration.isOn ? "checkmark.square" : "square")
+                .resizable()
+                .frame(width: 24, height: 24)
+                .foregroundColor(configuration.isOn ? .blue : .gray)
+                .onTapGesture {
+                    configuration.isOn.toggle()
+                }
         }
     }
 }
