@@ -34,7 +34,7 @@ struct AddGoal: View {
     @State private var sourceType: UIImagePickerController.SourceType? = nil
     
     @Namespace var namespace
-    var textLimit = 16
+    var textLimit = 23
     var body: some View {
         GeometryReader {_ in
             ZStack {
@@ -46,7 +46,7 @@ struct AddGoal: View {
                 VStack(alignment: .leading) {
                     HStack (alignment: .top) {
                         VStack(alignment: .leading) {
-                            Text("     Add goal")
+                            Text("     Add Goal")
                                 .font(.custom("Lexend-semiBold", size: 22))
                                 .scaleEffect(1.5)
                                 .onReceive(Just(goalTitle)) { _ in limitText(textLimit) }
