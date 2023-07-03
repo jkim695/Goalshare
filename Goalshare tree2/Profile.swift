@@ -14,55 +14,79 @@ struct Profile: View {
     @State private var isSlideUpViewPresented = false
     @State private var isAnimating = false
     @State private var editing = false
+    @State private var showDropdown = false
+
     var body: some View {
         NavigationStack {
-                VStack {
-                    HStack(alignment: .top) {
-                        VStack(alignment: .leading) {
-                            Text("My")
-                                .font(Font.custom(
-                                    "Lexend-SemiBold",
-                                    fixedSize: 36))
-                            Text("Goals.")
-                                .font(Font.custom(
-                                    "Lexend-SemiBold",
-                                    fixedSize: 50))
-                        }
-                        .padding(.leading, 30)
-                        Spacer()
-                        Button("Logout") {
-                                    do {
-                                        try Auth.auth().signOut()
-                                        viewModel.account = nil
-                                    } catch {
-                                        print("Error signing out")
-                                    }
-                                }
-                        Image(systemName: "gearshape.fill")
-                            .resizable()
-                            .frame(width:25, height: 25)
-                            .foregroundColor(Color(red: 0.2, green: 0.2, blue: 0.2))
-                            .padding(.top, 34)
-                            .padding(.trailing, 13)
-                        Button(action: {
-                            isSlideUpViewPresented.toggle()
-                        }) {
-                            ZStack {
-                                Circle()
-                                    .frame(width:55, height: 55)
-                                    .foregroundColor(Color(red: 0.2, green: 0.2, blue: 0.2))
-                                Image(systemName: "plus")
-                                    .resizable()
-                                    .foregroundColor(.yellow)
-                                    .frame(width:30, height:30)
+            VStack {
+                HStack(alignment: .top) {
+                    VStack(alignment: .leading) {
+                        Text("My")
+                            .font(Font.custom("Lexend-SemiBold", fixedSize: 36))
+                        Text("Goals.")
+                            .font(Font.custom("Lexend-SemiBold", fixedSize: 50))
+                    }
+                    .padding(.leading, 30)
+                    Spacer()
+
+                    Image(systemName: "gearshape.fill")
+                        .resizable()
+                        .frame(width:25, height: 25)
+                        .foregroundColor(Color(red: 0.2, green: 0.2, blue: 0.2))
+                        .padding(.top, 34)
+                        .padding(.trailing, 13)
+                        .onTapGesture {
+                            withAnimation {
+                                self.showDropdown.toggle()
                             }
                         }
-                        .padding(.trailing, 30)
-                        .padding(.top, 20)
+                        .overlay(
+                            VStack {
+                                if showDropdown {
+                                    Button(action: {
+                                        do {
+                                            try Auth.auth().signOut()
+                                            viewModel.account = nil
+                                            showDropdown = false
+                                        } catch {
+                                            print("Error signing out")
+                                        }
+                                    }) {
+                                        Text("Logout")
+                                            .font(.headline)
+                                            .foregroundColor(.black)
+                                            .padding()
+                                            .frame(width: 100, height: 30)
+                                            .background(Color.white)
+                                            .cornerRadius(15.0)
+                                            .shadow(radius: 3)
+                                    }
+                                    .transition(.move(edge: .top))
+                                }
+                            }
+                            .padding(.top, 130)
+                            .padding(.trailing, 10)
+                        )
+
+                    Button(action: {
+                        isSlideUpViewPresented.toggle()
+                    }) {
+                        ZStack {
+                            Circle()
+                                .frame(width:55, height: 55)
+                                .foregroundColor(Color(red: 0.2, green: 0.2, blue: 0.2))
+                            Image(systemName: "plus")
+                                .resizable()
+                                .foregroundColor(.yellow)
+                                .frame(width:30, height:30)
+                        }
                     }
-                    .frame(maxWidth: .infinity)
-                    GoalDisplay()
+                    .padding(.trailing, 30)
+                    .padding(.top, 20)
                 }
+                .frame(maxWidth: .infinity)
+                GoalDisplay()
+            }
             .frame(maxWidth: .infinity)
             .ignoresSafeArea(.all, edges: .bottom)
             .background(
@@ -70,13 +94,12 @@ struct Profile: View {
                     LinearGradient(gradient: Gradient(colors: [Color(red: 0.998, green: 0.998, blue: 0.99607), Color(red: 0.898, green: 0.8588, blue: 0.79607)]), startPoint: .top, endPoint: .bottom)
                 }
                 .edgesIgnoringSafeArea(.all)
-                
             )
         }
         .fullScreenCover(isPresented: $isSlideUpViewPresented) {
-        AddGoal()
-            .environmentObject(account)
-            .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
+            AddGoal()
+                .environmentObject(account)
+                .onAppear(perform: UIApplication.shared.addTapGestureRecognizer)
         }
         .fullScreenCover(isPresented: $editing) {
             GoalSelector()
@@ -84,6 +107,9 @@ struct Profile: View {
         }
     }
 }
+
+
+
 
 
 extension UIApplication {
