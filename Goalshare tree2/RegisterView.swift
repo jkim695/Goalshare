@@ -10,7 +10,6 @@ import Firebase
 import FirebaseAuth
 import FirebaseFirestoreSwift
 import FirebaseFirestore
-import FirebaseFirestoreSwift
 struct RegisterView: View {
     @State var username = ""
     @State var password = ""
@@ -19,56 +18,59 @@ struct RegisterView: View {
     @EnvironmentObject var viewModel: AccountViewModel
     @State var userID = ""
     var body: some View {
-        if let account = viewModel.account {
-            Profile()
-                .environmentObject(account)
-                .environmentObject(viewModel)
-        }
-        else {
-            content
-        }
-    }
-
+        content
+    }  
     var content: some View {
-        VStack {
-            HStack {
-                TextField("Email Address", text: $username)
+        NavigationView {
+            VStack {
+                Text("Goalshare")
+                    .font(.custom("lexend-semiBold", size: 64))
+                HStack {
+                    TextField("Email Address", text: $username)
+                        .padding()
+                    if emailAlreadyInUse {
+                        Text("*Email in use")
+                            .foregroundColor(.red)
+                    }
+                }
+                SecureField("Password", text: $password)
                     .padding()
-                if emailAlreadyInUse {
-                    Text("*Email in use")
-                        .foregroundColor(.red)
+                Button {
+                    register()
+                } label: {
+                    Text("Register")
+                        .font(Font.custom(
+                            "Lexend-SemiBold",
+                            fixedSize: 20))
+                        .foregroundColor(.black)
+                        .padding()
+                        .background(.yellow)
+                        .cornerRadius(15)
+                }
+                NavigationLink(destination: Login()) {
+                    Text("Take me to the login page")
                 }
             }
-            SecureField("Password", text: $password)
-                .padding()
-            Button {
-                register()
-            } label: {
-                Text("Register")
+            .onAppear {
+                do {
+                    try Auth.auth().signOut()
+                    self.userIsLoggedIn = false
+                } catch let signOutError as NSError {
+                    print("Error signing out: %@", signOutError)
+                }
             }
-            Button {
-                login()
-            } label: {
-                Text("Already have account? Take me to login page")
-            }
-        }
-        .onAppear {
-            do {
-                try Auth.auth().signOut()
-                self.userIsLoggedIn = false
-            } catch let signOutError as NSError {
-                print("Error signing out: %@", signOutError)
-            }
-        }
-        .onAppear {
-            Auth.auth().addStateDidChangeListener { auth, user in
-                if user != nil {
-                    userIsLoggedIn = true
+            .onAppear {
+                Auth.auth().addStateDidChangeListener { auth, user in
+                    if user != nil {
+                        userIsLoggedIn = true
+                    }
                 }
             }
         }
-    }
+        .navigationBarBackButtonHidden(true)
 
+    }
+    
     func login() {
         Auth.auth().signIn(withEmail: username, password: password) { result, error in
             if let error = error {
@@ -97,9 +99,9 @@ struct RegisterView: View {
             }
         }
     }
-
-
-
+    
+    
+    
     func register() {
         Auth.auth().createUser(withEmail: username, password: password) { authResult, error in
             guard let user = authResult?.user, error == nil else {
@@ -118,7 +120,7 @@ struct RegisterView: View {
                     self.userIsLoggedIn = false // And here
                 } else {
                     print("Document successfully written!")
-
+                    
                     // Add this after successfully writing document
                     // Login the user after registering
                     self.login()
@@ -127,14 +129,15 @@ struct RegisterView: View {
         }
     }
     
-
-
-
+    
+    
+    
 }
 
 struct RegisterView_Previews: PreviewProvider {
     static var previews: some View {
         RegisterView()
+            .environmentObject(AccountViewModel())
     }
 }
 func loadAccount(userId: String, completion: @escaping (Result<Account, Error>) -> Void) {
@@ -144,7 +147,7 @@ func loadAccount(userId: String, completion: @escaping (Result<Account, Error>) 
             completion(.failure(error))
             return
         }
-
+        
         guard let accountSnapshot = accountSnapshot, accountSnapshot.exists,
               let accountData = accountSnapshot.data() else {
             completion(.failure(FirebaseError.noAccountData))
@@ -170,17 +173,17 @@ func loadGoals(userId: String, completion: @escaping (Result<[Goal], Error>) -> 
             completion(.failure(error))
             return
         }
-
+        
         guard let goalSnapshot = goalSnapshot else {
             completion(.failure(FirebaseError.noGoalData))
             return
         }
-
+        
         var goals: [Goal] = []
         let dispatchGroup = DispatchGroup()
         for goalDocument in goalSnapshot.documents {
             dispatchGroup.enter()
-            var goal = Goal(data: goalDocument.data()) 
+            var goal = Goal(data: goalDocument.data())
             loadMilestones(userId: userId, goalId: goalDocument.documentID) { result in
                 switch result {
                 case .success(let milestones):
@@ -192,7 +195,7 @@ func loadGoals(userId: String, completion: @escaping (Result<[Goal], Error>) -> 
                 }
             }
         }
-
+        
         dispatchGroup.notify(queue: .main) {
             completion(.success(goals))
         }
@@ -205,12 +208,12 @@ func loadMilestones(userId: String, goalId: String, completion: @escaping (Resul
             completion(.failure(error))
             return
         }
-
+        
         guard let snapshot = snapshot else {
             completion(.failure(FirebaseError.noMilestoneData))
             return
         }
-
+        
         var milestones: [Milestone] = []
         for document in snapshot.documents {
             do {
