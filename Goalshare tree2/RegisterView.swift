@@ -16,6 +16,8 @@ struct RegisterView: View {
     @State var userIsLoggedIn = false
     @State var emailAlreadyInUse = false // <-- Here
     @EnvironmentObject var viewModel: AccountViewModel
+    @State private var showingErrorAlert = false
+    @State private var errorMessage = ""
     @State var userID = ""
     var body: some View {
         content
@@ -67,6 +69,9 @@ struct RegisterView: View {
                 }
             }
         }
+        .alert(isPresented: $showingErrorAlert) {
+            Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
+        }
         .navigationBarBackButtonHidden(true)
 
     }
@@ -105,8 +110,13 @@ struct RegisterView: View {
     func register() {
         Auth.auth().createUser(withEmail: username, password: password) { authResult, error in
             guard let user = authResult?.user, error == nil else {
-                print(error?.localizedDescription ?? "unknown error")
-                self.userIsLoggedIn = false // Here
+                if let err = error as NSError?, err.code == AuthErrorCode.emailAlreadyInUse.rawValue {
+                    self.errorMessage = "The email is already in use. Please use a different email."
+                    self.showingErrorAlert = true
+                } else {
+                    self.errorMessage = error?.localizedDescription ?? "Unknown error"
+                    self.showingErrorAlert = true
+                }
                 return
             }
             let db = Firestore.firestore()
