@@ -1,0 +1,6 @@
+framework module Pods_Goalshare_tree2 {
+  umbrella header "Pods-Goalshare tree2-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -70,12 +70,15 @@
 		8CC6513329EA803C00D534AD /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8CC6513229EA803C00D534AD /* FirebaseDatabaseSwift */; };
 		8CC6513529F2FE4200D534AD /* KeyboardObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC6513429F2FE4200D534AD /* KeyboardObserver.swift */; };
 		8CC6513729F88E1E00D534AD /* Gesture_Recognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CC6513629F88E1E00D534AD /* Gesture_Recognizer.swift */; };
+		8CD448DA2A97CBB800829AF3 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD448D92A97CBB800829AF3 /* SplashScreenView.swift */; };
 		8CD814CF2A159A3C00C18342 /* EditGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD814CE2A159A3C00C18342 /* EditGoalView.swift */; };
 		8CD814D12A15B23600C18342 /* GoalSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CD814D02A15B23600C18342 /* GoalSelector.swift */; };
 		8CDA9B7A2A017A41006AF263 /* GradualTrimAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CDA9B792A017A41006AF263 /* GradualTrimAnimation.swift */; };
+		8CF346F82A97C85400AFA324 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CF346F72A97C85400AFA324 /* SplashScreenView.swift */; };
 		8CFEC8A32929771400D81934 /* MainFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFEC8A22929771400D81934 /* MainFeed.swift */; };
 		8CFEC8A52929771500D81934 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CFEC8A42929771500D81934 /* Assets.xcassets */; };
 		8CFEC8A82929771500D81934 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CFEC8A72929771500D81934 /* Preview Assets.xcassets */; };
+		C8A67DD4228CA247362D9374 /* Pods_Goalshare_tree2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FD2FDFD64369A1B3F43C4C3 /* Pods_Goalshare_tree2.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +94,8 @@
 		0E8F67D62953C03F0014669F /* AddMilestone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMilestone.swift; sourceTree = "<group>"; };
 		0E8F67D82966A80C0014669F /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
 		0E8F67DA2966B2350014669F /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
+		0FD2FDFD64369A1B3F43C4C3 /* Pods_Goalshare_tree2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Goalshare_tree2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		167E2202A2555100F0C9B04B /* Pods-Goalshare tree2.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Goalshare tree2.release.xcconfig"; path = "Target Support Files/Pods-Goalshare tree2/Pods-Goalshare tree2.release.xcconfig"; sourceTree = "<group>"; };
 		8C070DD029D64296006FDD7D /* LineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
 		8C070DD329D6431A006FDD7D /* MilestoneImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilestoneImageView.swift; sourceTree = "<group>"; };
 		8C070DD729D64461006FDD7D /* EmptyMilestoneMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyMilestoneMessage.swift; sourceTree = "<group>"; };
@@ -133,13 +138,16 @@
 		8CC583EA2A21F95F00FE6098 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		8CC6513429F2FE4200D534AD /* KeyboardObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardObserver.swift; sourceTree = "<group>"; };
 		8CC6513629F88E1E00D534AD /* Gesture_Recognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gesture_Recognizer.swift; sourceTree = "<group>"; };
+		8CD448D92A97CBB800829AF3 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		8CD814CE2A159A3C00C18342 /* EditGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGoalView.swift; sourceTree = "<group>"; };
 		8CD814D02A15B23600C18342 /* GoalSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSelector.swift; sourceTree = "<group>"; };
 		8CDA9B792A017A41006AF263 /* GradualTrimAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradualTrimAnimation.swift; sourceTree = "<group>"; };
+		8CF346F72A97C85400AFA324 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		8CFEC89D2929771400D81934 /* Goalshare tree2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Goalshare tree2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CFEC8A22929771400D81934 /* MainFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeed.swift; sourceTree = "<group>"; };
 		8CFEC8A42929771500D81934 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Goalshare tree2/Assets.xcassets"; sourceTree = SOURCE_ROOT; };
 		8CFEC8A72929771500D81934 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D207441B453DFB93D14E1C73 /* Pods-Goalshare tree2.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Goalshare tree2.debug.xcconfig"; path = "Target Support Files/Pods-Goalshare tree2/Pods-Goalshare tree2.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +164,7 @@
 				8CA43D4C2A1D6CCB004E8336 /* FirebaseFirestore in Frameworks */,
 				8CC6513129EA803C00D534AD /* FirebaseDatabase in Frameworks */,
 				8C7FD53329DF576C0036266E /* SQLite in Frameworks */,
+				C8A67DD4228CA247362D9374 /* Pods_Goalshare_tree2.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,6 +187,7 @@
 			children = (
 				8C2B2F6429D8C30400D07A99 /* Tester.swift */,
 				8C2B2F6629D8C32200D07A99 /* SlideUpView.swift */,
+				8CF346F72A97C85400AFA324 /* SplashScreenView.swift */,
 			);
 			path = "slideup transition reference";
 			sourceTree = "<group>";
@@ -255,6 +265,7 @@
 		8CA912362A10221C00F390A7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0FD2FDFD64369A1B3F43C4C3 /* Pods_Goalshare_tree2.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -282,6 +293,7 @@
 				8CFEC89F2929771400D81934 /* Goalshare tree2 */,
 				8CFEC89E2929771400D81934 /* Products */,
 				8CA912362A10221C00F390A7 /* Frameworks */,
+				F63922927C3C9873D3D55F99 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -306,6 +318,7 @@
 				8C7A0E3329D54BBB0025CD76 /* Swift files */,
 				8C7A0E2F29D54B270025CD76 /* Main.swift */,
 				8C3DE42B2A009F770027EED0 /* IntroductionVideo.swift */,
+				8CD448D92A97CBB800829AF3 /* SplashScreenView.swift */,
 				8CD814CE2A159A3C00C18342 /* EditGoalView.swift */,
 				8CD814D02A15B23600C18342 /* GoalSelector.swift */,
 				8C2A248A292DB5FE008E2345 /* Profile.swift */,
@@ -333,6 +346,16 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		F63922927C3C9873D3D55F99 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D207441B453DFB93D14E1C73 /* Pods-Goalshare tree2.debug.xcconfig */,
+				167E2202A2555100F0C9B04B /* Pods-Goalshare tree2.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -340,9 +363,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8CFEC8AB2929771500D81934 /* Build configuration list for PBXNativeTarget "Goalshare tree2" */;
 			buildPhases = (
+				9A0131CCEA113ADE217E7B70 /* [CP] Check Pods Manifest.lock */,
 				8CFEC8992929771400D81934 /* Sources */,
 				8CFEC89A2929771400D81934 /* Frameworks */,
 				8CFEC89B2929771400D81934 /* Resources */,
+				CAF0F7A04CCFFCCDAC68A657 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -389,7 +414,7 @@
 			);
 			mainGroup = 8CFEC8942929771400D81934;
 			packageReferences = (
-				8C7FD53129DF576C0036266E /* XCRemoteSwiftPackageReference "SQLite.swift" */,
+				8C7FD53129DF576C0036266E /* XCRemoteSwiftPackageReference "SQLite.swift.git" */,
 				8CC6512B29EA803C00D534AD /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 8CFEC89E2929771400D81934 /* Products */;
@@ -435,6 +460,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		9A0131CCEA113ADE217E7B70 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Goalshare tree2-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CAF0F7A04CCFFCCDAC68A657 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Goalshare tree2/Pods-Goalshare tree2-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Goalshare tree2/Pods-Goalshare tree2-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Goalshare tree2/Pods-Goalshare tree2-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8CFEC8992929771400D81934 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -451,11 +518,13 @@
 				8C2B2F6529D8C30400D07A99 /* Tester.swift in Sources */,
 				8C2B2F6729D8C32200D07A99 /* SlideUpView.swift in Sources */,
 				8CFEC8A32929771400D81934 /* MainFeed.swift in Sources */,
+				8CD448DA2A97CBB800829AF3 /* SplashScreenView.swift in Sources */,
 				8C7A0E3529D54D1E0025CD76 /* Account.swift in Sources */,
 				8C6933052A1B294100C73F23 /* GoalView.swift in Sources */,
 				8C070DDC29D64934006FDD7D /* MilestoneChain.swift in Sources */,
 				8C43DB3F293032FA005B6E24 /* Tree.swift in Sources */,
 				8C2A2485292D82EE008E2345 /* HomeScreen.swift in Sources */,
+				8CF346F82A97C85400AFA324 /* SplashScreenView.swift in Sources */,
 				0E8F67D12952DB2A0014669F /* AddGoal.swift in Sources */,
 				8CDA9B7A2A017A41006AF263 /* GradualTrimAnimation.swift in Sources */,
 				8CD814CF2A159A3C00C18342 /* EditGoalView.swift in Sources */,
@@ -598,6 +667,7 @@
 		};
 		8CFEC8AC2929771500D81934 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D207441B453DFB93D14E1C73 /* Pods-Goalshare tree2.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -631,6 +701,7 @@
 		};
 		8CFEC8AD2929771500D81934 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 167E2202A2555100F0C9B04B /* Pods-Goalshare tree2.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -686,7 +757,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8C7FD53129DF576C0036266E /* XCRemoteSwiftPackageReference "SQLite.swift" */ = {
+		8C7FD53129DF576C0036266E /* XCRemoteSwiftPackageReference "SQLite.swift.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/stephencelis/SQLite.swift.git";
 			requirement = {
@@ -707,7 +778,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		8C7FD53229DF576C0036266E /* SQLite */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8C7FD53129DF576C0036266E /* XCRemoteSwiftPackageReference "SQLite.swift" */;
+			package = 8C7FD53129DF576C0036266E /* XCRemoteSwiftPackageReference "SQLite.swift.git" */;
 			productName = SQLite;
 		};
 		8CA43D492A1D6C81004E8336 /* FirebaseFirestoreSwift */ = {
