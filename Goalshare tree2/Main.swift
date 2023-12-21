@@ -20,20 +20,9 @@ struct Goalshare_tree2App: App {
         let viewModel = AccountViewModel()
         viewModel.account = nil
         return WindowGroup {
-            RegisterView()
+            OpeningScreen()
                 .environmentObject(viewModel)
-            //            Profile()
-            //                .environmentObject(Account(id:""))
-            //                .onAppear {
-            //                    UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKey: "orientation") // Forcing the rotation to portrait
-            //                    AppDelegate.orientationLock = .portrait // And making sure it stays that way
-            //                }.onDisappear {
-            //                    AppDelegate.orientationLock = .all // Unlocking the rotation when leaving the view
-            //                }
-            //                .fullScreenCover(isPresented: $introducing) {
-            //                    IntroductionVideo()
-            //                        .environmentObject(MyState())
-            //                }
+
         }
     }
 }

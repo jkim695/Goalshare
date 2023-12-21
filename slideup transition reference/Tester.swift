@@ -9,26 +9,22 @@ import SwiftUI
 
 
 struct Tester: View {
-    @State private var isSlideUpViewPresented = false
+    @State private var username = "Anonymous"
+        @State private var bio = ""
 
-    var body: some View {
-        NavigationView {
-            VStack {
-                Button(action: {
-                    isSlideUpViewPresented.toggle()
-                }) {
-                    Text("Show Slide Up View")
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Color.blue)
-                        .cornerRadius(10)
+        var body: some View {
+            ScrollView {
+                VStack {
+                    TextField("Name", text: $username)
+                        .textFieldStyle(.roundedBorder)
+                    TextEditor(text: $bio)
+                        .frame(height: 400)
+                        .border(.quaternary, width: 1)
                 }
+                .padding(.horizontal)
             }
+            .scrollDismissesKeyboard(.immediately)
         }
-        .fullScreenCover(isPresented: $isSlideUpViewPresented) {
-            SlideUpView()
-        }
-    }
 }
 
 struct Tester1: PreviewProvider {

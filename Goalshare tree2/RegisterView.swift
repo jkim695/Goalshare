@@ -49,9 +49,6 @@ struct RegisterView: View {
                         .background(.yellow)
                         .cornerRadius(15)
                 }
-                NavigationLink(destination: Login()) {
-                    Text("Take me to the login page")
-                }
             }
             .onAppear {
                 do {
@@ -72,8 +69,6 @@ struct RegisterView: View {
         .alert(isPresented: $showingErrorAlert) {
             Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
         }
-        .navigationBarBackButtonHidden(true)
-
     }
     
     func login() {
