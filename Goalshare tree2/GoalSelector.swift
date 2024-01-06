@@ -9,7 +9,8 @@ import SwiftUI
 
 struct GoalSelector: View {
     @EnvironmentObject var account: Account
-    @State var selectedGoal: Goal?
+    @State var selectedGoalIndex: Int = 0
+    @State var showing: Bool = false
     @Environment(\.presentationMode) var presentationMode
     var body: some View {
         VStack {
@@ -26,16 +27,17 @@ struct GoalSelector: View {
             List {
                 ForEach(account.goals.indices, id: \.self) { index in
                     Button(action: {
-                        selectedGoal = account.goals[index]
+                        selectedGoalIndex = index
+                        showing = true
                     }) {
                         Text(account.goals[index].name)
                     }
                 }
             }
         }
-        .fullScreenCover(item: $selectedGoal) { goal in
-            EditGoalView()
-                .environmentObject(goal)
+        .fullScreenCover(isPresented: $showing) {
+            EditGoalView(index: selectedGoalIndex, goalDate: account.goals[selectedGoalIndex].date)
+                .environmentObject(account)
         }
     }
 }

@@ -72,14 +72,16 @@ struct GoalView: View {
                     NavigationLink(destination: TreeTabView(currentSlide: index).environmentObject(account), isActive: $isTapped) {
                         EmptyView()
                     }
+                    
+                    
                 }
                 Text(account.goals[index].name)
                     .font(.custom("Lexend-Regular", size: 16))
                     .offset(y: -3)
             }
             .fullScreenCover(isPresented: $link1, content: {
-                EditGoalView()
-                    .environmentObject(account.goals[index])
+                EditGoalView(index: index, goalDate: account.goals[index].date)
+                    .environmentObject(account)
             })
             .fullScreenCover(isPresented: $link2, content: {
                 AddMilestone(index: index)
@@ -119,8 +121,8 @@ struct GoalView: View {
                         }
                         .onEnded { value in
                             isPressed = false
-                            isLongPress = false
                             showSubCircles = false
+                            isLongPress = false
                             if abs(value.translation.height) > 50 && value.translation.width > 30 {
                                 if value.translation.height > 0 {
                                     link1 = true
@@ -128,7 +130,6 @@ struct GoalView: View {
                                 else {
                                     link2 = true
                                 }
-                                
                             }
                         }
                     )
@@ -137,7 +138,7 @@ struct GoalView: View {
                             isTapped = true
                         }
                     )
-            )
+                )
             
         }
     }

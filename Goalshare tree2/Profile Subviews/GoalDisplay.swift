@@ -28,6 +28,9 @@ struct GoalDisplay: View {
                 .offset(y: 20)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
+        .onTapGesture {
+            
+        }
     }
 }
 

@@ -15,10 +15,10 @@ struct Tree: View {
     @State private var offset: CGFloat = 0
     @State private var atTopOfScrollView = true
     @State private var addingMilestone = false
-
+    
     init(index: Int) {
         self._index = State(initialValue: index)  // Use the underlying `_` variable to set initial value
-
+        
         if let fontURL = Bundle.main.url(forResource: "Futura", withExtension: "ttc") {
             var error: Unmanaged<CFError>?
             CTFontManagerRegisterFontsForURL(fontURL as CFURL, .process, &error)
@@ -26,7 +26,7 @@ struct Tree: View {
             print("Error: Futura font file not found.")
         }
     }
-
+    
     var body: some View {
         GeometryReader { geometry in
             ZStack {
@@ -74,25 +74,15 @@ struct Tree: View {
                         }
                     }
                     .padding(.trailing)
-                    ScrollView(.vertical) {
                         if (account.goals[index!].milestones.isEmpty) {
                             EmptyMilestoneMessage()
                         }
                         else {
-                            ZStack {
-                                Path { path in
-                                    path.move(to: CGPoint(x: geometry.size.width / 2, y: 5))
-                                    path.addLine(to: CGPoint(x: Int(geometry.size.width) / 2, y: 150 * account.goals[index!].milestones.count))
-                                }
-                                .stroke(Color.black, lineWidth: 15)
-                                .frame(height: CGFloat(150 * account.goals[index!].milestones.count))
-                                .frame(maxWidth: .infinity)
-                                MilestoneChain()
-                                    .environmentObject(account.goals[index!])
-                                    .offset(x: 40, y: 5)
-                            }
+                            MilestoneChain()
+                                .environmentObject(account.goals[index!])
+                            
                         }
-                    }
+                    
                     Spacer()
                 }
             }

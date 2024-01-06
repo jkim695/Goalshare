@@ -22,6 +22,8 @@ struct OpeningScreen: View {
     @State private var showingErrorAlert = false
     @State private var errorMessage = ""
     @State var userID = ""
+    @State var isLoading: Bool = false
+    @State var loginButtonPressed: Bool = false
     var body: some View {
         if (!registering && !loggingIn) {
             return AnyView(content)
@@ -126,18 +128,44 @@ struct OpeningScreen: View {
             VStack (alignment: .center) {
                 Spacer()
                 Button {
+                    loginButtonPressed = true
                     login()
                 } label: {
-                    Text("Log in")
-                        .font(Font.custom(
-                            "Lexend-SemiBold",
-                            fixedSize: 20))
-                        .foregroundColor(.black)
-                        .padding(.horizontal, 85.0)
-                        .padding(.vertical, 7.0)
-                        .background(.yellow)
-                        .cornerRadius(35)
-                    
+                    if (loginButtonPressed) {
+                        ZStack {
+                            Text("         ")
+                                .font(Font.custom(
+                                    "Lexend-SemiBold",
+                                    fixedSize: 20))
+                                .foregroundColor(.black)
+                                .padding(.horizontal, 85.0)
+                                .padding(.vertical, 7.0)
+                                .background(.yellow)
+                                .cornerRadius(35)
+                            Circle()
+                                .trim(from: 0, to: 0.2)
+                                .stroke(Color.white, lineWidth: 4)
+                                .frame(width: 30, height: 30)
+                                .rotationEffect(Angle(degrees: isLoading ? 360 : 0))
+                                .animation(Animation.linear(duration: 1.2).repeatForever(autoreverses: false))
+                                .onAppear() {
+                                    DispatchQueue.main.asyncAfter(deadline:.now() + 0.1) {
+                                        self.isLoading = true
+                                    }
+                                }
+                        }
+                        
+                    } else {
+                        Text("Log in")
+                            .font(Font.custom(
+                                "Lexend-SemiBold",
+                                fixedSize: 20))
+                            .foregroundColor(.black)
+                            .padding(.horizontal, 85.0)
+                            .padding(.vertical, 7.0)
+                            .background(.yellow)
+                            .cornerRadius(35)
+                    }
                 }
                 .padding()
                 .padding(.bottom, keyboard.currentHeight / 25)
@@ -186,6 +214,7 @@ struct OpeningScreen: View {
                 VStack (alignment: .center) {
                     Spacer()
                     Button {
+                        loginButtonPressed = true
                         login()
                     } label: {
                         Text("Register")
@@ -244,13 +273,17 @@ struct OpeningScreen: View {
                         DispatchQueue.main.async {
                             self.viewModel.account = account
                         }
+                        loginButtonPressed = false
                     case .failure(let error):
                         print("Error loading account: \(error)")
                         self.userIsLoggedIn = false // And here
+                        loginButtonPressed = false
                     }
                 }
             } else {
                 self.userIsLoggedIn = false // And here
+                loginButtonPressed = false
+
             }
         }
     }

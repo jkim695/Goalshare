@@ -6,15 +6,21 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseStorage
 
 struct EditGoalView: View {
-    @EnvironmentObject var goal: Goal
+    @EnvironmentObject var account: Account
     @Environment(\.presentationMode) var presentationMode
     @State private var isCameraDisplay = false
     @State private var isPhotoLibraryDisplay = false
+    @State var index: Int
+    @State var goalName = ""
+    @State var goalDate: Date
     @State private var sourceType: UIImagePickerController.SourceType? = nil
 
     var body: some View {
+        let goal = account.goals[index]
         let name = goal.name
         let date = goal.date
         GeometryReader { geometry in
@@ -36,8 +42,13 @@ struct EditGoalView: View {
                         .kerning(0.5)
                     Spacer()
                     Button {
-                        print("name: " + goal.name)
-                        goal.name = goal.name
+                        goal.name = goalName
+                        goal.date = goalDate
+                        let fbGoal = Firestore.firestore().collection("accounts").document(account.id).collection("goals").document(account.goals[index].id!)
+                        fbGoal.updateData([
+                            "name": goal.name,
+                            "date": goal.date
+                        ])
                         presentationMode.wrappedValue.dismiss()
                     } label: {
                         Text("Done")
@@ -59,7 +70,7 @@ struct EditGoalView: View {
                             .font(.headline)
                             .foregroundColor(.primary)
                         Spacer()
-                        TextField("", text: $goal.name)
+                        TextField("", text: $goalName)
                     }
                     .padding()
                     Path { path in
@@ -73,7 +84,7 @@ struct EditGoalView: View {
                         Text("Goal Completion Date:")
                             .font(.headline)
                             .foregroundColor(.primary)
-                        DatePicker("", selection: $goal.date, in: Date()..., displayedComponents: .date)
+                        DatePicker("", selection: $goalDate, in: Date()..., displayedComponents: .date)
                     }
                     .padding()
                     Path { path in
@@ -101,7 +112,9 @@ struct EditGoalView: View {
 
 struct EditGoalView_Previews: PreviewProvider {
     static var previews: some View {
-        EditGoalView()
-            .environmentObject(Goal(id: "", name: "This is my goal", date: Date(), pin: false))
+        var account: Account = Account(id: "")
+        account.goals.append(Goal(id: "", name: "String", date: Date(), pin: false))
+        return EditGoalView(index: 0, goalDate: Date())
+            .environmentObject(account)
     }
 }
