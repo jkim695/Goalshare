@@ -215,7 +215,7 @@ struct OpeningScreen: View {
                     Spacer()
                     Button {
                         loginButtonPressed = true
-                        login()
+                        register()
                     } label: {
                         Text("Register")
                             .font(Font.custom(
