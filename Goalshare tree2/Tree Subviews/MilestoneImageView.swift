@@ -21,7 +21,7 @@ struct MilestoneImageView: View {
             image
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .frame(width: 150, height: 150)
+                .frame(width: 132, height: 132)
                 .clipShape(Circle())
                 .overlay {
                     Circle()

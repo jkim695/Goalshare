@@ -18,23 +18,25 @@ struct MilestoneChain: View {
                                         .environmentObject(goal.milestones[goal.milestones.count - 1 - index])
                                 }
                                 Text(goal.milestones[goal.milestones.count - 1 - index].date, style: .date)
-                                    .frame(width: 110)
-                                    .font(.system(size: 10))
+                                    .frame(width: 150)
+                                    .font(.system(size: 16))
+                                    .bold()
                             }
                             if index < goal.milestones.count - 1 {
                                 GeometryReader { geometry in
                                     Path { path in
-                                        path.move(to: CGPoint(x: geometry.size.width/2 - 60, y: -20))
-                                        path.addLine(to: CGPoint(x: geometry.size.width/2 - 60, y: 40))
+                                        path.move(to: CGPoint(x: geometry.size.width/2 - 80, y: -20))
+                                        path.addLine(to: CGPoint(x: geometry.size.width/2 - 80, y: 40))
                                     }
                                     .stroke(Color.black, lineWidth: 15)
                                 }
                             }
                         }
                     }
+                    .ignoresSafeArea()
                 }
                 .clipped()
-                .frame(width: geometry.size.width, height: geometry.size.height)
+                .frame(width: geometry.size.width, height: geometry.size.height * 1.1)
             }
                 
                       )

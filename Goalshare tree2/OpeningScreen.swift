@@ -15,6 +15,8 @@ struct OpeningScreen: View {
     @State var userIsLoggedIn = false
     @State var username = ""
     @State var password = ""
+    @State var registeringUsername = ""
+    @State var registeringPassword = ""
     @FocusState var keyboardFocused: Bool
     @State var registering: Bool = false
     @State var loggingIn: Bool = false
@@ -26,22 +28,14 @@ struct OpeningScreen: View {
     @State var loginButtonPressed: Bool = false
     var body: some View {
         if (!registering && !loggingIn) {
+            if (viewModel.account != nil) {
+                return AnyView(Profile()
+                    .environmentObject(viewModel.account!)
+                    .environmentObject(viewModel))
+            }
             return AnyView(content)
         } else if (registering) {
             return AnyView(registerView)
-        }
-        else {
-            if (userIsLoggedIn) {
-                if (viewModel.account == nil) {
-                    userIsLoggedIn = false;
-                    loggingIn = false;
-                    registering = false
-                } else {
-                    return AnyView(Profile()
-                        .environmentObject(viewModel.account!)
-                        .environmentObject(viewModel))
-                }
-            }
         }
         return AnyView(loginScreen)
     }
@@ -173,8 +167,12 @@ struct OpeningScreen: View {
                 //                .animation(.spring(duration: 0.30))
             }
         }
+        .alert(isPresented: $showingErrorAlert) {
+            Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
+        }
         
     }
+    
     var registerView: some View {
         VStack {
             HStack {
@@ -193,7 +191,7 @@ struct OpeningScreen: View {
             Text("Goalshare")
                 .font(.custom("lexend-semiBold", size: 64))
             HStack {
-                TextField("Email Address", text: $username)
+                TextField("Email Address", text: $registeringUsername)
                     .padding()
                     .focused($keyboardFocused)
                     .onAppear {
@@ -206,7 +204,7 @@ struct OpeningScreen: View {
                         .foregroundColor(.red)
                 }
             }
-            SecureField("Password", text: $password)
+            SecureField("Password", text: $registeringPassword)
                 .padding()
             Button {
                 register()
@@ -257,7 +255,10 @@ struct OpeningScreen: View {
     func login() {
         Auth.auth().signIn(withEmail: username, password: password) { result, error in
             if let error = error {
-                print(error.localizedDescription)
+                errorMessage = "Incorrect email address or password"
+                isLoading = false
+                showingErrorAlert = true
+                loginButtonPressed = false
                 self.userIsLoggedIn = false // Here
                 return
             }
@@ -267,6 +268,12 @@ struct OpeningScreen: View {
                     switch result {
                     case .success(let account):
                         print("Account loaded successfully")
+                        loggingIn = false
+                        registering = false
+                        username = ""
+                        password = ""
+                        registeringUsername = ""
+                        registeringPassword = ""
                         self.userIsLoggedIn = true
                         // Do what you want with the loaded account here
                         // e.g., assign it to your view model
@@ -288,7 +295,7 @@ struct OpeningScreen: View {
         }
     }
     func register() {
-        Auth.auth().createUser(withEmail: username, password: password) { authResult, error in
+        Auth.auth().createUser(withEmail: registeringUsername, password: registeringPassword) { authResult, error in
             guard let user = authResult?.user, error == nil else {
                 if let err = error as NSError?, err.code == AuthErrorCode.emailAlreadyInUse.rawValue {
                     self.errorMessage = "The email is already in use. Please use a different email."
@@ -310,6 +317,8 @@ struct OpeningScreen: View {
                     self.userIsLoggedIn = false // And here
                 } else {
                     print("Document successfully written!")
+                    username = registeringUsername
+                    password = registeringPassword
                     self.login()
                 }
             }

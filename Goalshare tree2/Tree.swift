@@ -100,7 +100,13 @@ struct Tree: View {
 struct Trees_Previews: PreviewProvider {
     static var previews: some View {
         let account = Account(id: "")
-        account.goals.append(Goal(id: "",name: "Develop this app", date: Date(), pin: false))
+        let goaly = Goal(id: "",name: "goal1", date: Date(), pin: false)
+        goaly.milestones.append(Milestone(name: "", sig: false, image: Image("fedW"), imageUrlString: "", caption: ""))
+        goaly.milestones.append(Milestone(name: "", sig: false, image: Image("fedW"), imageUrlString: "", caption: ""))
+        goaly.milestones.append(Milestone(name: "", sig: false, image: Image("fedW"), imageUrlString: "", caption: ""))
+        goaly.milestones.append(Milestone(name: "", sig: false, image: Image("fedW"), imageUrlString: "", caption: ""))
+        goaly.milestones.append(Milestone(name: "", sig: false, image: Image("fedW"), imageUrlString: "", caption: ""))
+        account.goals.append(goaly)
         return Tree(index: 0)
             .environmentObject(account)
     }

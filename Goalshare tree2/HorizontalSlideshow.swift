@@ -24,28 +24,9 @@ struct HorizontalSlideshow: View {
                         .tag(index)
                     }
                 }
-                
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
                 .frame(height: geometry.size.height)
                 Spacer()
-                HStack {
-                    Spacer()
-                    HStack {
-                        ForEach(0..<slides.count) { index in
-                            RoundedRectangle(cornerRadius: 5)
-                                .fill(currentSlide == index ? Color.blue : Color.gray)
-                                .frame(width: 10, height: 10)
-                                .onTapGesture {
-                                    withAnimation {
-                                        currentSlide = index
-                                    }
-                                }
-                        }
-                    }
-                    .padding(.top)
-                    Spacer()
-                }
-                .offset(y: -50)
             }
         }
     }
