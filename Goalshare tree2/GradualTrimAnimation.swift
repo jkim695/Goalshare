@@ -17,7 +17,7 @@ struct GradualTrimAnimation: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                let circleDiameter: CGFloat = 75
+                let circleDiameter: CGFloat = 110
                 let totalSpacing: CGFloat = 35
                 let circleCount: CGFloat = 4
                 let totalHeight: CGFloat = circleDiameter * circleCount + totalSpacing * (circleCount - 1)
@@ -29,29 +29,77 @@ struct GradualTrimAnimation: View {
                     path.addLine(to: CGPoint(x: geometry.size.width / 2, y: startY))
                 }
                 .trim(from: 0, to: animationProgress2)
-                .stroke(Color.white, lineWidth: 7)
+                .stroke(Color.white, lineWidth: 14)
                 .onAppear {
-                        withAnimation(.easeIn(duration: 1).delay(1.95)) {
+                        withAnimation(.easeIn(duration: 1).delay(2.95)) {
                             animationProgress2 = 1.0
                         }
                 }
                 
                 VStack(spacing: totalSpacing) {
                     ZStack {
-                        Circle()
-                            .fill(Color.green)
+                        Image("Fed_winning_wimby")
+                            .resizable()
                             .opacity(backgroundOpacity)
-                            .frame(width: 75)
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 110, height: 110)
+                            .clipShape(Circle())
                             .onAppear {
-                                withAnimation(.easeIn(duration: 2)) {
+                                withAnimation(.easeIn(duration: 1)) {
                                     backgroundOpacity = 1.0
                                 }
                             }
                         
                         Circle()
                             .trim(from: 0, to: animationProgress)
-                            .stroke(Color.primary, lineWidth: 2)
-                            .frame(width: 75)
+                            .stroke(Color.blue, lineWidth: 4)
+                            .frame(width: 110)
+                            .onAppear {
+                                withAnimation(Animation.timingCurve(0.2, 0.6, 0.2, 1, duration: 1)) {
+                                    animationProgress = 1.0
+                                }
+                            }
+                    }
+                    ZStack {
+                        Image("fedW")
+                            .resizable()
+                            .opacity(backgroundOpacity)
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 110, height: 110)
+                            .clipShape(Circle())
+                            .onAppear {
+                                withAnimation(.easeIn(duration: 1)) {
+                                    backgroundOpacity = 1.0
+                                }
+                            }
+                        
+                        Circle()
+                            .trim(from: 0, to: animationProgress)
+                            .stroke(Color.primary, lineWidth: 4)
+                            .frame(width: 110)
+                            .onAppear {
+                                withAnimation(Animation.timingCurve(0.2, 0.6, 0.2, 1, duration: 1)) {
+                                    animationProgress = 1.0
+                                }
+                            }
+                    }
+                    ZStack {
+                        Image("fed_practice_djoko")
+                            .resizable()
+                            .opacity(backgroundOpacity)
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 110, height: 110)
+                            .clipShape(Circle())
+                            .onAppear {
+                                withAnimation(.easeIn(duration: 3)) {
+                                    backgroundOpacity = 1.0
+                                }
+                            }
+                        
+                        Circle()
+                            .trim(from: 0, to: animationProgress)
+                            .stroke(Color.primary, lineWidth: 4)
+                            .frame(width: 110)
                             .onAppear {
                                 withAnimation(Animation.timingCurve(0.2, 0.6, 0.2, 1, duration: 3)) {
                                     animationProgress = 1.0
@@ -59,62 +107,22 @@ struct GradualTrimAnimation: View {
                             }
                     }
                     ZStack {
-                        Circle()
-                            .fill(Color.yellow)
+                        Image("Fed_practice1")
+                            .resizable()
                             .opacity(backgroundOpacity)
-                            .frame(width: 75)
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: 110, height: 110)
+                            .clipShape(Circle())
                             .onAppear {
-                                withAnimation(.easeIn(duration: 2)) {
+                                withAnimation(.easeIn(duration: 3)) {
                                     backgroundOpacity = 1.0
                                 }
                             }
                         
                         Circle()
                             .trim(from: 0, to: animationProgress)
-                            .stroke(Color.primary, lineWidth: 2)
-                            .frame(width: 75)
-                            .onAppear {
-                                withAnimation(Animation.timingCurve(0.2, 0.6, 0.2, 1, duration: 3)) {
-                                    animationProgress = 1.0
-                                }
-                            }
-                    }
-                    ZStack {
-                        Circle()
-                            .fill(Color.red)
-                            .opacity(backgroundOpacity)
-                            .frame(width: 75)
-                            .onAppear {
-                                withAnimation(.easeIn(duration: 2)) {
-                                    backgroundOpacity = 1.0
-                                }
-                            }
-                        
-                        Circle()
-                            .trim(from: 0, to: animationProgress)
-                            .stroke(Color.primary, lineWidth: 2)
-                            .frame(width: 75)
-                            .onAppear {
-                                withAnimation(Animation.timingCurve(0.2, 0.6, 0.2, 1, duration: 3)) {
-                                    animationProgress = 1.0
-                                }
-                            }
-                    }
-                    ZStack {
-                        Circle()
-                            .fill(Color.blue)
-                            .opacity(backgroundOpacity)
-                            .frame(width: 75)
-                            .onAppear {
-                                withAnimation(.easeIn(duration: 2)) {
-                                    backgroundOpacity = 1.0
-                                }
-                            }
-                        
-                        Circle()
-                            .trim(from: 0, to: animationProgress)
-                            .stroke(Color.primary, lineWidth: 2)
-                            .frame(width: 75)
+                            .stroke(Color.primary, lineWidth: 4)
+                            .frame(width: 110)
                             .onAppear {
                                 withAnimation(Animation.timingCurve(0.2, 0.6, 0.2, 1, duration: 3)) {
                                     animationProgress = 1.0

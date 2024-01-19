@@ -34,6 +34,8 @@
 		8C3EC7BA2954EF03005DC346 /* Milestone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3EC7B92954EF03005DC346 /* Milestone.swift */; };
 		8C43DB3F293032FA005B6E24 /* Tree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C43DB3E293032FA005B6E24 /* Tree.swift */; };
 		8C55824D29D8B041005680DC /* ColorSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C55824C29D8B041005680DC /* ColorSelector.swift */; };
+		8C649F4B2B4D22C9001D52BB /* videoplayback.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8C649F4A2B4D22C9001D52BB /* videoplayback.mp4 */; };
+		8C649F4D2B4D23EE001D52BB /* pexels-swisshumanity-stories-13709224 (1080p).mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8C649F4C2B4D23EE001D52BB /* pexels-swisshumanity-stories-13709224 (1080p).mp4 */; };
 		8C675E582A00E6C1002247B1 /* SlideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C675E562A00E663002247B1 /* SlideView.swift */; };
 		8C675E5A2A00E6D9002247B1 /* HorizontalSlideshow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C675E592A00E6D9002247B1 /* HorizontalSlideshow.swift */; };
 		8C6933052A1B294100C73F23 /* GoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6933042A1B294100C73F23 /* GoalView.swift */; };
@@ -60,6 +62,8 @@
 		8CA912332A101D5B00F390A7 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA912322A101D5B00F390A7 /* RegisterView.swift */; };
 		8CA912352A101F6F00F390A7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8CA912342A101F6F00F390A7 /* GoogleService-Info.plist */; };
 		8CA912382A10221C00F390A7 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 8CA912372A10221C00F390A7 /* FirebaseAuth */; };
+		8CB278BD2B50B370005D7AF8 /* CircleLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB278BC2B50B370005D7AF8 /* CircleLoadingView.swift */; };
+		8CB278BF2B51D6CB005D7AF8 /* PostView_Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CB278BE2B51D6CB005D7AF8 /* PostView_Template.swift */; };
 		8CB5149D2A00B197002AC434 /* pexels-mohan-reddy-4250244-1440x2160-60fps.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8CB5149C2A00B197002AC434 /* pexels-mohan-reddy-4250244-1440x2160-60fps.mp4 */; };
 		8CC182912A1D7535001C43D2 /* Goalshare-tree2-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8CC182902A1D7535001C43D2 /* Goalshare-tree2-Info.plist */; };
 		8CC182932A1F381E001C43D2 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 8CC182922A1F381E001C43D2 /* FirebaseStorage */; };
@@ -110,6 +114,8 @@
 		8C3EC7B92954EF03005DC346 /* Milestone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Milestone.swift; sourceTree = "<group>"; };
 		8C43DB3E293032FA005B6E24 /* Tree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tree.swift; sourceTree = "<group>"; };
 		8C55824C29D8B041005680DC /* ColorSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorSelector.swift; sourceTree = "<group>"; };
+		8C649F4A2B4D22C9001D52BB /* videoplayback.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = videoplayback.mp4; sourceTree = "<group>"; };
+		8C649F4C2B4D23EE001D52BB /* pexels-swisshumanity-stories-13709224 (1080p).mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pexels-swisshumanity-stories-13709224 (1080p).mp4"; sourceTree = "<group>"; };
 		8C675E562A00E663002247B1 /* SlideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideView.swift; sourceTree = "<group>"; };
 		8C675E592A00E6D9002247B1 /* HorizontalSlideshow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalSlideshow.swift; sourceTree = "<group>"; };
 		8C6933042A1B294100C73F23 /* GoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalView.swift; sourceTree = "<group>"; };
@@ -132,6 +138,8 @@
 		8CA912302A0E963800F390A7 /* TreeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeTabView.swift; sourceTree = "<group>"; };
 		8CA912322A101D5B00F390A7 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		8CA912342A101F6F00F390A7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8CB278BC2B50B370005D7AF8 /* CircleLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleLoadingView.swift; sourceTree = "<group>"; };
+		8CB278BE2B51D6CB005D7AF8 /* PostView_Template.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView_Template.swift; sourceTree = "<group>"; };
 		8CB5149C2A00B197002AC434 /* pexels-mohan-reddy-4250244-1440x2160-60fps.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pexels-mohan-reddy-4250244-1440x2160-60fps.mp4"; sourceTree = "<group>"; };
 		8CC182902A1D7535001C43D2 /* Goalshare-tree2-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Goalshare-tree2-Info.plist"; sourceTree = "<group>"; };
 		8CC583E82A1F5A1000FE6098 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
@@ -314,13 +322,16 @@
 				8C7A0E3229D54B8F0025CD76 /* Tools */,
 				8C7A0E3329D54BBB0025CD76 /* Swift files */,
 				8C7A0E2F29D54B270025CD76 /* Main.swift */,
+				8C649F4C2B4D23EE001D52BB /* pexels-swisshumanity-stories-13709224 (1080p).mp4 */,
 				8C3DE42B2A009F770027EED0 /* IntroductionVideo.swift */,
 				8C8687722B33421E00B1C313 /* OpeningScreen.swift */,
+				8CB278BC2B50B370005D7AF8 /* CircleLoadingView.swift */,
 				8CD814CE2A159A3C00C18342 /* EditGoalView.swift */,
 				8CE2F1FE2B31E24200CFF089 /* Image.png */,
 				8CD814D02A15B23600C18342 /* GoalSelector.swift */,
 				8C2A248A292DB5FE008E2345 /* Profile.swift */,
 				0E8F67D02952DB2A0014669F /* AddGoal.swift */,
+				8C649F4A2B4D22C9001D52BB /* videoplayback.mp4 */,
 				8C7A0E3129D54B490025CD76 /* Profile Subviews */,
 				8CC6513429F2FE4200D534AD /* KeyboardObserver.swift */,
 				8CC6513629F88E1E00D534AD /* Gesture_Recognizer.swift */,
@@ -331,6 +342,7 @@
 				8CC182942A1F3D99001C43D2 /* Fonts */,
 				0E8F67D82966A80C0014669F /* PostView.swift */,
 				8CFEC8A42929771500D81934 /* Assets.xcassets */,
+				8CB278BE2B51D6CB005D7AF8 /* PostView_Template.swift */,
 				8CE2F1FC2B31DDD600CFF089 /* LaunchScreen.storyboard */,
 				8CFEC8A62929771500D81934 /* Preview Content */,
 			);
@@ -425,9 +437,11 @@
 				0E2298CD2A0D99E70032DD4B /* SF-Pro.ttf in Resources */,
 				8CB5149D2A00B197002AC434 /* pexels-mohan-reddy-4250244-1440x2160-60fps.mp4 in Resources */,
 				8CE2F1FF2B31E24200CFF089 /* Image.png in Resources */,
+				8C649F4D2B4D23EE001D52BB /* pexels-swisshumanity-stories-13709224 (1080p).mp4 in Resources */,
 				8C69331F2A1BED5E00C73F23 /* README.txt in Resources */,
 				8C69331C2A1BED5E00C73F23 /* Lexend-Bold.ttf in Resources */,
 				8CFEC8A82929771500D81934 /* Preview Assets.xcassets in Resources */,
+				8C649F4B2B4D22C9001D52BB /* videoplayback.mp4 in Resources */,
 				8C6933192A1BED5E00C73F23 /* Lexend-Thin.ttf in Resources */,
 				8CC182912A1D7535001C43D2 /* Goalshare-tree2-Info.plist in Resources */,
 				8C69331E2A1BED5E00C73F23 /* Lexend-VariableFont_wght.ttf in Resources */,
@@ -463,6 +477,7 @@
 				8CC6513529F2FE4200D534AD /* KeyboardObserver.swift in Sources */,
 				8C2A2489292DB03B008E2345 /* PapaClass.swift in Sources */,
 				8C2B2F6529D8C30400D07A99 /* Tester.swift in Sources */,
+				8CB278BD2B50B370005D7AF8 /* CircleLoadingView.swift in Sources */,
 				8C2B2F6729D8C32200D07A99 /* SlideUpView.swift in Sources */,
 				8CFEC8A32929771400D81934 /* MainFeed.swift in Sources */,
 				8C7A0E3529D54D1E0025CD76 /* Account.swift in Sources */,
@@ -491,6 +506,7 @@
 				8C8687732B33421E00B1C313 /* OpeningScreen.swift in Sources */,
 				8CC6513729F88E1E00D534AD /* Gesture_Recognizer.swift in Sources */,
 				8C55824D29D8B041005680DC /* ColorSelector.swift in Sources */,
+				8CB278BF2B51D6CB005D7AF8 /* PostView_Template.swift in Sources */,
 				8C2A2487292DAA32008E2345 /* InformationPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -22,39 +22,45 @@ struct MilestoneChain: View {
                                     .font(.system(size: 16))
                                     .bold()
                             }
+                            .frame(maxWidth: .infinity)
                             if index < goal.milestones.count - 1 {
                                 GeometryReader { geometry in
                                     Path { path in
                                         path.move(to: CGPoint(x: geometry.size.width/2 - 80, y: -20))
-                                        path.addLine(to: CGPoint(x: geometry.size.width/2 - 80, y: 40))
+                                        path.addLine(to: CGPoint(x: geometry.size.width/2 - 80, y: 28))
                                     }
                                     .stroke(Color.black, lineWidth: 15)
                                 }
                             }
                         }
                     }
-                    .ignoresSafeArea()
                 }
+                .padding()
+
                 .clipped()
-                .frame(width: geometry.size.width, height: geometry.size.height * 1.1)
             }
-                
-                      )
+                .ignoresSafeArea()
+
+                      
+            )
     }
     
 }
 
 struct MilestoneChain_Previews: PreviewProvider {
     static var previews: some View {
-        VStack {
-            let goal = Goal(id: "",name: "", date: Date(), pin: false)
+        let goal = Goal(id: "",name: "", date: Date(), pin: false)
+        goal.milestones.append(Milestone(name: "win", sig: true, image: Image("fedW"), imageUrlString: "", caption: "won"))
+        goal.milestones.append(Milestone(name: "win", sig: true, image: Image("fedW"), imageUrlString: "", caption: "won"))
+        goal.milestones.append(Milestone(name: "win", sig: true, image: Image("fedW"), imageUrlString: "", caption: "won"))
+        goal.milestones.append(Milestone(name: "win", sig: true, image: Image("fedW"), imageUrlString: "", caption: "won"))
+        goal.milestones.append(Milestone(name: "win", sig: true, image: Image("fedW"), imageUrlString: "", caption: "won"))
+        goal.milestones.append(Milestone(name: "win", sig: true, image: Image("fedW"), imageUrlString: "", caption: "won"))
+        goal.milestones.append(Milestone(name: "win", sig: true, image: Image("fedW"), imageUrlString: "", caption: "won"))
+        return VStack {
             MilestoneChain()
                 .environmentObject(goal)
-            Button {
-                goal.milestones.append(Milestone(name: "win", sig: true, image: Image("fedW"), imageUrlString: "", caption: "won"))
-            } label: {
-                Text("click")
-            }
+            
         }
         
         

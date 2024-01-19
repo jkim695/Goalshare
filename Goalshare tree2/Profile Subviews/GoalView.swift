@@ -25,17 +25,15 @@ struct GoalView: View {
         VStack {
             ZStack {
                 if account.goals[index].milestones.count == 0 {
-                    Image("fedW") // To be changed to an image loaded in from firebase storage!!
+                    Image("default_goal_icon") // To be changed to an image loaded in from firebase storage!!
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .clipShape(Circle())
-                        .frame(width: 150, height: 150)
+                        .frame(width: 132, height: 132)
                         .overlay(
                             Circle()
                                 .stroke(.black, lineWidth: 4)
                         )
-                        .scaleEffect(isLongPress ? 1.0 : 0.9)
-                        .animation(.easeInOut(duration: 0.5), value: isLongPress)
                 }
                 else {
                     MilestoneImageView()
@@ -54,7 +52,7 @@ struct GoalView: View {
             }
             Text(account.goals[index].name)
                 .font(.custom("Lexend-Regular", size: 16))
-                .offset(y: -3)
+                .frame(width: 180)
         }
     }
 }

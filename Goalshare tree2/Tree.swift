@@ -28,64 +28,63 @@ struct Tree: View {
     }
     
     var body: some View {
-        GeometryReader { geometry in
-            ZStack {
-                Color.yellow.edgesIgnoringSafeArea(.all) // Set the background color to yellow
-                VStack {
-                    ZStack {
-                        HStack {
-                            Button {
-                                presentationMode.wrappedValue.dismiss()
-                            } label: {
-                                Image(systemName: "arrowshape.left.fill")
-                                    .resizable()
-                                    .frame(width: 18, height: 15)
-                                    .foregroundColor(.gray)
-                                    .padding()
-                            }
-                            Spacer()
+        ZStack {
+            Color.yellow.edgesIgnoringSafeArea(.all)
+            VStack {
+                ZStack {
+                    HStack {
+                        Button {
+                            presentationMode.wrappedValue.dismiss()
+                        } label: {
+                            Image(systemName: "arrowshape.left.fill")
+                                .resizable()
+                                .frame(width: 18, height: 15)
+                                .foregroundColor(.gray)
+                                .padding()
                         }
-                        HStack (spacing: 20) {
-                            Spacer()
-                            ShareLink(item: /*@START_MENU_TOKEN@*/URL(string: "https://developer.apple.com/xcode/swiftui")!/*@END_MENU_TOKEN@*/)
-                            {
-                                Image(systemName: "square.and.arrow.up")
-                                    .resizable()
-                                    .frame(width: 15, height: 20)
-                                    .foregroundColor(.gray)
-                            }
-                            Button(action: {
-                                addingMilestone = true
-                            }) {
-                                Image(systemName: "plus")
-                                    .resizable()
-                                    .frame(width:15, height:15)
-                                    .foregroundColor(.gray)
-                            }
-                            .navigationDestination(for: Int.self) { int in
-                                AddMilestone(index: index!).environmentObject(account)
-                            }
+                        Spacer()
+                    }
+                    HStack (spacing: 20) {
+                        Spacer()
+                        ShareLink(item: /*@START_MENU_TOKEN@*/URL(string: "https://developer.apple.com/xcode/swiftui")!/*@END_MENU_TOKEN@*/)
+                        {
+                            Image(systemName: "square.and.arrow.up")
+                                .resizable()
+                                .frame(width: 15, height: 20)
+                                .foregroundColor(.gray)
                         }
-                        HStack (alignment: .center) {
-                            Spacer()
-                            Text(account.goals[index!].name)
-                                .font(.custom("Futura", size: 20))
-                            Spacer()
+                        Button(action: {
+                            addingMilestone = true
+                        }) {
+                            Image(systemName: "plus")
+                                .resizable()
+                                .frame(width:15, height:15)
+                                .foregroundColor(.gray)
+                        }
+                        .navigationDestination(for: Int.self) { int in
+                            AddMilestone(index: index!).environmentObject(account)
                         }
                     }
-                    .padding(.trailing)
-                        if (account.goals[index!].milestones.isEmpty) {
-                            EmptyMilestoneMessage()
-                        }
-                        else {
-                            MilestoneChain()
-                                .environmentObject(account.goals[index!])
-                            
-                        }
-                    
-                    Spacer()
+                    HStack (alignment: .center) {
+                        Spacer()
+                        Text(account.goals[index!].name)
+                            .font(.custom("Futura", size: 20))
+                        Spacer()
+                    }
                 }
+                .padding(.trailing)
+                if (account.goals[index!].milestones.isEmpty) {
+                    EmptyMilestoneMessage()
+                }
+                else {
+                    MilestoneChain()
+                        .environmentObject(account.goals[index!])
+
+                    
+                }
+                Spacer()
             }
+            .ignoresSafeArea(edges: .bottom)
         }
         .fullScreenCover(isPresented: $addingMilestone) {
             AddMilestone(index: index!)
@@ -95,6 +94,8 @@ struct Tree: View {
         .navigationBarBackButtonHidden(true)
         .analyticsScreen(name: "\(Tree.self)")
     }
+    
+    
 }
 
 struct Trees_Previews: PreviewProvider {

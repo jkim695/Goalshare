@@ -206,15 +206,37 @@ struct OpeningScreen: View {
             }
             SecureField("Password", text: $registeringPassword)
                 .padding()
-            Button {
-                register()
-            } label: {
-                VStack (alignment: .center) {
-                    Spacer()
-                    Button {
-                        loginButtonPressed = true
-                        register()
-                    } label: {
+            VStack (alignment: .center) {
+                Spacer()
+                Button {
+                    loginButtonPressed = true
+                    register()
+                } label: {
+                    if (loginButtonPressed) {
+                        ZStack {
+                            Text("         ")
+                                .font(Font.custom(
+                                    "Lexend-SemiBold",
+                                    fixedSize: 20))
+                                .foregroundColor(.black)
+                                .padding(.horizontal, 85.0)
+                                .padding(.vertical, 7.0)
+                                .background(.yellow)
+                                .cornerRadius(35)
+                            Circle()
+                                .trim(from: 0, to: 0.2)
+                                .stroke(Color.white, lineWidth: 4)
+                                .frame(width: 30, height: 30)
+                                .rotationEffect(Angle(degrees: isLoading ? 360 : 0))
+                                .animation(Animation.linear(duration: 1.2).repeatForever(autoreverses: false))
+                                .onAppear() {
+                                    DispatchQueue.main.asyncAfter(deadline:.now() + 0.1) {
+                                        self.isLoading = true
+                                    }
+                                }
+                        }
+                        
+                    } else {
                         Text("Register")
                             .font(Font.custom(
                                 "Lexend-SemiBold",
@@ -224,13 +246,13 @@ struct OpeningScreen: View {
                             .padding(.vertical, 7.0)
                             .background(.yellow)
                             .cornerRadius(35)
-                        
                     }
-                    .padding()
-                    .padding(.bottom, keyboard.currentHeight / 25)
-                    .edgesIgnoringSafeArea(.bottom)
                 }
+                .padding()
+                .padding(.bottom, keyboard.currentHeight / 25)
+                .edgesIgnoringSafeArea(.bottom)
             }
+            //
         }
         .onAppear {
             do {
@@ -274,6 +296,7 @@ struct OpeningScreen: View {
                         password = ""
                         registeringUsername = ""
                         registeringPassword = ""
+                        isLoading = false
                         self.userIsLoggedIn = true
                         // Do what you want with the loaded account here
                         // e.g., assign it to your view model
@@ -285,6 +308,7 @@ struct OpeningScreen: View {
                         print("Error loading account: \(error)")
                         self.userIsLoggedIn = false // And here
                         loginButtonPressed = false
+                        isLoading = false
                     }
                 }
             } else {
@@ -315,6 +339,7 @@ struct OpeningScreen: View {
                 if let error = error {
                     print("Error writing document: \(error)")
                     self.userIsLoggedIn = false // And here
+                    isLoading = false
                 } else {
                     print("Document successfully written!")
                     username = registeringUsername

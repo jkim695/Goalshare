@@ -14,17 +14,17 @@ struct TreeTabView: View {
     @State var animationDone = false
     @State var addingMilestone = false
     var body: some View {
-        GeometryReader { geometry in
+        ZStack {
+            Color.yellow.edgesIgnoringSafeArea(.all)
             VStack {
                 let rows = account.goals.count
                 let slides = Array(stride(from: 0, to: rows, by: 1)).map { num -> AnyView in
-                    AnyView(Tree(index: num).environmentObject(account.goals[num])
-                        .frame(width: geometry.size.width, height: geometry.size.height))
+                    AnyView(Tree(index: num).environmentObject(account.goals[num]))
                 }
                 HorizontalSlideshow(slides: slides, currentSlide: $currentSlide)
             }
+            .ignoresSafeArea()
         }
-        .background(.yellow)
     }
 }
 
@@ -33,6 +33,11 @@ struct TreeTabView_Previews: PreviewProvider {
     static var previews: some View {
         let account2 = Account(id: " ")
         let goaly = Goal(id: "",name: "goal1", date: Date(), pin: false)
+        goaly.milestones.append(Milestone(name: "", sig: false, image: Image("fedW"), imageUrlString: "", caption: ""))
+        goaly.milestones.append(Milestone(name: "", sig: false, image: Image("fedW"), imageUrlString: "", caption: ""))
+        goaly.milestones.append(Milestone(name: "", sig: false, image: Image("fedW"), imageUrlString: "", caption: ""))
+        goaly.milestones.append(Milestone(name: "", sig: false, image: Image("fedW"), imageUrlString: "", caption: ""))
+        goaly.milestones.append(Milestone(name: "", sig: false, image: Image("fedW"), imageUrlString: "", caption: ""))
         goaly.milestones.append(Milestone(name: "", sig: false, image: Image("fedW"), imageUrlString: "", caption: ""))
         goaly.milestones.append(Milestone(name: "", sig: false, image: Image("fedW"), imageUrlString: "", caption: ""))
         goaly.milestones.append(Milestone(name: "", sig: false, image: Image("fedW"), imageUrlString: "", caption: ""))

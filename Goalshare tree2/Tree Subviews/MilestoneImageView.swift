@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MilestoneImageView: View {
     @EnvironmentObject var milestone: Milestone
+    @State var isLoading: Bool = false
     var color: Color {
         if milestone.sig {
             return .cyan
@@ -34,21 +35,18 @@ struct MilestoneImageView: View {
                 }
         }
         else {
-            Circle()
-                .fill(.red)
-                .frame(width: 150, height: 150)
+            CircleLoadingView()
                 .onAppear {
-                    if milestone.image == nil {
-                        milestone.loadImage()
-                    }
+                    milestone.loadImage()
                 }
+            
         }
     }
-}
-
-struct MilestoneImageView_Previews: PreviewProvider {
-    static var previews: some View {
-        MilestoneImageView()
-            .environmentObject(Milestone(name: "", sig: true, image: Image("fedW"), imageUrlString:  "", caption: ""))
+    
+    struct MilestoneImageView_Previews: PreviewProvider {
+        static var previews: some View {
+            MilestoneImageView()
+                .environmentObject(Milestone(name: "", sig: true, image: Image("fedW"), imageUrlString:  "", caption: ""))
+        }
     }
 }
