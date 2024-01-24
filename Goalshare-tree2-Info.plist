@@ -7,5 +7,10 @@
 		<string>Lexend-SemiBold.ttf</string>
 		<string>Lexend-Regular.ttf</string>
 	</array>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIColorName</key>
+		<string>LaunchScreenBackgroundColor</string>
+	</dict>
 </dict>
 </plist>
