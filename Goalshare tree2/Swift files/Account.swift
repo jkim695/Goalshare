@@ -22,12 +22,16 @@ class Account: ObservableObject {
         }
     }
     @Published var id: String
+    @Published var likedPhotos: LikedPhotosArray
     private var cancellables: Set<AnyCancellable> = []
 
     init(id: String, goals: [Goal] = []) {
         self.id = id
         self.goals = goals
-
+        self.likedPhotos = LikedPhotosArray(arr: [])
+        likedPhotos.objectWillChange.sink { [weak self] _ in
+            self?.objectWillChange.send()
+        }.store(in: &cancellables)
         for goal in goals {
             // Listen for changes in each Goal
             goal.objectWillChange.sink { [weak self] _ in
@@ -45,7 +49,10 @@ class Account: ObservableObject {
         self.id = document.documentID
         // Since goals are fetched separately, initialize with an empty array
         self.goals = []
-
+        self.likedPhotos = LikedPhotosArray(arr: [])
+        likedPhotos.objectWillChange.sink { [weak self] _ in
+            self?.objectWillChange.send()
+        }.store(in: &cancellables)
         for goal in goals {
             // Listen for changes in each Goal
             goal.objectWillChange.sink { [weak self] _ in

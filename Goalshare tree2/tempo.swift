@@ -9,7 +9,15 @@ import SwiftUI
 
 struct tempo: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Spacer()
+            Image("Image")
+                .resizable()
+                .frame(width: 150, height: 150)
+            Spacer()
+        }
+        .frame(maxWidth: .infinity)
+        .background(.yellow)
     }
 }
 

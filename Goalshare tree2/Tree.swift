@@ -77,8 +77,8 @@ struct Tree: View {
                     EmptyMilestoneMessage()
                 }
                 else {
-                    MilestoneChain()
-                        .environmentObject(account.goals[index!])
+                    MilestoneChain(goal_index: index!)
+                        .environmentObject(account)
 
                     
                 }

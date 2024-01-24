@@ -1,18 +1,19 @@
 import SwiftUI
 
 struct MilestoneChain: View {
-    @EnvironmentObject var goal: Goal
-    
+    @EnvironmentObject var account: Account
+    @State var goal_index: Int
     var body: some View {
-        Color.clear
+        let goal = account.goals[goal_index]
+        return (Color.clear
             .overlay (GeometryReader { geometry in
                 ScrollView {
                     VStack (alignment: .center, spacing: 20) {
                         ForEach(0..<goal.milestones.count, id: \.self) { index in
                             HStack {
                                 NavigationLink {
-                                    PostView()
-                                        .environmentObject(goal.milestones[goal.milestones.count - 1 - index])
+                                    PostView(goal_index: goal_index, milestone_index: index)
+                                        .environmentObject(account)
                                 } label: {
                                     MilestoneImageView()
                                         .environmentObject(goal.milestones[goal.milestones.count - 1 - index])
@@ -43,12 +44,14 @@ struct MilestoneChain: View {
 
                       
             )
+         )
     }
     
 }
 
 struct MilestoneChain_Previews: PreviewProvider {
     static var previews: some View {
+        let account = Account(id: "", goals: [])
         let goal = Goal(id: "",name: "", date: Date(), pin: false)
         goal.milestones.append(Milestone(name: "win", sig: true, image: Image("fedW"), imageUrlString: "", caption: "won"))
         goal.milestones.append(Milestone(name: "win", sig: true, image: Image("fedW"), imageUrlString: "", caption: "won"))
@@ -57,9 +60,10 @@ struct MilestoneChain_Previews: PreviewProvider {
         goal.milestones.append(Milestone(name: "win", sig: true, image: Image("fedW"), imageUrlString: "", caption: "won"))
         goal.milestones.append(Milestone(name: "win", sig: true, image: Image("fedW"), imageUrlString: "", caption: "won"))
         goal.milestones.append(Milestone(name: "win", sig: true, image: Image("fedW"), imageUrlString: "", caption: "won"))
+        account.goals.append(goal)
         return VStack {
-            MilestoneChain()
-                .environmentObject(goal)
+            MilestoneChain(goal_index: 0)
+                .environmentObject(account)
             
         }
         

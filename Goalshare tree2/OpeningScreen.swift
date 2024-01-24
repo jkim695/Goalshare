@@ -334,7 +334,8 @@ struct OpeningScreen: View {
             userID = user.uid
             db.collection("accounts").document(user.uid).setData([
                 "goals": [],
-                "userID": user.uid
+                "userID": user.uid,
+                "likedPhotos": []
             ]) { error in
                 if let error = error {
                     print("Error writing document: \(error)")

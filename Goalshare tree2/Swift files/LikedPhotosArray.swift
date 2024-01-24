@@ -6,3 +6,9 @@
 //
 
 import Foundation
+class LikedPhotosArray: ObservableObject {
+    @Published var likedPhotos: [String]
+    init(arr: [String]) {
+        likedPhotos = arr
+    }
+}

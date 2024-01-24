@@ -191,8 +191,9 @@ struct AddMilestone: View {
                                         "image": newMilestone.imageUrlString, // Assuming imageUrl is a String property
                                         "caption": newMilestone.caption,
                                         "id": newMilestoneRef.documentID,
-                                        "date": newMilestone.date
-                                        
+                                        "date": newMilestone.date,
+                                        "likes": 0,
+                                        "comments": []
                                     ]) { error in
                                         if let error = error {
                                             print("Error adding milestone: \(error)")
