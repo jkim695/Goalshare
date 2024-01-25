@@ -103,7 +103,7 @@ struct PostView: View {
 
 struct PostView_Previews: PreviewProvider {
     static var previews: some View {
-        let account = Account(id: "", goals: [])
+        let account = Account(id: "", goals: [], username: "Federer")
         let goal = Goal(id: "",name: "", date: Date(), pin: false)
         goal.milestones.append(Milestone(name: "win", sig: true, image: Image("fedW"), imageUrlString: "", caption: "won"))
         goal.milestones.append(Milestone(name: "win", sig: true, image: Image("fedW"), imageUrlString: "", caption: "won"))

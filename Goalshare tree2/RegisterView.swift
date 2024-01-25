@@ -158,7 +158,7 @@ func loadAccount(userId: String, completion: @escaping (Result<Account, Error>) 
             completion(.failure(FirebaseError.noAccountData))
             return
         }
-        let account = Account(document: accountSnapshot) // Assuming you have an Account initializer
+        let account = Account(document: accountSnapshot)// Assuming you have an Account initializer
         loadGoals(userId: userId) { result in
             switch result {
             case .success(let goals):

@@ -45,6 +45,6 @@ struct GoalSelector: View {
 struct GoalSelector_Previews: PreviewProvider {
     static var previews: some View {
         GoalSelector()
-            .environmentObject(Account(id: ""))
+            .environmentObject(Account(id: "", username: "Federer"))
     }
 }

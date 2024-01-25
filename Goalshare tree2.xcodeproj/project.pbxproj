@@ -52,6 +52,9 @@
 		8C69331D2A1BED5E00C73F23 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8C6933112A1BED5E00C73F23 /* OFL.txt */; };
 		8C69331E2A1BED5E00C73F23 /* Lexend-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8C6933122A1BED5E00C73F23 /* Lexend-VariableFont_wght.ttf */; };
 		8C69331F2A1BED5E00C73F23 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8C6933132A1BED5E00C73F23 /* README.txt */; };
+		8C7A083E2B62FF850038BC29 /* SingleCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7A083D2B62FF850038BC29 /* SingleCommentView.swift */; };
+		8C7A08402B6307D40038BC29 /* ScrollableAndZoomableImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7A083F2B6307D40038BC29 /* ScrollableAndZoomableImage.swift */; };
+		8C7A08422B630DE60038BC29 /* ScrollableCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7A08412B630DE60038BC29 /* ScrollableCommentView.swift */; };
 		8C7A0E3029D54B270025CD76 /* Main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7A0E2F29D54B270025CD76 /* Main.swift */; };
 		8C7A0E3529D54D1E0025CD76 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7A0E3429D54D1E0025CD76 /* Account.swift */; };
 		8C7A0E3829D550930025CD76 /* GoalDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7A0E3729D550930025CD76 /* GoalDisplay.swift */; };
@@ -133,6 +136,9 @@
 		8C6933112A1BED5E00C73F23 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = OFL.txt; sourceTree = "<group>"; };
 		8C6933122A1BED5E00C73F23 /* Lexend-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lexend-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		8C6933132A1BED5E00C73F23 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		8C7A083D2B62FF850038BC29 /* SingleCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleCommentView.swift; sourceTree = "<group>"; };
+		8C7A083F2B6307D40038BC29 /* ScrollableAndZoomableImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableAndZoomableImage.swift; sourceTree = "<group>"; };
+		8C7A08412B630DE60038BC29 /* ScrollableCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableCommentView.swift; sourceTree = "<group>"; };
 		8C7A0E2F29D54B270025CD76 /* Main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main.swift; sourceTree = "<group>"; };
 		8C7A0E3429D54D1E0025CD76 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		8C7A0E3729D550930025CD76 /* GoalDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDisplay.swift; sourceTree = "<group>"; };
@@ -329,6 +335,9 @@
 				8C649F4C2B4D23EE001D52BB /* pexels-swisshumanity-stories-13709224 (1080p).mp4 */,
 				8C3DE42B2A009F770027EED0 /* IntroductionVideo.swift */,
 				8C8687722B33421E00B1C313 /* OpeningScreen.swift */,
+				8C7A083D2B62FF850038BC29 /* SingleCommentView.swift */,
+				8C7A08412B630DE60038BC29 /* ScrollableCommentView.swift */,
+				8C7A083F2B6307D40038BC29 /* ScrollableAndZoomableImage.swift */,
 				8CD814CE2A159A3C00C18342 /* EditGoalView.swift */,
 				8CE2F1FE2B31E24200CFF089 /* Image.png */,
 				8CD814D02A15B23600C18342 /* GoalSelector.swift */,
@@ -475,7 +484,9 @@
 				8C3EC7BA2954EF03005DC346 /* Milestone.swift in Sources */,
 				8C7A0E3829D550930025CD76 /* GoalDisplay.swift in Sources */,
 				8C070DD829D64461006FDD7D /* EmptyMilestoneMessage.swift in Sources */,
+				8C7A083E2B62FF850038BC29 /* SingleCommentView.swift in Sources */,
 				0E8F67D32953BEB90014669F /* Camera.swift in Sources */,
+				8C7A08422B630DE60038BC29 /* ScrollableCommentView.swift in Sources */,
 				8CC6513529F2FE4200D534AD /* KeyboardObserver.swift in Sources */,
 				8C2A2489292DB03B008E2345 /* PapaClass.swift in Sources */,
 				8C2B2F6529D8C30400D07A99 /* Tester.swift in Sources */,
@@ -487,6 +498,7 @@
 				8C6933052A1B294100C73F23 /* GoalView.swift in Sources */,
 				8C070DDC29D64934006FDD7D /* MilestoneChain.swift in Sources */,
 				8CE2F1DF2B30803B00CFF089 /* KeyboardResponder.swift in Sources */,
+				8C7A08402B6307D40038BC29 /* ScrollableAndZoomableImage.swift in Sources */,
 				8C43DB3F293032FA005B6E24 /* Tree.swift in Sources */,
 				8C2A2485292D82EE008E2345 /* HomeScreen.swift in Sources */,
 				0E8F67D12952DB2A0014669F /* AddGoal.swift in Sources */,

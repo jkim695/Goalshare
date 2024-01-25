@@ -16,6 +16,7 @@ struct OpeningScreen: View {
     @State var userIsLoggedIn = false
     @State var username = ""
     @State var password = ""
+    @State var registeringEmailAddress = ""
     @State var registeringUsername = ""
     @State var registeringPassword = ""
     @FocusState var keyboardFocused: Bool
@@ -192,7 +193,7 @@ struct OpeningScreen: View {
             Text("Goalshare")
                 .font(.custom("lexend-semiBold", size: 64))
             HStack {
-                TextField("Email Address", text: $registeringUsername)
+                TextField("Email Address", text: $registeringEmailAddress)
                     .padding()
                     .focused($keyboardFocused)
                     .onAppear {
@@ -205,6 +206,14 @@ struct OpeningScreen: View {
                         .foregroundColor(.red)
                 }
             }
+            TextField("Username", text: $registeringUsername)
+                .padding()
+                .focused($keyboardFocused)
+                .onAppear {
+                    DispatchQueue.main.asyncAfter(deadline: .now()) {
+                        keyboardFocused = true
+                    }
+                }
             SecureField("Password", text: $registeringPassword)
                 .padding()
             VStack (alignment: .center) {
@@ -295,6 +304,7 @@ struct OpeningScreen: View {
                         registering = false
                         username = ""
                         password = ""
+                        registeringEmailAddress = ""
                         registeringUsername = ""
                         registeringPassword = ""
                         isLoading = false
@@ -320,7 +330,7 @@ struct OpeningScreen: View {
         }
     }
     func register() {
-        Auth.auth().createUser(withEmail: registeringUsername, password: registeringPassword) { authResult, error in
+        Auth.auth().createUser(withEmail: registeringEmailAddress, password: registeringPassword) { authResult, error in
             guard let user = authResult?.user, error == nil else {
                 if let err = error as NSError?, err.code == AuthErrorCode.emailAlreadyInUse.rawValue {
                     self.errorMessage = "The email is already in use. Please use a different email."
@@ -335,6 +345,7 @@ struct OpeningScreen: View {
             userID = user.uid
             db.collection("accounts").document(user.uid).setData([
                 "goals": [],
+                "username": registeringUsername,
                 "userID": user.uid,
                 "likedPhotos": []
             ]) { error in
@@ -344,7 +355,7 @@ struct OpeningScreen: View {
                     isLoading = false
                 } else {
                     print("Document successfully written!")
-                    username = registeringUsername
+                    username = registeringEmailAddress
                     password = registeringPassword
                     self.login()
                 }

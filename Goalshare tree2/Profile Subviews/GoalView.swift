@@ -65,7 +65,7 @@ struct GoalView: View {
 
 struct GoalView_preview: PreviewProvider {
     static var previews: some View {
-        let account = Account(id: " ")
+        let account = Account(id: " ", username: "Federer")
         account.goals.append(Goal(id: "",name: "Win Wimbledon and Win everything", date: Date(), pin: false))
         account.goals.append(Goal(id: "",name: "win", date: Date(), pin: false))
         account.goals.append(Goal(id: "",name: "win", date: Date(), pin: false))

@@ -31,7 +31,7 @@ struct TreeTabView: View {
 
 struct TreeTabView_Previews: PreviewProvider {
     static var previews: some View {
-        let account2 = Account(id: " ")
+        let account2 = Account(id: " ", username: "Federer")
         let goaly = Goal(id: "",name: "goal1", date: Date(), pin: false)
         goaly.milestones.append(Milestone(name: "", sig: false, image: Image("fedW"), imageUrlString: "", caption: ""))
         goaly.milestones.append(Milestone(name: "", sig: false, image: Image("fedW"), imageUrlString: "", caption: ""))

@@ -383,9 +383,9 @@ struct AddMilestone: View {
 
 struct NewPostView_Previews: PreviewProvider {
     static var previews: some View {
-        let account = Account(id: "")
+        let account = Account(id: "", username: "Federer")
         account.goals.append(Goal(id: "", name: "", date: Date(), pin: false))
         return AddMilestone(index: 0)
-            .environmentObject(Account(id: ""))
+            .environmentObject(account)
     }
 }

@@ -112,7 +112,7 @@ struct EditGoalView: View {
 
 struct EditGoalView_Previews: PreviewProvider {
     static var previews: some View {
-        var account: Account = Account(id: "")
+        var account: Account = Account(id: "", username: "Federer")
         account.goals.append(Goal(id: "", name: "String", date: Date(), pin: false))
         return EditGoalView(index: 0, goalDate: Date())
             .environmentObject(account)

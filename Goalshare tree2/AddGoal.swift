@@ -219,6 +219,6 @@ struct CheckboxToggleStyle: ToggleStyle {
 struct AddGoal_Previews: PreviewProvider {
     static var previews: some View {
         AddGoal()
-            .environmentObject(Account(id: ""))
+            .environmentObject(Account(id: "", username: "Federer"))
     }
 }

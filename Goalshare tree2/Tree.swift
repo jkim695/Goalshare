@@ -101,7 +101,7 @@ struct Tree: View {
 
 struct Trees_Previews: PreviewProvider {
     static var previews: some View {
-        let account = Account(id: "")
+        let account = Account(id: "", username: "Federer")
         let goaly = Goal(id: "",name: "goal1", date: Date(), pin: false)
         goaly.milestones.append(Milestone(name: "", sig: false, image: Image("fedW"), imageUrlString: "", caption: ""))
         goaly.milestones.append(Milestone(name: "", sig: false, image: Image("fedW"), imageUrlString: "", caption: ""))
