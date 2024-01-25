@@ -12,17 +12,49 @@ struct PostView: View {
     @State var goal_index: Int
     @State var milestone_index: Int
     @State var liked = false
+    @State var doubleTapped = false
+    @State var scale = 1.0
+    @State var opacity = 0.0
     var body: some View {
         let milestone = account.goals[goal_index].milestones[milestone_index]
-        if (account.likedPhotos.likedPhotos.contains(milestone.id.uuidString)) {
-            liked = true
-        }
         return VStack {
-            milestone.image?
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .cornerRadius(8)
-                .padding()
+            ZStack {
+                milestone.image?
+                    .resizable()
+                    .frame(width: 350, height: 250)
+                    .aspectRatio(contentMode: .fit)
+                    .cornerRadius(8)
+                    .padding()
+                    .onTapGesture (count: 2) {
+                        if (!liked) {
+                            account.likedPhotos.likedPhotos.append(milestone.id.uuidString)
+                        }
+                        liked = true
+                        doubleTapped = true
+                    }
+                if (doubleTapped) {
+                    Image("liked_heart")
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                        .scaleEffect(scale)
+                        .onAppear {
+                            scale = 3.0
+                            opacity = 1.0
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                withAnimation(.linear(duration: 1)) {
+                                    opacity = 0.0
+                                    scale = 1.0
+                                }
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                                doubleTapped = false
+                            }
+
+                        }
+                        .opacity(opacity)
+                        .animation(.linear(duration: 0.15), value: scale)
+                }
+            }
             HStack {
                 Button(action: {
                     liked.toggle()
@@ -43,6 +75,11 @@ struct PostView: View {
                         
                     }
                 }
+                .onAppear {
+                    if (account.likedPhotos.likedPhotos.contains(milestone.id.uuidString)) {
+                        liked = true
+                    }
+                }
                 Image("comment")
                 Image("share")
                 Spacer()
@@ -51,6 +88,7 @@ struct PostView: View {
             .padding()
             HStack {
                 Text(milestone.caption)
+                    .foregroundColor(.black)
                     .font(.system(size: 18))
                 Spacer()
             }

@@ -12,7 +12,7 @@ struct MilestoneChain: View {
                         ForEach(0..<goal.milestones.count, id: \.self) { index in
                             HStack {
                                 NavigationLink {
-                                    PostView(goal_index: goal_index, milestone_index: index)
+                                    PostView(goal_index: goal_index, milestone_index: goal.milestones.count - 1 - index)
                                         .environmentObject(account)
                                 } label: {
                                     MilestoneImageView()
@@ -21,6 +21,7 @@ struct MilestoneChain: View {
                                 Text(goal.milestones[goal.milestones.count - 1 - index].date, style: .date)
                                     .frame(width: 150)
                                     .font(.system(size: 16))
+                                    .foregroundColor(.black)
                                     .bold()
                             }
                             .frame(maxWidth: .infinity)

@@ -10,6 +10,7 @@ import FirebaseAuth
 import Firebase
 
 struct OpeningScreen: View {
+    @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var viewModel: AccountViewModel
     @ObservedObject private var keyboard = KeyboardResponder()
     @State var userIsLoggedIn = false
@@ -103,7 +104,7 @@ struct OpeningScreen: View {
                     .font(Font.custom(
                         "Lexend-SemiBold",
                         fixedSize: 64))
-                    .foregroundColor(.black)
+                    .foregroundColor(colorScheme == .dark ? .white : .black)
                     .padding()
                     .cornerRadius(15)
                 TextField("Email Address", text: $username)
@@ -154,7 +155,7 @@ struct OpeningScreen: View {
                             .font(Font.custom(
                                 "Lexend-SemiBold",
                                 fixedSize: 20))
-                            .foregroundColor(.black)
+                            .foregroundColor(colorScheme == .dark ? .white : .black)
                             .padding(.horizontal, 85.0)
                             .padding(.vertical, 7.0)
                             .background(.yellow)

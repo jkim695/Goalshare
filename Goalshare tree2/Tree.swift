@@ -68,6 +68,7 @@ struct Tree: View {
                     HStack (alignment: .center) {
                         Spacer()
                         Text(account.goals[index!].name)
+                            .foregroundColor(.black)
                             .font(.custom("Futura", size: 20))
                         Spacer()
                     }

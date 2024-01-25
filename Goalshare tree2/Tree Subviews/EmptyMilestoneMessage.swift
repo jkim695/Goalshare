@@ -11,7 +11,9 @@ struct EmptyMilestoneMessage: View {
     var body: some View {
         VStack {
             Text("No Milestones yet")
+                .foregroundColor(.black)
             Text("Click the + to add one!")
+                .foregroundColor(.black)
         }
     }
 }

@@ -37,6 +37,7 @@ struct AddMilestone: View {
                             Spacer()
                             Text("Add miletone")
                                 .font(.headline)
+                                .foregroundColor(.black)
                                 .scaleEffect(1.5)
                             Spacer()
                         }
@@ -70,6 +71,7 @@ struct AddMilestone: View {
                             TextField("Add caption here", text: $caption)
                                 .padding()
                                 .frame(maxWidth: .infinity, minHeight: 50)
+                                .foregroundColor(.black)
                                 .matchedGeometryEffect(id: "caption", in: namespace)
 
                             Path { path in
@@ -121,6 +123,7 @@ struct AddMilestone: View {
                                     "Lexend-SemiBold",
                                     fixedSize: 18))
                                 .frame(width: 200)
+                                .foregroundColor(.black)
                                 .matchedGeometryEffect(id: "sig", in: namespace)
                             
                             Button(action: {
@@ -263,6 +266,7 @@ struct AddMilestone: View {
                                     "Lexend-SemiBold",
                                     fixedSize: 18))
                                 .frame(width: 200)
+                                .foregroundColor(.black)
                                 .matchedGeometryEffect(id: "sig", in: namespace)
                             
                             Button(action: {

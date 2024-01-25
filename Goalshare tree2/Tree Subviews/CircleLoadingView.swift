@@ -12,7 +12,7 @@ struct CircleLoadingView: View {
     var body: some View {
         ZStack {
             Circle()
-                .stroke(lineWidth: 4)
+                .stroke(.black, lineWidth: 4)
                 .frame(width: 132)
             Circle()
                 .trim(from: 0.58, to: 0.92)

@@ -184,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				8C070DD029D64296006FDD7D /* LineView.swift */,
+				8CB278BC2B50B370005D7AF8 /* CircleLoadingView.swift */,
 				8C070DD329D6431A006FDD7D /* MilestoneImageView.swift */,
 				8C070DD729D64461006FDD7D /* EmptyMilestoneMessage.swift */,
 				8C070DDB29D64934006FDD7D /* MilestoneChain.swift */,
@@ -328,7 +329,6 @@
 				8C649F4C2B4D23EE001D52BB /* pexels-swisshumanity-stories-13709224 (1080p).mp4 */,
 				8C3DE42B2A009F770027EED0 /* IntroductionVideo.swift */,
 				8C8687722B33421E00B1C313 /* OpeningScreen.swift */,
-				8CB278BC2B50B370005D7AF8 /* CircleLoadingView.swift */,
 				8CD814CE2A159A3C00C18342 /* EditGoalView.swift */,
 				8CE2F1FE2B31E24200CFF089 /* Image.png */,
 				8CD814D02A15B23600C18342 /* GoalSelector.swift */,

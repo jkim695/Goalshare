@@ -8,6 +8,7 @@
 
 import SwiftUI
 struct GoalView: View {
+    @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var account: Account
     @State var index: Int
     @State private var isPressed = false
@@ -52,6 +53,7 @@ struct GoalView: View {
             }
             Text(account.goals[index].name)
                 .font(.custom("Lexend-Regular", size: 16))
+                .foregroundColor(.black)
                 .frame(width: 180)
         }
     }

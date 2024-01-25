@@ -9,6 +9,7 @@ import SwiftUI
 import UIKit
 import FirebaseAuth
 struct Profile: View {
+    @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var account: Account
     @EnvironmentObject var viewModel: AccountViewModel
     @State private var isSlideUpViewPresented = false
@@ -23,8 +24,10 @@ struct Profile: View {
                     VStack(alignment: .leading) {
                         Text("My")
                             .font(Font.custom("Lexend-SemiBold", fixedSize: 36))
+                            .foregroundColor(.black)
                         Text("Goals.")
                             .font(Font.custom("Lexend-SemiBold", fixedSize: 50))
+                            .foregroundColor(.black)
                     }
                     .padding(.leading, 30)
                     Spacer()
