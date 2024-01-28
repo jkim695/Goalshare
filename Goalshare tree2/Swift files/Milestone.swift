@@ -20,6 +20,7 @@ class Milestone: ObservableObject, Identifiable {
     @Published var date: Date
     @Published var caption: String
     @Published var imageUrlString: String?
+    @Published var comments: [Comment]
 
     init(name: String, sig: Bool, image: Image, imageUrlString: String?, caption: String) {
         self.id = UUID()
@@ -29,6 +30,7 @@ class Milestone: ObservableObject, Identifiable {
         self.date = Date()
         self.caption = caption
         self.imageUrlString = imageUrlString
+        self.comments = []
     }
     init?(data: [String: Any]) throws {
         print("run")
@@ -41,6 +43,8 @@ class Milestone: ObservableObject, Identifiable {
               let caption = data["caption"] as? String else {
             throw MyError.invalidData
         }
+        let comments = data["comments"] as? [Comment]
+        
 
         self.name = name
         self.date = timestamp.dateValue()
@@ -49,7 +53,7 @@ class Milestone: ObservableObject, Identifiable {
         self.caption = caption
         self.sig = sig
         self.image = nil
-        
+        self.comments = comments!
 
     }
 

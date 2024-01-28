@@ -8,18 +8,18 @@
 import SwiftUI
 
 struct SingleCommentView: View {
-    @EnvironmentObject var account: Account
+    @EnvironmentObject var comment: Comment
     var body: some View {
         VStack {
             HStack{
-                Text(account.username)
+                Text(comment.username)
                     .font(.system(size: 12))
                     .bold()
                     .padding(.leading)
                 Spacer()
             }
             HStack {
-                Text("Anita max wynn!")
+                Text(comment.text)
                     .font(.system(size: 14))
                     .padding(.leading)
                     .padding(.top, 0.5)
@@ -31,5 +31,5 @@ struct SingleCommentView: View {
 
 #Preview {
     SingleCommentView()
-        .environmentObject(Account(id: "", goals: [], username: "Drake"))
+        .environmentObject(Comment(text: "Anyta max wynn", username: "Drake"))
 }
