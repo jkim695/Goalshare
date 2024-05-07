@@ -17,7 +17,6 @@ struct Goalshare_tree2App: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     @State var introducing = true
     var body: some Scene {
-        
         let viewModel = AccountViewModel()
         viewModel.account = nil
         return WindowGroup {

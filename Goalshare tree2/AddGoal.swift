@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUIX
 import Foundation
 import Combine
 import FirebaseFirestore
@@ -47,15 +48,27 @@ struct AddGoal: View {
                     HStack (alignment: .top) {
                         VStack(alignment: .leading) {
                             Text("     Add Goal")
+                                .foregroundColor(.black)
                                 .font(.custom("Lexend-semiBold", size: 22))
                                 .scaleEffect(1.5)
                                 .onReceive(Just(goalTitle)) { _ in limitText(textLimit) }
-                            TextField("Enter goal here", text: $goalTitle, axis: .vertical)
-                                .font(.custom("Lexend-semiBold", size: 14))
-                                .lineLimit(2...)
-                                .frame(height: 70)
-                                .padding()
-                                .onReceive(Just(goalTitle)) { _ in limitText(textLimit) }
+                            
+                            ZStack(alignment: .leading) {
+                                        if goalTitle.isEmpty {
+                                            Text("Enter goal here")
+                                                .foregroundColor(Color.gray.opacity(0.4))
+                                                .font(.custom("Lexend-semiBold", size: 14))
+                                                .padding(.leading, 5)
+                                        }
+
+                                        TextField("", text: $goalTitle, axis: .vertical)
+                                            .foregroundColor(.black)
+                                            .font(.custom("Lexend-semiBold", size: 14))
+                                            .lineLimit(2...)
+                                            .frame(height: 70)
+                                            .padding()
+                                            .onReceive(Just(goalTitle)) { _ in limitText(textLimit) }
+                                    }
                         }
                         Spacer()
                         if selectedImage != nil {
@@ -88,12 +101,15 @@ struct AddGoal: View {
                     VStack(alignment:.leading, spacing: 30) {
                         Toggle(isOn: $isChecked) {
                             Text("Update Goal Picture to be most recent milestone")
+                                .foregroundColor(.black)
                                 .font(.custom("lexend-semiBold", size: 14))
                         }
                         .padding()
                         .toggleStyle(CheckboxToggleStyle())
                         DatePicker("Goal Completion Date", selection: $goalCompletionDate, in: Date()..., displayedComponents: .date)
                             .padding()
+                            .foregroundColor(.black)
+                        
                         
                         HStack(alignment: .center, spacing: 70) {
                             Button {

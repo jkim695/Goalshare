@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseFirestore
 
 struct PostView: View {
     @EnvironmentObject var account: Account
@@ -27,7 +28,7 @@ struct PostView: View {
                     .padding()
                     .onTapGesture (count: 2) {
                         if (!liked) {
-                            account.likedPhotos.likedPhotos.append(milestone.id.uuidString)
+                            account.likedPhotos.likedPhotos.append(milestone.id)
                         }
                         liked = true
                         doubleTapped = true
@@ -41,7 +42,7 @@ struct PostView: View {
                             scale = 3.0
                             opacity = 1.0
                             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                withAnimation(.linear(duration: 1)) {
+                                withAnimation(.bouncy(duration: 1)) {
                                     opacity = 0.0
                                     scale = 1.0
                                 }
@@ -59,9 +60,9 @@ struct PostView: View {
                 Button(action: {
                     liked.toggle()
                     if (liked) {
-                        account.likedPhotos.likedPhotos.append(milestone.id.uuidString)
+                        account.likedPhotos.likedPhotos.append(milestone.id)
                     } else {
-                        account.likedPhotos.likedPhotos.removeAll(where: {$0 == milestone.id.uuidString})
+                        account.likedPhotos.likedPhotos.removeAll(where: {$0 == milestone.id})
                     }
                 }) {
                     if (!liked) {
@@ -76,7 +77,7 @@ struct PostView: View {
                     }
                 }
                 .onAppear {
-                    if (account.likedPhotos.likedPhotos.contains(milestone.id.uuidString)) {
+                    if (account.likedPhotos.likedPhotos.contains(milestone.id)) {
                         liked = true
                     }
                 }
@@ -98,6 +99,19 @@ struct PostView: View {
         .frame(maxHeight: .infinity)
         .background(.yellow)
                     
+    }
+    
+    func updateLikeStatus(_ liked: Bool, for id: String) {
+        let db = Firestore.firestore()
+        db.collection("accounts").document(account.id).collection("goals").document(account.goals[goal_index].id!).collection("milestones").document(account.goals[goal_index].milestones[milestone_index].id).updateData([
+            "liked": liked
+        ]) { error in
+            if let error = error {
+                print("Error updating document: \(error)")
+            } else {
+                print("Document successfully updated")
+            }
+        }
     }
 }
 

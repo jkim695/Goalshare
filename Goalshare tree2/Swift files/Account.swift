@@ -51,7 +51,7 @@ class Account: ObservableObject {
         self.id = document.documentID
         // Since goals are fetched separately, initialize with an empty array
         self.goals = []
-        self.username = data["username"]! as? String ?? ""
+        self.username = data["username"] as? String ?? ""
         self.likedPhotos = LikedPhotosArray(arr: [])
         likedPhotos.objectWillChange.sink { [weak self] _ in
             self?.objectWillChange.send()

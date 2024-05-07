@@ -14,7 +14,7 @@ import UIKit
 
 class Milestone: ObservableObject, Identifiable {
     @Published var sig: Bool
-    @Published var id: UUID
+    @Published var id: String
     @Published var name: String
     @Published var image: Image?
     @Published var date: Date
@@ -23,7 +23,7 @@ class Milestone: ObservableObject, Identifiable {
     @Published var comments: [Comment]
 
     init(name: String, sig: Bool, image: Image, imageUrlString: String?, caption: String) {
-        self.id = UUID()
+        self.id = ""
         self.name = name
         self.sig = sig
         self.image = image
@@ -38,7 +38,6 @@ class Milestone: ObservableObject, Identifiable {
               let imageUrlString = data["image"] as? String,
               let timestamp = data["date"] as? Timestamp,
               let idString = data["id"] as? String,
-              let id = UUID(uuidString: idString),
               let sig = data["sig"] as? Bool,
               let caption = data["caption"] as? String else {
             throw MyError.invalidData
@@ -48,13 +47,16 @@ class Milestone: ObservableObject, Identifiable {
 
         self.name = name
         self.date = timestamp.dateValue()
-        self.id = id
+        self.id = idString
         self.imageUrlString = imageUrlString
         self.caption = caption
         self.sig = sig
         self.image = nil
-        self.comments = comments!
-
+        if (comments == nil) {
+            self.comments = []
+        } else {
+            self.comments = comments!
+        }
     }
 
     func loadImage() {
