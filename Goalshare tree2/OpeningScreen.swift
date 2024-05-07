@@ -41,6 +41,7 @@ struct OpeningScreen: View {
         }
         return AnyView(loginScreen)
     }
+    
     var content: some View {
         GeometryReader { geometry in
             VStack(spacing: 0) {
@@ -82,9 +83,11 @@ struct OpeningScreen: View {
             .background(.yellow)
         }
     }
+    
     var loginScreen: some View {
         loggingInScreen
     }
+    
     var loggingInScreen: some View {
         ZStack {
             VStack {
